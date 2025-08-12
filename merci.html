@@ -2,24 +2,63 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Merci — Moogwai Attitude</title>
+  <meta name="robots" content="noindex">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <style>
-    :root { --bg:#0e0e0f; --fg:#f5f5f7; --card:#17171a; --accent:#f0b90b; }
-    html,body{background:var(--bg); color:var(--fg);}
-    .card{background:var(--card); border:1px solid #26262b; border-radius:14px;}
-    .btn-accent{background:var(--accent); border:none; color:#111; font-weight:700;}
-    a.btn-accent:hover{opacity:.95}
+    :root {
+      --bg:#0e0e0f; --fg:#f5f5f7; --muted:#b7b7bd; --card:#17171a; --accent:#f0b90b;
+    }
+    html, body { background:var(--bg); color:var(--fg); height:100%; }
+    .hero-wrap{
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      background:
+        radial-gradient(1200px 400px at 20% -10%, #41330b 0%, transparent 60%),
+        radial-gradient(1200px 400px at 80% -10%, #221b3b 0%, transparent 60%);
+      padding: 24px 0;
+    }
+    .card-thanks{
+      background:var(--card);
+      border:1px solid #26262b;
+      border-radius:18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      max-width: 620px;
+    }
+    .logo{
+      height:72px; width:auto; /* Pas de hauteur/largeur fixe pour éviter la déformation */
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,.4));
+    }
+    .btn-accent{
+      background:var(--accent); border:none; color:#111; font-weight:700;
+      border-radius:12px; box-shadow:0 8px 22px rgba(240,185,11,.22);
+    }
+    .btn-accent:hover{ opacity:.95; }
+    .text-muted-2{ color:var(--muted); }
   </style>
 </head>
-<body class="d-flex align-items-center" style="min-height:100vh;">
-  <main class="container">
-    <div class="card mx-auto p-4 text-center" style="max-width:560px">
-      <img src="/moogwai_attitude_small_white.png" alt="Moogwai Attitude" width="72" height="72" class="mb-3">
-      <h1 class="h3 mb-2">Merci pour votre message ✉️</h1>
-      <p class="text-secondary mb-4">Nous revenons vers vous au plus vite.</p>
-      <a href="/" class="btn btn-accent">Retour à l’accueil</a>
+<body>
+  <main class="hero-wrap">
+    <div class="container px-3">
+      <div class="card-thanks mx-auto p-4 p-md-5 text-center">
+        <img class="logo mb-3" src="/moogwai_attitude_small_white.png" alt="Moogwai Attitude">
+        <h1 class="h3 fw-bold mb-2">Merci pour votre message ✉️</h1>
+        <p class="text-muted-2 mb-4">
+          Votre demande a bien été envoyée. Nous revenons vers vous très rapidement.
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a class="btn btn-accent" href="/">Retour à l’accueil</a>
+          <a class="btn btn-outline-light" href="https://www.bonfire.com/store/moogwai-attitude" target="_blank" rel="noopener">Voir la boutique</a>
+        </div>
+
+        <hr class="border-secondary-subtle my-4">
+
+        <p class="small text-muted-2 mb-0">
+          Besoin d’ajouter un détail ? <a class="link-light" href="mailto:moogwaiattitude@gmail.com">moogwaiattitude@gmail.com</a>
+        </p>
+      </div>
     </div>
   </main>
 </body>
