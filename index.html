@@ -130,11 +130,11 @@
 <div class="container">
 <h2 class="section-title mb-4 text-center">Galerie de modèles</h2>
 <div class="row g-3 gallery">
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Great.png" loading="lazy" src="/Great.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/killers.png" loading="lazy" src="/killers.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/name.png" loading="lazy" src="/name.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Revelation.png" loading="lazy" src="/Revelation.png"/></div>
-</section>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/Great.png" loading="lazy" src="/Great.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/killers.png" loading="lazy" src="/killers.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/name.png" loading="lazy" src="/name.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/Revelation.png" loading="lazy" src="/Revelation.png"/></div>
+</div></div></section>
 <!-- INFOS DU JOUR (fixe) -->
 <section class="py-5" id="infos">
 <div class="container">
@@ -168,7 +168,6 @@
 </div>
 <p class="text-center mt-3 text-secondary" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
 <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div></form>
-
 </div>
 </div>
 </section>
@@ -176,7 +175,7 @@
 <div class="container small">© 2025 Moogwai Attitude — Tous droits réservés • <a class="link-light" href="#">Retour en haut</a></div>
 </footer>
 <!-- Lightbox Modal -->
-<div aria-hidden="true" class="modal fade" id="lightbox" tabindex="-1">
+<div class="modal fade" id="lightbox" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered modal-xl">
 <div class="modal-content bg-dark border-0">
 <div class="modal-body p-0">
@@ -192,7 +191,7 @@
 <script>
     const lightboxImg = document.getElementById('lightboxImg');
     document.querySelectorAll('[data-bs-target="#lightbox"]').forEach(img => {
-      img.addEventListener('click', () => lightboxImg.src = img.getAttribute('data-src') || img.src);
+      img.addEventListener('click', () => lightboxImg.src = img.getAttribute('data-src') || img.currentSrc || img.src);
     });
 
     const form = document.getElementById('contactForm');
