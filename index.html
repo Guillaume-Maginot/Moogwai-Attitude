@@ -60,6 +60,15 @@
 }
 
   </style>
+
+<style id="contact-form-inline-style">
+/* Contact form minimal theming to fit dark/gold aesthetic without overriding site */
+.contact-form{background:rgba(0,0,0,.8)}
+.contact-form label{font-weight:600}
+.form-status{margin-top:12px;padding:10px 12px;border-radius:6px;font-weight:600;background:#0a3622;color:#d1f7e3;border:1px solid #0f5132}
+.form-status.error{background:#2c0b0e;color:#f8d7da;border:1px solid #842029}
+.hp{display:none!important}
+</style>
 </head>
 <body>
 <!-- NAV -->
@@ -154,21 +163,43 @@
 <p class="lead text-secondary">
         Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
       </p>
-<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
+
+<p><img alt="Moogwai mail" height="72" src="/images/icon_moogwai_mail_white.png" width="72"/></p>
+
+</div>
+</div>
+
+<div class="container my-4">
+<div class="row justify-content-center">
+<div class="col-lg-8 col-xl-7">
+<form action="/merci.html" class="contact-form card border-0 shadow-sm mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website">
+<input name="form-name" type="hidden" value="contact"/>
+<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
+<div class="card-body p-4 p-md-5">
 <div class="row g-3">
-<div class="col-md-6"><input class="form-control" name="name" placeholder="Votre nom" required=""/></div>
-<div class="col-md-6"><input class="form-control" name="email" placeholder="Votre email" required="" type="email"/></div>
-<div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" required="" rows="5"></textarea></div>
+<div class="col-md-6">
+<label class="form-label" for="contact-name">Nom</label>
+<input class="form-control" id="contact-name" name="name" placeholder="Votre nom" required=""/>
+</div>
+<div class="col-md-6">
+<label class="form-label" for="contact-email">Email</label>
+<input class="form-control" id="contact-email" name="email" placeholder="Votre email" required="" type="email"/>
+</div>
+<div class="col-12">
+<label class="form-label" for="contact-message">Message</label>
+<textarea class="form-control" id="contact-message" name="message" placeholder="Votre message" required="" rows="5"></textarea>
+</div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+<div data-netlify-recaptcha="true"></div>
 </div>
 <div class="d-flex justify-content-center gap-2 mt-3">
 <button class="btn btn-accent" type="submit">Envoyer</button>
 </div>
-<p class="text-center mt-3 text-secondary" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
-<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div></form>
-<p><img alt="Moogwai mail" height="72" src="/images/icon_moogwai_mail_white.png" width="72"/></p>
-<a class="btn btn-accent btn-lg" href="mailto:moogwaiattitude@gmail.com?subject=Contact%20Moogwai%20Attitude">
-        Nous écrire
-      </a>
+<p class="form-status text-center mt-3" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
+</div>
+</form>
+</div>
 </div>
 </div>
 </section>
@@ -180,7 +211,6 @@
 <div class="modal-dialog modal-dialog-centered modal-xl">
 <div class="modal-content bg-dark border-0">
 <div class="modal-body p-0">
-
 </div>
 <div class="modal-footer border-0">
 <button class="btn btn-outline-light" data-bs-dismiss="modal">Fermer</button>
@@ -208,5 +238,51 @@
       });
     }
   </script>
+
+<script id="contact-form-inline-script">
+(function(){
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var msg = document.getElementById('formMsg');
+
+  function encodeForm(fd){
+    var params = new URLSearchParams();
+    for (var pair of fd.entries()) { params.append(pair[0], pair[1]); }
+    return params.toString();
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); // inline mode
+    var tokenEl = form.querySelector('textarea[name="g-recaptcha-response"]');
+    var token = tokenEl && tokenEl.value ? tokenEl.value.trim() : "";
+    if (!token){
+      msg.hidden = false;
+      msg.classList.add('error');
+      msg.textContent = "Merci de valider le reCAPTCHA avant l’envoi.";
+      var iframe = form.querySelector('iframe[src*="recaptcha"]');
+      if (iframe && iframe.focus) try{ iframe.focus(); }catch(_){}
+      return;
+    }
+    var data = new FormData(form);
+    fetch('/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: encodeForm(data)
+    })
+    .then(function(){
+      msg.hidden = false;
+      msg.classList.remove('error');
+      msg.textContent = "Merci ! Votre message a bien été envoyé.";
+      form.reset();
+      if (window.grecaptcha && grecaptcha.reset) { try { grecaptcha.reset(); } catch(_){} }
+    })
+    .catch(function(){
+      msg.hidden = false;
+      msg.classList.add('error');
+      msg.innerHTML = "Oups… l’envoi a échoué. Vous pouvez <a href=\"/merci.html\">réessayer via la page de confirmation</a>.";
+    });
+  });
+})();
+</script>
 </body>
 </html>
