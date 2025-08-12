@@ -62,7 +62,6 @@
   </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav class="navbar-dark navbar navbar-expand-lg sticky-top">
 <div class="container">
@@ -155,17 +154,17 @@
 <p class="lead text-secondary">
         Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
       </p>
-<form class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify="" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
+<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify="" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
 <div class="row g-3">
-<div class="col-md-6"><input class="form-control" name="name" placeholder="Votre nom" required></div>
-<div class="col-md-6"><input class="form-control" type="email" name="email" placeholder="Votre email" required></div>
-<div class="col-12"><textarea class="form-control" name="message" rows="5" placeholder="Votre message" required></textarea></div>
-<div class="hp"><input name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<div class="col-md-6"><input class="form-control" name="name" placeholder="Votre nom" required=""/></div>
+<div class="col-md-6"><input class="form-control" name="email" placeholder="Votre email" required="" type="email"/></div>
+<div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" required="" rows="5"></textarea></div>
+<div class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
 </div>
 <div class="d-flex justify-content-center gap-2 mt-3">
 <button class="btn btn-accent" type="submit">Envoyer</button>
 </div>
-<p id="formMsg" class="text-center mt-3 text-secondary" hidden>Merci ! Votre message a été envoyé.</p>
+<p class="text-center mt-3 text-secondary" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
 </form>
 <p><img alt="Moogwai mail" height="72" src="images/icon_moogwai_mail_white.png" width="72"/></p>
 <a class="btn btn-accent btn-lg" href="mailto:moogwaiattitude@gmail.com?subject=Contact%20Moogwai%20Attitude">
@@ -191,7 +190,7 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+<script defer="" src="https://www.gofundme.com/static/js/embed.js"></script>
 <script>
     const lightboxImg = document.getElementById('lightboxImg');
     document.querySelectorAll('[data-bs-target="#lightbox"]').forEach(img => {
