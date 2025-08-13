@@ -1,9 +1,10 @@
 // /netlify/functions/newsletter-signup.js
-export async function handler(event) {
-  try {
-    if (event.httpMethod !== "POST") {
-      return { statusCode: 405, body: "Méthode non autorisée" };
-    }
+// Bridge: garde l'ancien endpoint actif en déléguant à la v2
+export async function handler(event, context) {
+  const mod = await import('./newsletter-signup-v2.js');
+  return mod.handler(event, context);
+}
+
 
     // Le formulaire envoie application/x-www-form-urlencoded
     const params = new URLSearchParams(event.body);
