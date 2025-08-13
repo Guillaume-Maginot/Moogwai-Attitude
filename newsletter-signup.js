@@ -1,15 +1,15 @@
 // /netlify/functions/newsletter-signup.js
-// Bridge: garde l'ancien endpoint actif en déléguant à la v2
-export async function handler(event, context) {
-  const mod = await import('./newsletter-signup-v2.js');
-  return mod.handler(event, context);
-}
+export async function handler(event) {
+  console.log("Moogwai Function is running (single-endpoint) 🦉");
 
+  try {
+    if (event.httpMethod !== "POST") {
+      return { statusCode: 405, body: "Méthode non autorisée" };
+    }
 
-    // Le formulaire envoie application/x-www-form-urlencoded
     const params = new URLSearchParams(event.body);
     const token = params.get("g-recaptcha-response");
-    const email = params.get("email"); // index.html a bien name="email"
+    const email = params.get("email");
 
     if (!token || !email) {
       return { statusCode: 400, body: "Il manque des informations (token ou email)" };
@@ -17,7 +17,7 @@ export async function handler(event, context) {
 
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
 
-    // 🔐 Vérification reCAPTCHA
+    // Vérification reCAPTCHA (fetch natif Node 18)
     const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -25,7 +25,6 @@ export async function handler(event, context) {
     });
     const verifyData = await verifyRes.json();
 
-    // Compatibilité v2 & v3 : pas toujours d'action ni de score
     const isSuccess = !!verifyData.success;
     const actionOk = !("action" in verifyData) || verifyData.action === "NEWSLETTER_SIGNUP";
     const scoreOk = !("score" in verifyData) || (verifyData.score >= 0.5);
@@ -40,7 +39,7 @@ export async function handler(event, context) {
       return { statusCode: 403, body: `Échec reCAPTCHA: ${why}` };
     }
 
-    // 📧 Ajout/MAJ du contact dans Brevo
+    // Ajout/MAJ du contact dans Brevo
     const brevoApiKey = process.env.BREVO_API_KEY;
     const listId = parseInt(process.env.BREVO_LIST_ID, 10);
 
@@ -63,7 +62,7 @@ export async function handler(event, context) {
       return { statusCode: 500, body: `Erreur Brevo: ${detail}` };
     }
 
-    // ✅ Tout est bon -> redirection vers la page de confirmation
+    // Redirection confirmation
     return {
       statusCode: 302,
       headers: {
