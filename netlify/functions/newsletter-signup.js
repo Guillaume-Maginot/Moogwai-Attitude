@@ -8,20 +8,18 @@ export async function handler(event) {
     }
 
     const params = new URLSearchParams(event.body);
-    const token = params.get("g-recaptcha-response");
-    const email = params.get("email");
+    const token = (params.get("g-recaptcha-response") || "").trim();
+    const email = (params.get("email") || "").trim();
 
     if (!token || !email) {
       return { statusCode: 400, body: "Il manque des informations (token ou email)" };
     }
 
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-
-    // Vérification reCAPTCHA (fetch natif Node 18)
+    // 🔐 Vérification reCAPTCHA (fetch natif Node 18)
     const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `secret=${secretKey}&response=${encodeURIComponent(token)}`
+      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${encodeURIComponent(token)}`
     });
     const verifyData = await verifyRes.json();
 
@@ -39,39 +37,54 @@ export async function handler(event) {
       return { statusCode: 403, body: `Échec reCAPTCHA: ${why}` };
     }
 
-    // Ajout/MAJ du contact dans Brevo
-    const brevoApiKey = process.env.BREVO_API_KEY;
-    const listId = parseInt(process.env.BREVO_LIST_ID, 10);
+    // ✅ Parse robuste des listIds (supporte "2" ou "2,7")
+    const raw = (process.env.BREVO_LIST_ID || "").trim();
+    const listIds = raw
+      .split(",")
+      .map(s => Number(s.trim()))
+      .filter(n => Number.isInteger(n) && n > 0);
+
+    console.log("[newsletter] BREVO_LIST_ID raw =", JSON.stringify(raw), "-> parsed =", listIds);
+
+    if (!listIds.length) {
+      return {
+        statusCode: 500,
+        body: `Mauvaise config: BREVO_LIST_ID doit être un entier ou une liste d'entiers (>0). Reçu: ${JSON.stringify(raw)}`
+      };
+    }
+
+    // 📧 Ajout/MAJ du contact dans Brevo
+    const payload = {
+      email,
+      listIds,             // ← bien un tableau de nombres
+      updateEnabled: true
+    };
+    console.log("[newsletter] Payload Brevo (safe) =", JSON.stringify({ email, listIds, updateEnabled: true }));
 
     const brevoRes = await fetch("https://api.brevo.com/v3/contacts", {
       method: "POST",
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "api-key": brevoApiKey
+        "api-key": process.env.BREVO_API_KEY
       },
-      body: JSON.stringify({
-        email,
-        listIds: [listId],
-        updateEnabled: true
-      })
+      body: JSON.stringify(payload)
     });
 
+    const text = await brevoRes.text();
     if (!brevoRes.ok) {
-      const detail = await brevoRes.text();
-      return { statusCode: 500, body: `Erreur Brevo: ${detail}` };
+      console.log("[newsletter] Brevo Status =", brevoRes.status, "Body =", text);
+      return { statusCode: 500, body: `Erreur Brevo: ${text}` };
     }
 
-    // Redirection confirmation
+    // 🎯 Redirection vers confirmation
     return {
       statusCode: 302,
-      headers: {
-        Location: "/Newsletter-Confirmation.html",
-        "Cache-Control": "no-store"
-      }
+      headers: { Location: "/Newsletter-Confirmation.html", "Cache-Control": "no-store" }
     };
 
   } catch (err) {
+    console.log("[newsletter] Exception:", err);
     return { statusCode: 500, body: `Erreur serveur: ${err.message}` };
   }
 }
