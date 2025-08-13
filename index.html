@@ -95,6 +95,70 @@
   object-fit:cover;
   display:block;
 }
+
+
+/* === Moogwai tweaks: gallery full images, lighter text, tighter gutters === */
+
+/* Lighter secondary text for better readability on dark */
+.text-secondary{ color:#d0d3da !important; }
+
+/* Tighter spacing between thumbnails */
+.gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
+
+/* Show full image, no cropping in gallery */
+#galerie .gallery img,
+.gallery img{
+  width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+  display:block;
+}
+
+/* Lightbox: no frame, keep proportions, accent close button */
+#lightbox .modal-dialog{ max-width:96vw; }
+#lightbox .modal-content{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  position:relative;
+}
+#lightbox .modal-body{
+  padding:0 !important;
+  display:flex; justify-content:center; align-items:center;
+  background:rgba(0,0,0,.85);
+}
+#lightbox #lightboxImg{
+  max-width:96vw; max-height:90vh; width:auto; height:auto;
+  object-fit:contain; border-radius:12px;
+}
+#lightbox .btn-close-mw{
+  position:absolute; top:16px; right:16px;
+  background:var(--accent,#f0b90b); color:#111;
+  border:0; border-radius:999px;
+  font-weight:800; padding:10px 14px;
+  box-shadow:0 10px 24px rgba(240,185,11,.25);
+  transition:transform .08s ease, box-shadow .18s ease;
+}
+#lightbox .btn-close-mw:hover{ transform:translateY(-1px); }
+#lightbox .btn-close-mw:active{ transform:translateY(0); box-shadow:0 6px 18px rgba(240,185,11,.25); }
+
+
+/* === Moogwai: gallery spacing + full images + lightbox close fix === */
+
+/* Tighter gutters between thumbnails */
+#galerie .gallery.row{ --bs-gutter-x:.375rem; --bs-gutter-y:.375rem; }
+
+/* Respect full image ratio (no crop) */
+#galerie .gallery img{
+  width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+}
+
+/* Lightbox: ensure close button is always on top and clickable */
+#lightbox .modal-content{ position:relative; }
+#lightbox .modal-body{ position:relative; z-index:1; }
+#lightbox .btn-close-mw{ z-index:1060; pointer-events:auto; }
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/></head>
 <body>
@@ -208,12 +272,9 @@
 <!-- Lightbox Modal -->
 <div class="modal fade" id="lightbox" tabindex="-1">
 <div class="modal-dialog modal-dialog-centered modal-xl">
-<div class="modal-content bg-dark border-0">
+<div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
 <div class="modal-body p-0">
 <img class="img-fluid w-100" id="lightboxImg"/></div>
-<div class="modal-footer border-0">
-<button class="btn btn-outline-light" data-bs-dismiss="modal">Fermer</button>
-</div>
 </div>
 </div>
 </div>
@@ -223,34 +284,31 @@
     const lightboxImg = document.getElementById('lightboxImg');
     document.querySelectorAll('[data-bs-target="#lightbox"]').forEach(img => {
       img.addEventListener('click', () => {
-        lightboxImg.src = img.getAttribute('data-src') || img.currentSrc || img.src;
-        lightboxImg.alt = img.alt || '';
+        let url = img.getAttribute('data-src') || img.currentSrc || img.src;
+        const setSrc = (primary, fallback) => {
+          if (lightboxImg) {
+            lightboxImg.onerror = () => { 
+              if (fallback && lightboxImg.src !== fallback) lightboxImg.src = fallback;
+            };
+            lightboxImg.src = primary;
+          }
+        };
+        if (location.protocol === 'file:' && url && url.startsWith('/')) {
+          // Try without leading slash locally, else fallback to the thumbnail src
+          setSrc(url.slice(1), img.src);
+        } else {
+          setSrc(url, img.src);
+        }
+        if (lightboxImg) lightboxImg.alt = img.alt || 'Agrandissement';
       });
     });
-
-    const form = document.getElementById('contactForm');
-    const formMsg = document.getElementById('formMsg');
-    if (form && formMsg) {
-      form.addEventListener('submit', function(e){
-        if (this.action.includes('your-id')) {
-          e.preventDefault();
-          formMsg.hidden = false;
-          this.reset();
-        }
-      });
-    }
-  
-
-    // Libérer la source à la fermeture de la modale (perf/mémoire)
+    // Clear image on modal hide (perf)
     const lightboxEl = document.getElementById('lightbox');
     if (lightboxEl) {
       lightboxEl.addEventListener('hidden.bs.modal', () => {
-        if (lightboxImg) {
-          lightboxImg.removeAttribute('src');
-          lightboxImg.removeAttribute('alt');
-        }
+        if (lightboxImg) { lightboxImg.removeAttribute('src'); lightboxImg.removeAttribute('alt'); }
       });
     }
-</script>
+        </script>
 </body>
 </html>
