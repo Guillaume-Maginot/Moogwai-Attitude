@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Moogwai Attitude — Boutique &amp; Cagnotte</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+    :root { --bg:#0e0e0f; --fg:#f5f5f7; --muted:#b7b7bd; --card:#17171a; --accent:#f0b90b; }
+    html,body{background:var(--bg); color:var(--fg);} 
+    .navbar{background:rgba(0,0,0,.7);backdrop-filter:saturate(160%) blur(6px);} 
+    .brand{letter-spacing:1px;font-weight:800;}
+    .logo{height:40px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(0,0,0,.4));}
+    .hero{padding:88px 0 32px;background:radial-gradient(1200px 400px at 20% -10%, #41330b 0%, transparent 60%), radial-gradient(1200px 400px at 80% -10%, #221b3b 0%, transparent 60%);} 
+    .hero h1{font-weight:900;}
+    .hero-logo{max-width:300px;height:auto;margin-bottom:20px;}
+    .btn-accent{background:var(--accent); border:none; color:#111; font-weight:700;}
+    .section-title{font-weight:800;}
+    .card{background:var(--card); border:1px solid #26262b;}
+    .gallery img{border-radius:14px; transition:transform .25s ease, box-shadow .25s ease; cursor:pointer;}
+    .gallery img:hover{transform:translateY(-2px) scale(1.015);} 
+    .info-day{border-radius:16px; padding:20px; background:linear-gradient(180deg, #1a1a1f, #131316); border:1px solid #26262b;}
+    .editable-hint{font-size:.85rem; color:var(--muted);} 
+    footer{border-top:1px solid #26262b;}
+    /* Newsletter centrée + style */
+.newsletter{
+  max-width: 700px;
+  background: linear-gradient(180deg, #1a1a1f, #131316);
+  border:1px solid #26262b; border-radius:16px;}
+.newsletter-input{
+  min-width: 260px;
+  background:#141418; color:var(--fg);
+  border:1px solid #26262b;}
+.newsletter-input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(240,185,11,.18);}
+.newsletter-btn{
+  font-weight:700; border:none; border-radius:12px;
+  box-shadow: 0 6px 18px rgba(240,185,11,.22);
+  transition: transform .08s ease, box-shadow .2s ease;}
+.newsletter-btn:hover{ transform: translateY(-1px); }
+.hp{ position:absolute; left:-5000px; }
+/* Bandeau intro — noir & or */
+.mw-top-intro{
+  background: linear-gradient(180deg,#111,#0b0b0b);
+  color: var(--fg, #f5f5f5);
+  border-bottom: 1px solid rgba(212,175,55,.25);
+  padding: .65rem 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+  font-size: .96rem;
+}
+.mw-top-intro p{ 
+  margin:0; text-align:center; letter-spacing:.2px; 
+}
+.mw-gold{ color: var(--accent, #d4af37); font-weight:800; }
+.mw-hide-sm{ white-space:nowrap; }
+@media (max-width: 560px){
+  .mw-hide-sm{ display:none; }
+}
+
+  
+.gfm-embed iframe {
+  width: 100% !important;
+  height: auto !important;
+  border: 0;
+}
+
+/* Uniformiser hauteur et recadrer les images de la galerie */
+.gallery img {
+  aspect-ratio: 2/3;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Lightbox: contenir l'image dans l'écran */
+#lightbox #lightboxImg{
+  max-width: 96vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+</style>
+<link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/></head>
+<body>
+<!-- NAV -->
+<nav class="navbar-dark navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand brand d-flex align-items-center gap-2" href="#">
+<img alt="Moogwai Attitude" class="logo" src="/moogwai_attitude_small_white.png"/>
+</a>
+<button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="nav"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2"><li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li><li class="nav-item"><a class="nav-link" href="#infos">Infos</a></li><li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li><li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li><li class="nav-item"><a class="btn btn-accent ms-lg-2" href="https://www.bonfire.com/store/moogwai-attitude" rel="noopener" target="_blank">Boutique</a></li><li class="nav-item"><a class="btn btn-outline-light ms-lg-2" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">Cagnotte</a></li></ul></div>
+</div>
+</nav>
+<!-- Présentation courte tout en haut -->
+<div aria-label="Présentation Moogwai Attitude" class="mw-top-intro" role="banner">
+<div class="container">
+<p>
+<strong class="mw-gold">Moogwai Attitude</strong> crée des T-shirts illustrés à double lecture :
+      d’abord le style, puis le sens.
+      <span class="mw-hide-sm"> Éditions limitées, impressions premium et esprit rock assumé.</span>
+<span class="mw-hide-sm"> Un riff de métal, des paroles qui résonnent encore, un tshirt pour ne pas oublier.</span>
+</p>
+</div>
+</div>
+<!-- HERO -->
+<header class="hero text-center">
+<div class="container">
+<img alt="Moogwai Attitude" class="hero-logo" src="/moogwai_attitude_white.png"/>
+<h1 class="display-5">Boutique en ligne &amp; lancement de la cagnotte</h1>
+<p class="lead text-secondary">T‑shirts à message, production à la demande — qualité premium.</p>
+<div class="d-flex gap-2 justify-content-center mt-3">
+<a class="btn btn-light" href="#galerie">Voir les modèles</a>
+<a class="btn btn-accent" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">gofundme</a>
+<a class="btn btn-outline-light" href="https://www.bonfire.com/store/moogwai-attitude" rel="noopener" target="_blank">Moogwai Attitude</a>
+</div>
+</div>
+</header>
+<!-- Newsletter -->
+<section class="py-4" id="newsletter">
+<div class="container">
+<div class="newsletter mx-auto text-center p-4">
+<h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
+<p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
+<form action="/.netlify/functions/newsletter-signup" method="POST">
+<label class="visually-hidden" for="nlEmail">Votre e-mail</label>
+<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="" type="email"/>
+<div class="g-recaptcha" data-action="NEWSLETTER_SIGNUP" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
+<!-- Honeypot anti-bot -->
+<div aria-hidden="true" class="hp">
+<input autocomplete="off" name="website" tabindex="-1" type="text"/>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- WIDGET GOFUNDME -->
+<section class="py-4">
+<div class="container d-flex justify-content-center">
+<div class="gfm-embed" data-url="https://www.gofundme.com/f/moogwai-attitude-des-tshirts-elegants-au-message-cache/widget/medium"></div>
+<noscript>Le widget nécessite JavaScript. Ouvrez la cagnotte : https://www.gofundme.com/f/moogwai-attitude-des-tshirts-elegants-au-message-cache</noscript></div>
+</section>
+<!-- GALERIE -->
+<section class="py-5" id="galerie">
+<div class="container">
+<h2 class="section-title mb-4 text-center">Galerie de modèles</h2>
+<div class="row g-3 gallery">
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/Great.png" loading="lazy" src="/Great.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/Water.png" loading="lazy" src="/Water.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/name.png" loading="lazy" src="/name.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="/Revelation.png" loading="lazy" src="/Revelation.png"/></div>
+</div></div></section>
+<!-- INFOS DU JOUR (fixe) -->
+<section class="py-5" id="infos">
+<div class="container">
+<div class="d-flex align-items-center justify-content-between mb-2">
+<h2 class="section-title m-0">Infos du jour</h2>
+</div>
+<div class="info-day">
+        Mise en ligne officielle : boutique Moogwaie Attitude ouverte et cagnotte lancée.<br/><br/>
+        — Nouveaux modèles ajoutés aujourd'hui.<br/>
+        — Livraison internationale via plateforme.<br/>
+        — Merci pour votre soutien !
+      </div>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="py-5" id="contact">
+<div class="container">
+<img alt="Moogwai mail" height="72" src="/icon_moogwai_mail_white.png" style="display:block;margin:0 auto 1rem;" width="72"/><h2 class="section-title mb-3 text-center">Contact</h2>
+<div class="mx-auto text-center" style="max-width:720px">
+<p class="lead text-secondary">
+        Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
+      </p>
+<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website">
+  <input name="form-name" type="hidden" value="contact"/>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <input class="form-control" name="name" placeholder="Votre nom" required type="text"/>
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" name="email" placeholder="Votre email" required type="email"/>
+    </div>
+    <div class="col-12">
+      <textarea class="form-control" name="message" placeholder="Votre message" required rows="5"></textarea>
+    </div>
+    <div class="hp" aria-hidden="true">
+      <input autocomplete="off" name="website" tabindex="-1" type="text"/>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center gap-2 mt-3">
+    <button class="btn btn-accent" type="submit">Envoyer</button>
+  </div>
+  <p class="text-center mt-3 text-secondary" hidden id="formMsg">Merci ! Votre message a été envoyé.</p>
+</form>
+</div>
+</div>
+</section>
+<footer class="py-4 text-center text-secondary">
+<div class="container small">© 2025 Moogwai Attitude — Tous droits réservés • <a class="link-light" href="#">Retour en haut</a></div>
+</footer>
+<!-- Lightbox Modal -->
+<div class="modal fade" id="lightbox" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-xl">
+<div class="modal-content bg-dark border-0">
+<div class="modal-body p-0">
+<img class="img-fluid w-100" id="lightboxImg"/></div>
+<div class="modal-footer border-0">
+<button class="btn btn-outline-light" data-bs-dismiss="modal">Fermer</button>
+</div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script defer="" src="https://www.gofundme.com/static/js/embed.js"></script>
+<script>
+    const lightboxImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('[data-bs-target="#lightbox"]').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.getAttribute('data-src') || img.currentSrc || img.src;
+        lightboxImg.alt = img.alt || '';
+      });
+    });
+
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    if (form && formMsg) {
+      form.addEventListener('submit', function(e){
+        if (this.action.includes('your-id')) {
+          e.preventDefault();
+          formMsg.hidden = false;
+          this.reset();
+        }
+      });
+    }
+  
+
+    // Libérer la source à la fermeture de la modale (perf/mémoire)
+    const lightboxEl = document.getElementById('lightbox');
+    if (lightboxEl) {
+      lightboxEl.addEventListener('hidden.bs.modal', () => {
+        if (lightboxImg) {
+          lightboxImg.removeAttribute('src');
+          lightboxImg.removeAttribute('alt');
+        }
+      });
+    }
+</script>
+<script async="True" defer="True" src="https://www.google.com/recaptcha/enterprise.js"></script></body>
+</html>
