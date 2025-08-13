@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inscription confirmée — Moogwai Attitude</title>
+  <meta name="robots" content="noindex" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    :root{ --bg:#0e0e0f; --fg:#f5f5f7; --muted:#b7b7bd; --card:#17171a; --accent:#f0b90b; }
+    html,body{ background:var(--bg); color:var(--fg); height:100%; }
+    .wrap{
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 0;
+      background:
+        radial-gradient(1200px 400px at 20% -10%, #41330b 0%, transparent 60%),
+        radial-gradient(1200px 400px at 80% -10%, #221b3b 0%, transparent 60%);
+    }
+    .card-confirm{
+      background:var(--card); border:1px solid #26262b; border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.35); max-width:660px;
+    }
+    .logo{ height:64px; width:auto; filter:drop-shadow(0 1px 0 rgba(0,0,0,.4)); }
+    .thumb{
+      width:160px; height:160px; object-fit:cover; border-radius:16px; border:1px solid #26262b;
+      box-shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+    .btn-accent{
+      background:var(--accent); color:#111; font-weight:700; border:none; border-radius:12px;
+      box-shadow:0 8px 22px rgba(240,185,11,.22);
+    }
+    .btn-accent:hover{ opacity:.95; }
+    .sub{ color:var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="container px-3">
+      <div class="card-confirm mx-auto p-4 p-md-5 text-center">
+        <!-- Logo -->
+        <img class="logo mb-3" src="/moogwai_attitude_small_white.png" alt="Moogwai Attitude" />
+
+        <!-- Petite image (remplace le src si besoin) -->
+        <img class="thumb mb-3"
+             src="/images/Bienvenue.png"
+             alt="Merci pour votre inscription" />
+
+        <h1 class="h3 fw-bold mb-2">Bienvenue dans la tribu&nbsp;!</h1>
+        <p class="sub mb-3">
+          Merci pour votre inscription à la newsletter <strong>Moogwai Attitude</strong>.
+          Ici, on crée des T-shirts à double lecture&nbsp;: un visuel percutant, un message plein de sens.
+        </p>
+        <p class="mb-4">
+          Attendez-vous à des avant-premières
+          et quelques surprises rien que pour vous. Rock on ⚡
+        </p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <a class="btn btn-accent" href="/">Retour à l’accueil</a>
+          <a class="btn btn-outline-light" href="https://www.bonfire.com/store/moogwai-attitude" target="_blank" rel="noopener">Voir la boutique</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
