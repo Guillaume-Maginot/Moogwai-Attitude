@@ -202,10 +202,10 @@
 <div class="newsletter mx-auto text-center p-4">
 <h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
 <p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
-<form action="https://REMPLACE-MOI-par-l-endpoint" class="d-flex flex-wrap justify-content-center gap-2" method="post" novalidate="" target="_self">
+<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-wrap justify-content-center gap-2" method="POST" novalidate="" target="_self">
 <label class="visually-hidden" for="nlEmail">Votre e-mail</label>
-<input class="form-control newsletter-input" id="nlEmail" name="EMAIL" placeholder="votre@email.com" required="" type="email"/>
-<button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
+<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="True" type="email"/>
+<div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
 <!-- Honeypot anti-bot -->
 <div aria-hidden="true" class="hp">
 <input autocomplete="off" name="website" tabindex="-1" type="text"/>
@@ -310,5 +310,5 @@
       });
     }
         </script>
-</body>
+<script async="True" defer="True" src="https://www.google.com/recaptcha/api.js"></script></body>
 </html>
