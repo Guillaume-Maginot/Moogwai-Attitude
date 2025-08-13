@@ -82,6 +82,19 @@
   height: auto;
   object-fit: contain;
 }
+
+
+/* Center GoFundMe widget */
+.gfm-embed{display:flex;justify-content:center;align-items:center;margin:0 auto;max-width:100%;}
+.gfm-embed iframe{display:block;margin:0 auto;}
+/* Uniform thumbnails cropping in gallery */
+#galerie .gallery img,
+.gallery img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+}
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/></head>
 <body>
@@ -125,10 +138,10 @@
 <div class="newsletter mx-auto text-center p-4">
 <h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
 <p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
-<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-wrap justify-content-center gap-2" method="POST" novalidate="" target="_self">
+<form action="https://REMPLACE-MOI-par-l-endpoint" class="d-flex flex-wrap justify-content-center gap-2" method="post" novalidate="" target="_self">
 <label class="visually-hidden" for="nlEmail">Votre e-mail</label>
-<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="True" type="email"/>
-<div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
+<input class="form-control newsletter-input" id="nlEmail" name="EMAIL" placeholder="votre@email.com" required="" type="email"/>
+<button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
 <!-- Honeypot anti-bot -->
 <div aria-hidden="true" class="hp">
 <input autocomplete="off" name="website" tabindex="-1" type="text"/>
@@ -239,5 +252,5 @@
       });
     }
 </script>
-<script async="True" defer="True" src="https://www.google.com/recaptcha/api.js"></script></body>
+</body>
 </html>
