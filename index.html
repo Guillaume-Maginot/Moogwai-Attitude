@@ -125,7 +125,7 @@
 <div class="newsletter mx-auto text-center p-4">
 <h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
 <p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
-<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-wrap justify-content-center gap-2" method="POST" novalidate="" target="_self"><!-- reCAPTCHA Enterprise: le jeton sera envoyé en g-recaptcha-response et doit être vérifié côté serveur (expire en ~2 minutes). -->
+<form action="/.netlify/functions/newsletter-signup-v2" method="POST">
 <label class="visually-hidden" for="nlEmail">Votre e-mail</label>
 <input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="" type="email"/>
 <div class="g-recaptcha" data-action="NEWSLETTER_SIGNUP" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
