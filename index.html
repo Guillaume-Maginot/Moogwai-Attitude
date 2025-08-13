@@ -125,10 +125,10 @@
 <div class="newsletter mx-auto text-center p-4">
 <h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
 <p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
-<form action="/.netlify/functions/newsletter-signup" method="POST">
+<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-wrap justify-content-center gap-2" method="POST" novalidate="" target="_self">
 <label class="visually-hidden" for="nlEmail">Votre e-mail</label>
-<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="" type="email"/>
-<div class="g-recaptcha" data-action="NEWSLETTER_SIGNUP" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
+<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="True" type="email"/>
+<div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
 <!-- Honeypot anti-bot -->
 <div aria-hidden="true" class="hp">
 <input autocomplete="off" name="website" tabindex="-1" type="text"/>
@@ -175,27 +175,17 @@
 <p class="lead text-secondary">
         Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
       </p>
-<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website">
-  <input name="form-name" type="hidden" value="contact"/>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <input class="form-control" name="name" placeholder="Votre nom" required type="text"/>
-    </div>
-    <div class="col-md-6">
-      <input class="form-control" name="email" placeholder="Votre email" required type="email"/>
-    </div>
-    <div class="col-12">
-      <textarea class="form-control" name="message" placeholder="Votre message" required rows="5"></textarea>
-    </div>
-    <div class="hp" aria-hidden="true">
-      <input autocomplete="off" name="website" tabindex="-1" type="text"/>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center gap-2 mt-3">
-    <button class="btn btn-accent" type="submit">Envoyer</button>
-  </div>
-  <p class="text-center mt-3 text-secondary" hidden id="formMsg">Merci ! Votre message a été envoyé.</p>
-</form>
+<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
+<div class="row g-3">
+<div class="col-md-6"><input class="form-control" name="name" placeholder="Votre nom" required=""/></div>
+<div class="col-md-6"><input class="form-control" name="email" placeholder="Votre email" required="" type="email"/></div>
+<div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" required="" rows="5"></textarea></div>
+</div>
+<div class="d-flex justify-content-center gap-2 mt-3">
+<button class="btn btn-accent" type="submit">Envoyer</button>
+</div>
+<p class="text-center mt-3 text-secondary" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
+<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div></form>
 </div>
 </div>
 </section>
@@ -249,5 +239,5 @@
       });
     }
 </script>
-<script async="True" defer="True" src="https://www.google.com/recaptcha/enterprise.js"></script></body>
+<script async="True" defer="True" src="https://www.google.com/recaptcha/api.js"></script></body>
 </html>
