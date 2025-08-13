@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 // /netlify/functions/newsletter-signup.js
 export async function handler(event) {
   console.log("Moogwai Function is running (single-endpoint) 🦉");
