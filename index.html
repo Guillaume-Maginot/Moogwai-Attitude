@@ -191,17 +191,32 @@
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(240,185,11,.18);
 }
+
+/* === Mobile Boost === */
+/* Boutons plus confortables au pouce */
+@media (max-width: 576px){
+  .btn{ min-height: 48px; padding: .8rem 1rem; font-weight: 700; }
+  .navbar .btn{ min-height: 44px; }
+  .hero .btn{ width: 100%; }
+  .hero .btn + .btn{ margin-left: 0; }
+}
+
+/* Thumbs : resserrer un poil, mais garder l’air */
+#galerie .gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
+
+/* Empêcher le “scroll bounce” dans la lightbox */
+#lightbox .modal-body{ touch-action: pan-y; }
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/></head>
 <body>
 <!-- NAV -->
 <nav class="navbar-dark navbar navbar-expand-lg sticky-top">
 <div class="container">
-<a class="navbar-brand brand d-flex align-items-center gap-2" href="#?v=20250814">
-<img alt="Moogwai Attitude" class="logo" src="images/New-logo-small.png?v=20250814"/>
+<a class="navbar-brand brand d-flex align-items-center gap-2" href="#">
+<img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250814"/>
 </a>
 <button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="nav"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2"><li class="nav-item"><a class="nav-link" href="#galerie?v=20250814">Galerie</a></li><li class="nav-item"><a class="nav-link" href="#infos?v=20250814">Infos</a></li><li class="nav-item"><a class="nav-link" href="#newsletter?v=20250814">Newsletter</a></li><li class="nav-item"><a class="nav-link" href="#contact?v=20250814">Contact</a></li><li class="nav-item"><a class="btn btn-accent ms-lg-2" href="https://www.bonfire.com/store/moogwai-attitude" rel="noopener" target="_blank">Boutique</a></li><li class="nav-item"><a class="btn btn-outline-light ms-lg-2" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">Cagnotte</a></li></ul></div>
+<div class="collapse navbar-collapse" id="nav"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2"><li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li><li class="nav-item"><a class="nav-link" href="#infos">Infos</a></li><li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li><li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li><li class="nav-item"><a class="btn btn-accent ms-lg-2" href="https://www.bonfire.com/store/moogwai-attitude" rel="noopener" target="_blank">Boutique</a></li><li class="nav-item"><a class="btn btn-outline-light ms-lg-2" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">Cagnotte</a></li></ul></div>
 </div>
 </nav>
 <!-- Présentation courte tout en haut -->
@@ -218,11 +233,11 @@
 <!-- HERO -->
 <header class="hero text-center">
 <div class="container">
-<img alt="Moogwai Attitude" class="hero-logo" src="images/New-logo.png?v=20250814"/>
+<img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250814"/>
 <h1 class="display-5">Boutique en ligne &amp; lancement de la cagnotte</h1>
 <p class="lead text-secondary">T‑shirts à message, production à la demande — qualité premium.</p>
 <div class="d-flex gap-2 justify-content-center mt-3">
-<a class="btn btn-light" href="#galerie?v=20250814">Voir les modèles</a>
+<a class="btn btn-light" href="#galerie">Voir les modèles</a>
 <a class="btn btn-accent" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">gofundme</a>
 <a class="btn btn-outline-light" href="https://www.bonfire.com/store/moogwai-attitude" rel="noopener" target="_blank">Moogwai Attitude</a>
 </div>
@@ -258,29 +273,29 @@
 <h2 class="section-title mb-4 text-center">Galerie de modèles</h2>
 <div class="row g-3 gallery">
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Great.png?v=20250814" loading="lazy" src="images/Great.png?v=20250814"/>
+<img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Great.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/Great.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Water.png?v=20250814" loading="lazy" src="images/Water.png?v=20250814"/>
+<img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Water.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/Water.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/name.png?v=20250814" loading="lazy" src="images/name.png?v=20250814"/>
+<img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/name.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/name.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Revelation.png?v=20250814" loading="lazy" src="images/Revelation.png?v=20250814"/>
+<img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Revelation.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/Revelation.png?v=20250814" width="800"/>
 </div>
 <!-- Nouveaux modèles -->
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 5" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/souls.png?v=20250814" loading="lazy" src="images/souls.png?v=20250814"/>
+<img alt="Modèle 5" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/souls.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/souls.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 6" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Slave.png.png?v=20250814" loading="lazy" src="images/Slave.png?v=20250814"/>
+<img alt="Modèle 6" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Slave.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/Slave.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 7" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/brothers.png?v=20250814" loading="lazy" src="images/brothers.png?v=20250814"/>
+<img alt="Modèle 7" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/brothers.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/brothers.png?v=20250814" width="800"/>
 </div>
 <div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 8" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/fail.png?v=20250814" loading="lazy" src="images/fail.png?v=20250814"/>
+<img alt="Modèle 8" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/fail.png?v=20250814" decoding="async" height="800" loading="lazy" src="images/fail.png?v=20250814" width="800"/>
 </div>
 </div>
 </div>
@@ -302,7 +317,7 @@
 <!-- CONTACT -->
 <section class="py-5" id="contact">
 <div class="container">
-<img alt="Moogwai mail" height="72" src="images/New-logo-head.png?v=20250814" style="display:block;margin:0 auto 1rem;" width="auto"/><h2 class="section-title mb-3 text-center">Contact</h2>
+<img alt="Moogwai mail" decoding="async" height="72" src="images/New-logo-head.png?v=20250814" style="display:block;margin:0 auto 1rem;" width="auto"/><h2 class="section-title mb-3 text-center">Contact</h2>
 <div class="mx-auto text-center" style="max-width:720px">
 <p class="lead text-secondary">
         Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
@@ -322,7 +337,7 @@
 </div>
 </section>
 <footer class="py-4 text-center text-secondary">
-<div class="container small">© 2025 Moogwai Attitude — Tous droits réservés • <a class="link-light" href="#?v=20250814">Retour en haut</a></div>
+<div class="container small">© 2025 Moogwai Attitude — Tous droits réservés • <a class="link-light" href="#">Retour en haut</a></div>
 </footer>
 <!-- Lightbox Modal -->
 <div class="modal fade" id="lightbox" tabindex="-1">
@@ -364,6 +379,69 @@
         if (lightboxImg) { lightboxImg.removeAttribute('src'); lightboxImg.removeAttribute('alt'); }
       });
     }
+</script>
+
+<script>
+(() => {
+  const modal = document.getElementById('lightbox');
+  const imgEl = document.getElementById('lightboxImg');
+  const thumbs = Array.from(document.querySelectorAll('[data-bs-target="#lightbox"]'));
+
+  let index = -1;
+  thumbs.forEach((thumb, i) => {
+    thumb.addEventListener('click', () => { index = i; });
+  });
+
+  function showAt(i){
+    if (!thumbs.length) return;
+    if(i < 0) i = thumbs.length - 1;
+    if(i >= thumbs.length) i = 0;
+    index = i;
+    const t = thumbs[index];
+    const url = t.getAttribute('data-src') || t.currentSrc || t.src;
+    if (imgEl) imgEl.src = url;
+    if (imgEl) imgEl.alt = t.alt || 'Agrandissement';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('show')) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); showAt(index + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); showAt(index - 1); }
+    if (e.key === 'Escape') {
+      const bsModal = bootstrap.Modal.getInstance(modal);
+      if (bsModal) bsModal.hide();
+    }
+  }, { passive: true });
+
+  let startX = 0, startY = 0, swiping = false;
+  const SWIPE_X = 40;
+  const SWIPE_Y = 60;
+
+  modal.addEventListener('touchstart', (e) => {
+    const t = e.touches[0]; startX = t.clientX; startY = t.clientY; swiping = true;
+  }, { passive: true });
+
+  modal.addEventListener('touchend', (e) => {
+    if (!swiping) return; swiping = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - startX;
+    const dy = t.clientY - startY;
+
+    if (dy > SWIPE_Y && Math.abs(dx) < 80) {
+      const bsModal = bootstrap.Modal.getInstance(modal);
+      if (bsModal) bsModal.hide();
+      return;
+    }
+    if (dx > SWIPE_X) { showAt(index - 1); return; }
+    if (dx < -SWIPE_X) { showAt(index + 1); return; }
+  }, { passive: true });
+
+  if (imgEl) imgEl.addEventListener('click', () => showAt(index + 1));
+
+  modal.addEventListener('shown.bs.modal', () => {
+    if (index < 0) index = Math.max(thumbs.findIndex(t => (t.getAttribute('data-src')||t.src) === imgEl.src), 0);
+  });
+})();
 </script>
 <script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script></body>
 </html>
