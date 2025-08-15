@@ -241,6 +241,12 @@
 .mw-video p.text-center.text-muted {
   color: #f0f2f5 !important; /* light grey/white for better contrast */
 }
+
+.mw-video-frame video{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 </style></head>
 <body>
 <!-- NAV -->
@@ -286,8 +292,7 @@
 <em>Pour les p’tits malins… et même les grincheux (mais eux doivent partager la vidéo).</em>
 </p>
 <div class="mw-video-frame mx-auto">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" loading="lazy" src="https://www.youtube-nocookie.com/embed/rbyVCYDrRHA" title="Présentation Moogwai Attitude">
-</iframe>
+<video controls="True" playsinline="True" poster="images/miniature.png" preload="metadata"><source src="videos/Intro_moogwai_ok.mp4" type="video/mp4"/>Votre navigateur ne supporte pas la vidéo HTML5.</video>
 </div>
 <p class="text-secondary small text-center mt-2">
       Partagez-la sur <a class="link-light" href="https://www.youtube.com/watch?v=rbyVCYDrRHA" rel="noopener" target="_blank">YouTube</a> •
