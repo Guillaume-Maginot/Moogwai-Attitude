@@ -267,6 +267,15 @@ body.loaded .page-root{
   opacity: 1;
   filter: blur(0);
 }
+.news-item { max-width: 860px; margin: 2rem auto; padding: 1.25rem; }
+  .news-item h1 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 3vw, 2rem); }
+  .news-meta { color: #666; margin: 0 0 1rem; }
+  .news-item h2 { margin: 1.25rem 0 .5rem; font-size: clamp(1.1rem, 2.2vw, 1.35rem); }
+  .news-item ul { margin: .5rem 0 1rem 1.2rem; }
+  .news-figure { margin: 1rem 0; text-align: center; }
+  .news-figure img { max-width: 100%; height: auto; border-radius: 8px; }
+  .news-figure figcaption { font-size: .95rem; color: #555; margin-top: .5rem; }
+  .news-outro { margin-top: 1rem; font-weight: 500; }
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/>
 </head>
@@ -399,12 +408,50 @@ body.loaded .page-root{
   <div class="d-flex align-items-center justify-content-between mb-2">
   <h2 class="section-title m-0">Infos du jour</h2>
   </div>
-  <div class="info-day">
-          Mise en ligne officielle : boutique Moogwaie Attitude ouverte et cagnotte lancée.<br/><br/>
-          — Nouveaux modèles ajoutés aujourd'hui.<br/>
-          — Livraison internationale via plateforme.<br/>
-          — Merci pour votre soutien !
-        </div>
+<article class="news-item" itemscope itemtype="https://schema.org/NewsArticle">
+  <header>
+    <h1 itemprop="headline">News – Moogwai Attitude</h1>
+    <p class="news-meta">
+      <time datetime="2025-08-16" itemprop="datePublished">16 août 2025</time>
+    </p>
+  </header>
+
+  <section itemprop="articleBody">
+    <p>La boutique est désormais ouverte, accompagnée de sa cagnotte et d’un site qui s’étoffe peu à peu.</p>
+
+    <h2>Améliorations récentes</h2>
+    <ul>
+      <li><strong>Design</strong> repensé, plus abouti.</li>
+      <li><strong>Vidéo d’introduction</strong> immersive.</li>
+      <li><strong>Splash screen</strong> pour une entrée plus stylée.</li>
+    </ul>
+
+    <h2>Ce que le soutien permet</h2>
+    <ul>
+      <li>Nouvelles fonctionnalités et amélioration de l’existant.</li>
+      <li>Création de contenus <em>artistiques multimédia</em>.</li>
+      <li>Déploiement à venir sur d’autres supports que Bonfire.</li>
+    </ul>
+
+    <h2>T-shirts haut de gamme</h2>
+    <ul>
+      <li><strong>Commandes spéciales</strong> sur demande.</li>
+      <li><strong>Séries limitées</strong> (quantités réduites, esprit collector).</li>
+      <li>Qualité premium, avec le petit twist rock’n’cyber.</li>
+    </ul>
+
+    <h2>Une énigme nommée <span style="white-space:nowrap;">NeuroScars</span></h2>
+    <p>Rien de concret à annoncer… juste de quoi laisser planer le doute. 👀</p>
+
+    <!-- Teaser visuel (optionnel) : remplacez l'URL par votre image -->
+    <figure class="news-figure">
+      <img src="images/Neuroscars.png" alt="Teaser énigmatique lié à NeuroScars" loading="lazy" />
+      <figcaption>Un indice visuel qui en dit long… mais surtout rien.</figcaption>
+    </figure>
+
+    <p class="news-outro">À suivre très bientôt.</p>
+  </section>
+</article>
   </div>
   </section>
   <!-- CONTACT -->
@@ -413,7 +460,7 @@ body.loaded .page-root{
   <img alt="Moogwai mail" decoding="async" height="72" src="images/New-logo-head.png?v=20250814" style="display:block;margin:0 auto 1rem;" width="auto"/><h2 class="section-title mb-3 text-center">Contact</h2>
   <div class="mx-auto text-center" style="max-width:720px">
   <p class="lead text-secondary">
-          Une question, une demande spéciale ou un projet ? Écrivez-nous, on répond vite.
+          Une question, une demande spéciale (série limitée personnalisée) ou un projet ? Écrivez-nous, on répond vite.
         </p>
   <form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
   <div class="row g-3">
