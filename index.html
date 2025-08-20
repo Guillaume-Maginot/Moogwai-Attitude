@@ -278,6 +278,42 @@ body.loaded .page-root{
   .news-figure img { max-width: 100%; height: auto; border-radius: 8px; }
   .news-figure figcaption { font-size: .95rem; color: #555; margin-top: .5rem; }
   .news-outro { margin-top: 1rem; font-weight: 500; }
+/* === Section Actu personnalisée === */
+.news-section {
+  background: #111;
+  color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  margin: 2rem 0;
+}
+.news-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+.news-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+.news-section ul li {
+  margin: 0.6rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+.news-section ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+}
+.news-section p em {
+  color: #ffd700;
+  font-style: normal;
+  font-weight: bold;
+}
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/>
 </head>
@@ -404,54 +440,23 @@ body.loaded .page-root{
   <div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 12" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/light.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/light.png" width="800"/></div></div>
   </div>
   </section>
-  <!-- INFOS DU JOUR (fixe) -->
+  <!-- INFOS DU JOUR -->
   <section class="py-5" id="infos">
-  <div class="container">
-  <div class="d-flex align-items-center justify-content-between mb-2">
-  <h2 class="section-title m-0">Infos du jour</h2>
-  </div>
-<article class="news-item" itemscope itemtype="https://schema.org/NewsArticle">
-  <header>
-    <h1 itemprop="headline">News – Moogwai Attitude</h1>
-    <p class="news-meta">
-      <time datetime="2025-08-16" itemprop="datePublished">16 août 2025</time>
-    </p>
-  </header>
-
-  <section itemprop="articleBody">
-    <p>La boutique est désormais ouverte, accompagnée de sa cagnotte et d’un site qui s’étoffe peu à peu.</p>
-
-    <h2>Améliorations récentes</h2>
-    <ul>
-      <li><strong>Design</strong> repensé, plus abouti.</li>
-      <li><strong>Vidéo d’introduction</strong> immersive.</li>
-      <li><strong>Splash screen</strong> pour une entrée plus stylée.</li>
-    </ul>
-
-    <h2>Ce que le soutien permet</h2>
-    <ul>
-      <li>Nouvelles fonctionnalités et amélioration de l’existant.</li>
-      <li>Création de contenus <em>artistiques multimédia</em>.</li>
-      <li>Déploiement à venir sur d’autres supports que Bonfire.</li>
-    </ul>
-
-    <h2>T-shirts haut de gamme</h2>
-    <ul>
-      <li><strong>Commandes spéciales</strong> sur demande.</li>
-      <li><strong>Séries limitées</strong> (quantités réduites, esprit collector).</li>
-      <li>Qualité premium, avec le petit twist rock’n’cyber.</li>
-    </ul>
-
-    <h2>Une énigme nommée <span style="white-space:nowrap;">NeuroScars</span></h2>
-    <p>Rien de concret à annoncer… juste de quoi laisser planer le doute. 👀</p>
-
-    <!-- Teaser visuel (optionnel) : remplacez l'URL par votre image -->
-    <figure class="news-figure">
-      <img src="images/Neuroscars.png" alt="Teaser énigmatique lié à NeuroScars" loading="lazy" />
-      <figcaption>Un indice visuel qui en dit long… mais surtout rien.</figcaption>
-    </figure>
-
-    <p class="news-outro">À suivre très bientôt.</p>
+    <div class="container">
+      <div class="news-section">
+        <h2>📢 Nouvelles du jour – Moogwai Attitude</h2>
+        <p>Notre aventure franchit une nouvelle étape :</p>
+        <ul>
+          <li><strong>La boutique officielle est désormais en ligne sur Etsy.</strong></li>
+          <li><strong>Bonfire rejoint l’équipe comme partenaire technique</strong>, garant de la qualité d’impression et de la production.</li>
+          <li><strong>La cagnotte reste ouverte</strong> pour ceux qui souhaitent soutenir le projet de manière directe.</li>
+        </ul>
+        <p>
+          Chaque soutien est précieux et chaque partage aide à faire grandir l’univers Moogwai Attitude.<br>
+          <em>Un grand merci à toutes et à tous pour votre énergie et votre confiance.</em>
+        </p>
+      </div>
+    </div>
   </section>
 </article>
   </div>
