@@ -1,693 +1,432 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Moogwai Attitude — Boutique &amp; Cagnotte</title>
+<title data-i18n="doc_title">Moogwai Attitude — Vitrine</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
 <link href="/favicon-32x32.png?v=20250814" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/favicon-16x16.png?v=20250814" rel="icon" sizes="16x16" type="image/png"/>
-<!-- iOS icône écran d’accueil (fond noir) -->
-<link href="/apple-touch-icon-dark.png?v=20250814" rel="apple-touch-icon"/>
-<!-- Safari onglet épinglé (SVG monochrome) -->
-<link color="#f0b90b" href="/safari-pinned-tab.svg" rel="mask-icon"/>
-<!-- (facultatif si pas déjà présent) -->
 <meta content="#0e0e0f" name="theme-color"/>
 <meta content="index,follow" name="robots"/>
-<meta "="" name="moogwai-attitude - Création de T-shirts personnalisés, production à la demande, qualité premium, édition limitée, rock'n'cyber, cagnotte, boutique en ligne"/>
 <link href="/site.webmanifest?v=20250814" rel="manifest"/>
 <style>
-    :root { --bg:#0e0e0f; --fg:#f5f5f7; --muted:#b7b7bd; --card:#17171a; --accent:#f0b90b; }
-    html,body{background:var(--bg); color:var(--fg);} 
-    .navbar{background:rgba(0,0,0,.7);backdrop-filter:saturate(160%) blur(6px);} 
-    .brand{letter-spacing:1px;font-weight:800;}
-    .logo{height:60px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(0,0,0,.4));}
-    .hero{padding:88px 0 32px;background:radial-gradient(1200px 400px at 20% -10%, #41330b 0%, transparent 60%), radial-gradient(1200px 400px at 80% -10%, #221b3b 0%, transparent 60%);} 
-    .hero h1{font-weight:900;}
-    .hero-logo{max-width:300px;height:auto;margin-bottom:20px;}
-    .btn-accent{background:var(--accent); border:none; color:#111; font-weight:700;}
-    .section-title{font-weight:800;}
-    .card{background:var(--card); border:1px solid #26262b;}
-    .gallery img{border-radius:14px; transition:transform .25s ease, box-shadow .25s ease; cursor:pointer;}
-    .gallery img:hover{transform:translateY(-2px) scale(1.015);} 
-    .info-day{border-radius:16px; padding:20px; background:linear-gradient(180deg, #1a1a1f, #131316); border:1px solid #26262b;}
-    .editable-hint{font-size:.85rem; color:var(--muted);} 
-    footer{border-top:1px solid #26262b;}
-    /* Newsletter centrée + style */
-.newsletter{
-  max-width: 700px;
-  background: linear-gradient(180deg, #1a1a1f, #131316);
-  border:1px solid #26262b; border-radius:16px;}
-.newsletter-input{
-  min-width: 260px;
-  background:#141418; color:var(--fg);
-  border:1px solid #26262b;}
-.newsletter-input:focus{
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(240,185,11,.18);}
-.newsletter-btn{
-  font-weight:700; border:none; border-radius:12px;
-  box-shadow: 0 6px 18px rgba(240,185,11,.22);
-  transition: transform .08s ease, box-shadow .2s ease;}
-.newsletter-btn:hover{ transform: translateY(-1px); }
-.hp{ position:absolute; left:-5000px; }
-/* Bandeau intro — noir & or */
-.mw-top-intro{
-  background: linear-gradient(180deg,#111,#0b0b0b);
-  color: var(--fg, #f5f5f5);
-  border-bottom: 1px solid rgba(212,175,55,.25);
-  padding: .65rem 0;
-  box-shadow: 0 6px 18px rgba(0,0,0,.25);
-  font-size: .96rem;
+  :root { --bg:#0e0e0f; --fg:#f5f5f7; --muted:#d0d3da; --card:#17171a; --accent:#f0b90b; --gold:#ffd44d; --gold-deep:#cda434; }
+  html,body{background:var(--bg); color:var(--fg);} 
+  .navbar{background:rgba(0,0,0,.7);backdrop-filter:saturate(160%) blur(6px);} 
+  .brand{letter-spacing:1px;font-weight:800;}
+  .logo{height:60px;object-fit:contain;filter:drop-shadow(0 1px 0 rgba(0,0,0,.4));}
+  header.hero{ padding: clamp(24px, 4.5vw, 56px) 0; background:radial-gradient(1200px 400px at 20% -10%, #3c2d09 0%, transparent 60%), radial-gradient(1200px 400px at 80% -10%, #231b3e 0%, transparent 60%);}  
+  header.hero .hero-logo{ width: clamp(180px, 20vw, 360px); height:auto; margin-bottom:.75rem; filter: drop-shadow(0 0 24px rgba(255,212,77,.35)); }
+  header.hero h1{font-weight:900; font-size:clamp(28px, 4vw + 8px, 56px); line-height:1.02; letter-spacing:.2px; text-wrap:balance; margin-bottom:.4rem;} 
+  header.hero p.lead{ font-size: clamp(16px, 1.2vw + 12px, 20px); line-height:1.55; max-width: 68ch; margin: 0 auto .9rem; text-wrap: pretty; color:var(--muted); }
+  .btn-accent{background:var(--accent); border:none; color:#111; font-weight:800;}
+  .section-title{font-weight:800;}
+  .card{background:var(--card); border:1px solid #26262b;}
+  .gallery img{border-radius:14px; border:1px solid rgba(205,164,52,.18); box-shadow:0 0 0 1px rgba(205,164,52,.08) inset; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; cursor:pointer;}
+  .gallery img:hover{transform:translateY(-2px) scale(1.01); border-color:rgba(205,164,52,.32); box-shadow:0 8px 18px rgba(205,164,52,.16), 0 0 22px rgba(255,212,77,.12);}   
+  .info-day{border-radius:16px; padding:20px; background:linear-gradient(180deg, #1a1a1f, #131316); border:1px solid #26262b;}
+  footer{position:relative;border-top:0;background:
+    radial-gradient(900px 220px at 50% -60px, rgba(255,80,90,.18), transparent 60%),
+    radial-gradient(900px 220px at 50% 110%, rgba(255,212,77,.10), transparent 60%),
+    linear-gradient(180deg,#0b0b0d 0%, #09090b 55%, #070708 100%);
 }
-.mw-top-intro p{ 
-  margin:0; text-align:center; letter-spacing:.2px; 
-}
-.mw-gold{ color: var(--accent, #d4af37); font-weight:800; }
-.mw-hide-sm{ white-space:nowrap; }
-@media (max-width: 560px){
-  .mw-hide-sm{ display:none; }
-}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg, rgba(255,212,77,.95) 0%, rgba(255,80,90,.9) 50%, rgba(255,212,77,.95) 100%);box-shadow:0 8px 22px rgba(255,212,77,.22), 0 6px 18px rgba(255,80,90,.18);}
 
-  
-.gfm-embed iframe {
-  width: 100% !important;
-  height: auto !important;
-  border: 0;
-}
+  .mw-top-intro{ background: linear-gradient(180deg,#111,#0b0b0b); color: var(--fg); border-bottom: 1px solid rgba(212,175,55,.25); padding: .65rem 0; box-shadow: 0 6px 18px rgba(0,0,0,.25); font-size: .96rem; }
+  .mw-top-intro p{ margin:0; text-align:center; letter-spacing:.2px; }
+  .mw-gold{ color: var(--accent); font-weight:800; }
+  .mw-hide-sm{ white-space:nowrap; }
+  @media (max-width: 560px){ .mw-hide-sm{ display:none; } }
 
-/* Uniformiser hauteur et recadrer les images de la galerie */
-.gallery img {
-  aspect-ratio: 2/3;
-  width: auto;
-  height: auto;
-  object-fit: cover;
-}
+  .utility{ background: linear-gradient(180deg,#101013,#0e0e10); border:1px solid rgba(205,164,52,.22); border-radius:18px; padding:18px; box-shadow: 0 0 0 1px rgba(205,164,52,.15) inset, 0 18px 42px rgba(205,164,52,.12); }
+  .utility h3{ color:var(--gold); font-size:1.1rem; margin:0 0 .35rem; text-shadow:0 1px 6px rgba(255,212,77,.22); }
+  .utility p{ color:var(--muted); margin:0 0 .75rem; }
+  .utility .panel{ background: linear-gradient(180deg,#121216,#0f0f14); border:1px solid rgba(205,164,52,.22); border-radius:14px; padding:16px; height:100%; }
+  .utility .panel .btn{ font-weight:800; }
+  .input input{flex:1;background:#15151a;border:1px solid rgba(205,164,52,.24);border-radius:12px;padding:12px 12px;color:var(--fg);box-shadow:0 0 0 1px rgba(205,164,52,.15) inset}
+  .input button{border:1px solid rgba(205,164,52,.5);background:linear-gradient(90deg,#ffd44d,#ffe9a6);color:#1a1400;padding:12px 14px;border-radius:12px;font-weight:900;box-shadow:0 10px 26px rgba(255,212,77,.15)}
 
-/* Lightbox: contenir l'image dans l'écran */
-#lightbox #lightboxImg{
-  max-width: 96vw;
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-}
+  .newsletter-input{ min-width: 240px; background:#141418; color:var(--fg); border:1px solid #3a3a42; }
+  .newsletter-input:focus{ border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,185,11,.18); }
+  .newsletter-btn{ font-weight:800; border:none; border-radius:12px; box-shadow: 0 6px 18px rgba(240,185,11,.22); }
+  .hp{ position:absolute; left:-5000px; }
 
+  #galerie .gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
+  #galerie .gallery img{ width:100% !important; height:auto !important; object-fit:contain !important; display:block; }
 
-/* Center GoFundMe widget */
-.gfm-embed{display:flex;justify-content:center;align-items:center;margin:0 auto;max-width:100%;}
-.gfm-embed iframe{display:block;margin:0 auto;}
-/* Uniform thumbnails cropping in gallery */
-#galerie .gallery img,
-.gallery img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  display:block;
-}
+  #lightbox .modal-dialog{ max-width:96vw; }
+  #lightbox .modal-content{ background:transparent !important; border:0 !important; box-shadow:none !important; position:relative; }
+  #lightbox .modal-body{ padding:0 !important; display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,.85); }
+  #lightbox #lightboxImg{ max-width:96vw; max-height:90vh; width:auto; height:auto; object-fit:contain; border-radius:12px; }
+  #lightbox .btn-close-mw{ position:absolute; top:16px; right:16px; background:var(--accent); color:#111; border:0; border-radius:999px; font-weight:800; padding:10px 14px; box-shadow:0 10px 24px rgba(240,185,11,.25); }
 
-
-/* === Moogwai tweaks: gallery full images, lighter text, tighter gutters === */
-
-/* Lighter secondary text for better readability on dark */
-.text-secondary{ color:#d0d3da !important; }
-
-/* Tighter spacing between thumbnails */
-.gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
-
-/* Show full image, no cropping in gallery */
-#galerie .gallery img,
-.gallery img{
-  width:100% !important;
-  height:auto !important;
-  object-fit:contain !important;
-  display:block;
-}
-
-/* Lightbox: no frame, keep proportions, accent close button */
-#lightbox .modal-dialog{ max-width:96vw; }
-#lightbox .modal-content{
-  background:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  position:relative;
-}
-#lightbox .modal-body{
-  padding:0 !important;
-  display:flex; justify-content:center; align-items:center;
-  background:rgba(0,0,0,.85);
-}
-#lightbox #lightboxImg{
-  max-width:96vw; max-height:90vh; width:auto; height:auto;
-  object-fit:contain; border-radius:12px;
-}
-#lightbox .btn-close-mw{
-  position:absolute; top:16px; right:16px;
-  background:var(--accent,#f0b90b); color:#111;
-  border:0; border-radius:999px;
-  font-weight:800; padding:10px 14px;
-  box-shadow:0 10px 24px rgba(240,185,11,.25);
-  transition:transform .08s ease, box-shadow .18s ease;
-}
-#lightbox .btn-close-mw:hover{ transform:translateY(-1px); }
-#lightbox .btn-close-mw:active{ transform:translateY(0); box-shadow:0 6px 18px rgba(240,185,11,.25); }
-
-
-/* === Moogwai: gallery spacing + full images + lightbox close fix === */
-
-/* Tighter gutters between thumbnails */
-#galerie .gallery.row{ --bs-gutter-x:.375rem; --bs-gutter-y:.375rem; }
-
-/* Respect full image ratio (no crop) */
-#galerie .gallery img{
-  width:100% !important;
-  height:auto !important;
-  object-fit:contain !important;
-}
-
-/* Lightbox: ensure close button is always on top and clickable */
-#lightbox .modal-content{ position:relative; }
-#lightbox .modal-body{ position:relative; z-index:1; }
-#lightbox .btn-close-mw{ z-index:1060; pointer-events:auto; }
-
-
-/* === Newsletter input readability boost === */
-.newsletter-input{
-  background:#141418;
-  color:#f8f9fc !important;          /* texte plus clair */
-  border:1px solid #3a3a42;          /* bord un peu plus visible */
-  caret-color: var(--accent);        /* curseur bien visible */
-}
-.newsletter-input::placeholder{
-  color:#d7dbe6 !important;          /* placeholder clair et lisible */
-  opacity:1;                         /* pas de transparence */
-}
-/* Compatibilité legacy (Edge/IE) – au cas où */
-.newsletter-input:-ms-input-placeholder{ color:#d7dbe6 !important; }
-.newsletter-input::-ms-input-placeholder{ color:#d7dbe6 !important; }
-
-.newsletter-input:focus{
-  background:#15171b;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(240,185,11,.18);
-}
-
-/* === Mobile Boost === */
-/* Boutons plus confortables au pouce */
-@media (max-width: 576px){
-  .btn{ min-height: 48px; padding: .8rem 1rem; font-weight: 700; }
-  .navbar .btn{ min-height: 44px; }
-  .hero .btn{ width: 100%; }
-  .hero .btn + .btn{ margin-left: 0; }
-}
-
-/* Thumbs : resserrer un poil, mais garder l’air */
-#galerie .gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
-
-/* Empêcher le “scroll bounce” dans la lightbox */
-#lightbox .modal-body{ touch-action: pan-y; }
-
-/* === Video block (noir & or, responsive 16:9) === */
-.mw-video { background: linear-gradient(180deg, #101013, #0e0e0f); }
-.mw-video-frame{
-  --glow: rgba(240,185,11,.28);
-  max-width: 960px;
-  margin: 0 auto;
-  aspect-ratio: 16/9;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid #2a2a2f;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.04) inset,
-    0 10px 26px rgba(0,0,0,.55),
-    0 0 36px var(--glow);
-  background:
-    radial-gradient(1200px 400px at 20% -10%, #3c2d09 0%, transparent 60%),
-    radial-gradient(1200px 400px at 80% -10%, #231b3e 0%, transparent 60%),
-    #111;
-}
-.mw-video-frame iframe{ width: 100%; height: 100%; display: block; }
-@media (max-width: 576px){
-  .mw-video { padding-top: .75rem; padding-bottom: .75rem; }
-  .mw-video-frame{ border-radius: 12px; }
-}
-.mw-video p.text-center.text-muted { color: #f0f2f5 !important; }
-.mw-video-frame video{ width: 100%; height: 100%; display: block; }
-
-/* === Loader plein écran (splash) === */
-.loader{
-  position: fixed; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: #000;
-  z-index: 9999;
-  opacity: 1; visibility: visible;
-  transition: opacity .6s ease, visibility .6s ease;
-}
-.loader.hidden{
-  opacity: 0; visibility: hidden; pointer-events: none;
-}
-/* Vidéo centrée avec marges : 90% de l'écran */
-.loader-video{
-  max-width: 90vw;
-  max-height: 90vh;
-  height: auto; width: auto;
-  filter: none; /* glow removed */
-}
-/* Accessibilité : réduire le mouvement => on ne montre pas la vidéo et on écourte */
-@media (prefers-reduced-motion: reduce){
-  .loader-video{ display: none; }
-}
-
-/* --- Crossfade page vs loader --- */
-.page-root{
-  opacity: 0;
-  filter: blur(4px);
-  transition: opacity .6s ease, filter .6s ease;
-}
-body.loaded .page-root{
-  opacity: 1;
-  filter: blur(0);
-}
-.news-item { max-width: 860px; margin: 2rem auto; padding: 1.25rem; }
-  .news-item h1 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 3vw, 2rem); }
-  .news-meta { color: #666; margin: 0 0 1rem; }
-  .news-item h2 { margin: 1.25rem 0 .5rem; font-size: clamp(1.1rem, 2.2vw, 1.35rem); }
-  .news-item ul { margin: .5rem 0 1rem 1.2rem; }
-  .news-figure { margin: 1rem 0; text-align: center; }
-  .news-figure img { max-width: 100%; height: auto; border-radius: 8px; }
-  .news-figure figcaption { font-size: .95rem; color: #555; margin-top: .5rem; }
-  .news-outro { margin-top: 1rem; font-weight: 500; }
-/* === Section Actu personnalisée === */
-.news-section {
-  background: #111;
-  color: #f5f5f5;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-  margin: 2rem 0;
-}
-.news-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ffd700;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
-}
-.news-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-.news-section ul li {
-  margin: 0.6rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-}
-.news-section ul li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  color: #ffd700;
-}
-.news-section p em {
-  color: #ffd700;
-  font-style: normal;
-  font-weight: bold;
-}
+  @media (max-width: 576px){ .btn{ min-height: 48px; padding: .8rem 1rem; font-weight: 800; } .navbar .btn{ min-height: 44px; } header.hero .btn{ width: 100%; } }
+  header.hero .hero-feature{ max-width: clamp(220px, 26vw, 460px); height:auto; border-radius:14px; border:1px solid rgba(205,164,52,.28); box-shadow:0 0 16px rgba(255,212,77,.20); display:block; margin:0 auto; }
+  /* Actu / Journal */
+  .post{ background: linear-gradient(180deg,#121216,#0f0f14); border:1px solid rgba(205,164,52,.22); border-radius:14px; padding:16px; box-shadow: 0 0 0 1px rgba(205,164,52,.15) inset, 0 18px 42px rgba(205,164,52,.12); }
+  .post h3{ margin:0 0 .35rem; font-size:1.08rem; color:var(--fg); }
+  .post .meta{ font-size:.9rem; color:var(--muted); }
+  .badge-gold{ background: linear-gradient(90deg,var(--gold),var(--gold-deep)); color:#1a1400; border:1px solid rgba(205,164,52,.4); border-radius:999px; padding:.15rem .55rem; font-weight:800; }
+  /* Equilibrage galerie (gouttières) */
+  @media (min-width: 992px){ #galerie .gallery.row{ --bs-gutter-x:.75rem; --bs-gutter-y:.75rem; } }
+  /* CTA hero resserré */
+  #cta_row{ margin-top:.55rem !important; }
+  /* Sections : espacement harmonisé */
+  #actu, #infos, #utilitaires{ padding-top:2rem; padding-bottom:2rem; }
+  /* Cartes hauteur & clamp texte */
+  .info-day{ min-height:110px; }
+  .utility p, .info-day span{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  /* Post titres un peu plus présents */
+  .post h3{ margin:0 0 .35rem; font-size:1.12rem; color:var(--fg); }
+  /* Logo bannière sous le bouton Envoyer (contact) */
+  .contact-badge{ width:clamp(120px,22vw,200px); height:auto; border-radius:12px; border:1px solid rgba(255,72,72,.45); box-shadow:0 6px 22px rgba(220,60,60,.25), 0 0 32px rgba(255,80,90,.18); }
+  /* Logo bannière sous le bouton Envoyer (contact) */
+  .contact-badge{ width:clamp(120px,22vw,200px); height:auto; border-radius:12px; border:1px solid rgba(255,72,72,.45); box-shadow:0 6px 22px rgba(220,60,60,.25), 0 0 32px rgba(255,80,90,.18); }
+  .contact-badge-wrap{ margin-top:14px; margin-bottom: clamp(20px, 4vw, 44px); }
+  /* Infos : icônes + hauteurs égales */
+  #infos .row > [class*='col-']{ display:flex; }
+  #infos .info-day{ flex:1; display:flex; flex-direction:column; justify-content:flex-start; }
+  .info-head{ display:flex; align-items:center; gap:8px; margin:0 0 .4rem; }
+  .info-head .icon{ width:18px; height:18px; color:var(--gold); flex:0 0 18px; filter: drop-shadow(0 2px 12px rgba(255,212,77,.18)); }
+  /* Illustration de process dans le hero */
+  .hero-diagram{ width:100%; height:auto; border-radius:14px; border:1px solid rgba(205,164,52,.28); box-shadow:0 0 16px rgba(255,212,77,.20); background:linear-gradient(180deg,#121216,#0f0f14); }
+  .hero-diagram text{ fill: var(--ink); font-weight:800; letter-spacing:.2px; }
+  .hero-diagram .pipe{ stroke: rgba(255,212,77,.8); stroke-width:4; fill:none; stroke-linecap:round; filter: drop-shadow(0 2px 10px rgba(255,212,77,.25)); }
+  .hero-diagram .node{ filter: drop-shadow(0 6px 22px rgba(255,212,77,.18)); }
+  /* Bilingue Actu : affichage FR/EN dans le même article */
+  .lang-en{display:none}
+  html[data-lang='en'] .lang-fr{display:none}
+  html[data-lang='en'] .lang-en{display:inline}
 </style>
-<link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/><link crossorigin="True" href="https://www.gofundme.com" rel="preconnect"/>
+<link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 </head>
-<body>
-<!-- Loader d'accueil (splash 2s) -->
-<div aria-hidden="true" class="loader" id="site-loader">
-<video autoplay="" class="loader-video" muted="" playsinline="" preload="auto" src="videos/Logo-loop.mp4"></video>
-</div>
-<!-- Tout le site est dans ce wrapper pour le crossfade -->
-<div class="page-root">
-<!-- NAV -->
+<body id="top">
 <nav class="navbar-dark navbar navbar-expand-lg sticky-top">
-<div class="container">
-<a class="navbar-brand brand d-flex align-items-center gap-2" href="#">
-<img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"/>
-</a>
-<button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-<div class="collapse navbar-collapse" id="nav"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2"><li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li><li class="nav-item"><a class="nav-link" href="#infos">Infos</a></li><li class="nav-item"><a class="nav-link" href="#newsletter">Newsletter</a></li><li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li><li class="nav-item"><a class="btn btn-accent ms-lg-2" href="https://www.bonfire.com/store/moogwai-attitude/" rel="noopener" target="_blank">Boutique</a></li><li class="nav-item"><a class="btn btn-outline-light ms-lg-2" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">Cagnotte</a></li></ul></div>
-</div>
+  <div class="container">
+    <a class="navbar-brand brand d-flex align-items-center gap-2" href="#top">
+      <img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"/>
+    </a>
+    <button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" id="nav_galerie" href="#galerie">Galerie</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav_actu" href="#actu">Actu</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav_infos" href="#infos">Infos</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav_newsletter" href="#utilitaires">Newsletter</a></li>
+        <li class="nav-item d-flex align-items-center ms-lg-2">
+          <div class="btn-group btn-group-sm" role="group" aria-label="Lang">
+            <a class="btn btn-outline-light active" href="?lang=fr">FR</a>
+            <a class="btn btn-outline-light" href="?lang=en">EN</a>
+          </div>
+        </li>
+        <li class="nav-item"><a class="btn btn-accent ms-lg-2" id="nav_btn_shop" href="https://www.etsy.com/" rel="noopener" target="_blank">Boutique Etsy</a></li>
+        <li class="nav-item"><a class="btn btn-outline-light ms-lg-2" id="nav_btn_fund" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Cagnotte</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
-<!-- Présentation courte tout en haut -->
+
 <div aria-label="Présentation Moogwai Attitude" class="mw-top-intro" role="banner">
-<div class="container">
-<p>
-<strong class="mw-gold">Moogwai Attitude</strong> crée des T-shirts illustrés à double lecture :
-        d’abord le style, puis le sens.
-        <span class="mw-hide-sm"> Éditions limitées, impressions premium et esprit rock assumé.</span>
-<span class="mw-hide-sm"> Un riff de métal, des paroles qui résonnent encore, un tshirt pour ne pas oublier.</span>
-</p>
+  <div class="container">
+    <p id="top_intro"><strong class="mw-gold">Personnalisation premium</strong> : choisis ton visuel, tes couleurs et ton texte. <span class="mw-hide-sm">Chaque T‑shirt est préparé à la commande : prénom, date, clin d’œil, petites variantes possibles.</span></p>
+  </div>
 </div>
-</div>
-<!-- HERO -->
+
 <header class="hero text-center">
-<div class="container">
-<img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"/>
-<h1 class="display-5">Boutique en ligne &amp; lancement de la cagnotte</h1>
-<p class="lead text-secondary">T-shirts à message, production à la demande — qualité premium.</p>
-<div class="d-flex gap-2 justify-content-center mt-3">
-<a class="btn btn-light" href="#galerie">Voir les modèles</a>
-<a class="btn btn-accent" href="https://gofund.me/4929ac12" rel="noopener" target="_blank">gofundme</a>
-<a class="btn btn-outline-light" href="https://www.bonfire.com/store/moogwai-attitude/" rel="noopener" target="_blank">Moogwai Attitude</a>
-</div>
-</div>
+  <div class="container">
+    <img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"/>
+    <h1 id="hero_title">Ton T‑shirt, ton style, <span class="mw-gold">ta signature</span></h1>
+    <p class="lead" id="hero_sub"><strong>Personnalisation premium, à la demande</strong> – artwork, texte, options. Nom, date, clin d’œil : intégration propre et durable.</p>
+    <div class="mt-3">
+      <!-- Illustration du process de création (accessible & responsive) -->
+      <img class="hero-feature img-fluid" src="images/T2.jpg" alt="Processus de création — atelier" onerror="this.onerror=null;this.src='images/empire.png'"/>
+    </div>
+    <div class="d-flex gap-2 justify-content-center mt-2" id="cta_row">
+      <a class="btn btn-light" id="btn_models" href="#galerie">Voir les modèles</a>
+      <a class="btn btn-accent" id="btn_support" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Soutenir</a>
+      <a class="btn btn-outline-light" id="btn_shop" href="https://www.etsy.com/" rel="noopener" target="_blank">Boutique Etsy</a>
+    </div>
+  </div>
 </header>
-<!-- VIDEO PRESENTATION -->
-<section class="mw-video py-4" id="video">
-<div class="container">
-<h2 class="section-title mb-3 text-center">Vidéo de présentation</h2>
-<p class="text-center text-muted">
-<strong>MOOGWAI ATTITUDE – Édition limitée, vente à l’international.</strong><br/>
-<em>Pour les p’tits malins… et même les grincheux (mais eux doivent partager la vidéo).</em>
-</p>
-<div class="mw-video-frame mx-auto">
-<video controls="True" playsinline="True" poster="images/miniature.png" preload="metadata"><source src="videos/Intro_moogwai_ok.mp4" type="video/mp4"/>Votre navigateur ne supporte pas la vidéo HTML5.</video>
-</div>
-<p class="text-secondary small text-center mt-2">
-        Partagez-la sur <a class="link-light" href="https://www.youtube.com/watch?v=rbyVCYDrRHA" rel="noopener" target="_blank">YouTube</a> •
-        <a class="link-light" href="https://x.com/intent/tweet?text=Moogwai%20Attitude%20-%20Vid%C3%A9o%20de%20pr%C3%A9sentation&amp;url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DrbyVCYDrRHA" rel="noopener" target="_blank">X</a>
-</p>
-</div>
-</section>
-<!-- Newsletter -->
-<section class="py-4" id="newsletter">
-<div class="container">
-<div class="newsletter mx-auto text-center p-4">
-<h2 class="section-title mb-2">Inscrivez-vous à la newsletter</h2>
-<p class="text-secondary mb-3">Nouveaux drops, coulisses &amp; offres privées.</p>
-<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-wrap justify-content-center gap-2" method="POST" novalidate="" target="_self">
-<label class="visually-hidden" for="nlEmail">Votre e-mail</label>
-<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="True" type="email"/>
-<div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:16px auto; display:block;"></div><button class="btn btn-accent newsletter-btn" type="submit">S’inscrire</button>
-<!-- Honeypot anti-bot -->
-<div aria-hidden="true" class="hp">
-<input autocomplete="off" name="website" tabindex="-1" type="text"/>
-</div>
-</form>
-</div>
-</div>
-</section>
-<!-- WIDGET GOFUNDME -->
-<section class="py-4">
-<div class="container d-flex justify-content-center">
-<div class="gfm-embed" data-url="https://www.gofundme.com/f/moogwai-attitude-des-tshirts-elegants-au-message-cache/widget/medium"></div>
-<noscript>Le widget nécessite JavaScript. Ouvrez la cagnotte : https://www.gofundme.com/f/moogwai-attitude-des-tshirts-elegants-au-message-cache</noscript></div>
-</section>
-<!-- GALERIE -->
+
 <section class="py-5" id="galerie">
-<div class="container">
-<h2 class="section-title mb-4 text-center">Galerie de modèles</h2>
-<div class="row g-3 gallery">
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 1" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Great.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/Great.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 2" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Water.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/Water.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 3" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/name.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/name.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 4" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Revelation.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/Revelation.png?v=20250815" width="800"/>
-</div>
-<!-- Nouveaux modèles -->
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 5" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/souls.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/souls.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 6" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/Slave.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/Slave.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 7" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/brothers.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/brothers.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3">
-<img alt="Modèle 8" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/fail.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/fail.png?v=20250815" width="800"/>
-</div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 9" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/minutes.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/minutes.png" width="800"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 10" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/life.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/life.png" width="800"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 11" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/opera.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/opera.png" width="800"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Modèle 12" class="img-fluid" data-bs-target="#lightbox" data-bs-toggle="modal" data-src="images/light.png?v=20250815" decoding="async" height="800" loading="lazy" src="images/light.png" width="800"/></div>
-<!-- ***** Emplacements personnalisables (x5) — remplacez href/src/alt ***** -->
-<!-- Slot 1 -->
-<div class="col-6 col-md-4 col-lg-3">
-  <img
-    class="img-fluid"
-    alt="Tshirts Kids01)"
-    loading="lazy" decoding="async" width="800" height="800"
-    src="images/T-shirts-kids01.jpg"
-    data-src="images/T-shirts-kids01=EDIT"
-    data-bs-toggle="modal" data-bs-target="#lightbox">
-</div>
-
-<!-- Slot 2 -->
-<div class="col-6 col-md-4 col-lg-3">
-  <img
-    class="img-fluid"
-    alt="T-shirts-kids02"
-    loading="lazy" decoding="async" width="800" height="800"
-    src="images/T-shirts-kids02.jpg?v=EDIT"
-    data-src="images/T-shirts-kids02.jpg?v=EDIT"
-    data-bs-toggle="modal" data-bs-target="#lightbox">
-</div>
-
-<!-- Slot 3 -->
-<div class="col-6 col-md-4 col-lg-3">
-  <img
-    class="img-fluid"
-    alt="T-shirts-kids03"
-    loading="lazy" decoding="async" width="800" height="800"
-    src="images/T-shirts-kids03.jpg?v=EDIT"
-    data-src="images/T-shirts-kids03.jpg?v=EDIT"
-    data-bs-toggle="modal" data-bs-target="#lightbox">
-</div>
-
-<!-- Slot 4 -->
-<div class="col-6 col-md-4 col-lg-3">
-  <img
-    class="img-fluid"
-    alt="T-shirts-kids04"
-    loading="lazy" decoding="async" width="800" height="800"
-    src="images/T-shirts-kids04.jpg?v=EDIT"
-    data-src="images/T-shirts-kids04.jpg?v=EDIT"
-    data-bs-toggle="modal" data-bs-target="#lightbox">
-</div>
-
-<!-- Slot 5 -->
-<div class="col-6 col-md-4 col-lg-3">
-  <img
-    class="img-fluid"
-    alt="T-shirts-kids05"
-    loading="lazy" decoding="async" width="800" height="800"
-    src="images/T-shirts-kids05.jpg?v=EDIT"
-    data-src="images/T-shirts-kids05.jpg?v=EDIT"
-    data-bs-toggle="modal" data-bs-target="#lightbox">
-</div>
-
-</div>
-</section>
-<!-- INFOS DU JOUR -->
-<section class="py-5" id="infos">
-<div class="container">
-<div class="news-section">
-<h2>📢 Nouvelles du jour – Moogwai Attitude</h2>
-<p>Notre aventure franchit une nouvelle étape :</p>
-<ul>
-<li><strong>La boutique officielle n'est désormais plus en ligne sur Etsy provisoirement, le temps de trouver une solution optimale et présentant les standards de qualité elevées, que nous attendons, pour la création en France et la distribution à travers l'Europe (et au delà). Mais il est fort possible que l'entreprise soit située, à terme, en France et travaille en France (Cocorico)</strong></li>
-<li><strong>Bonfire rejoint l’équipe comme partenaire technique et portail</strong>, garant de la qualité d’impression, production et de la distribution pour le marché Américain.</li>
-<li><strong>Brainstorming</strong> pour l'avenir de la France, trouver une solution viable pour le marché Français et Européen, l'idée est de créer un portail, le site où nous sommes actuellement, le décliner en Anglais et le faire rediriger vers Bonfire pour le marché Américain et T-Pop pour le marché Français/Européen via Etsy qui est quand même une sacrée usine à gaz quand on vise le Print-on-demand à l'international compte tenu des zones, des frais de port, de la gestion de la TVA, Etsy n'aide pas mais reste incontournable pour une présence à l'international. L'idéal serait un site global pour tout gérer en interne mais on ne va pas mettre la charrue avant les boeufs, bien qu'à terme ce soit le projet .</li>
-<li><strong>Moogwai Kids Attitude</strong> Les premiers Designs de la section enfants sont prévus et affichés dans la galerie, c'est mignon comme tout non ? avouez que vous en voulez un ?</li>
-<li><strong>Ça bouge vite et tous les jours</strong> et l'oeuf n'est pas loin d'éclore. Surveillez les infos, tout peut arriver !</li>
-<li><strong>Préparation d'affiche en noir & blanc</strong> bientôt disponible en téléchargement. Sobre, classique avec QR Code pour imprimer et placarder dans votre rue, ville ainsi que chez votre boulangère adorée qui vous sert toujours le plus gros croissant.</li>
-<li><strong>La cagnotte reste ouverte</strong> pour ceux qui souhaitent soutenir le projet de manière directe, toujours efficace.</li>
-</ul>
-<p>
-          Chaque soutien est précieux et chaque partage aide à faire grandir l’univers Moogwai Attitude.<br/>
-<em>Un grand merci à toutes et à tous pour votre énergie et votre confiance.</em>
-</p>
-</div>
-</div>
+  <div class="container">
+    <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
+    <div class="row g-3 gallery">
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Night" class="img-fluid" src="images/night.png"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/name.png"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Minutes" class="img-fluid" src="images/minutes.png"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Brothers" class="img-fluid" src="images/brothers.png"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids02.jpg"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids03.jpg"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids04.jpg"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids05.jpg"/></div>
+    </div>
+  </div>
 </section>
 
-</div>
+<!-- ACTU / JOURNAL -->
+<section class="py-4" id="actu">
+  <div class="container">
+    <h2 class="section-title mb-3 text-center" id="news_title">Actu</h2>
+    <div class="row g-3">
+      <div class="col-12">
+        <article class="post">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <time class="meta" id="news_date" datetime="2025-08-21">21 août 2025</time>
+            <span class="badge-gold">
+              <span class="lang-fr">Du jour</span>
+              <span class="lang-en">Daily</span>
+            </span>
+          </div>
+          <h3 class="mb-1">
+            <span class="lang-fr">Mise à jour du site</span>
+            <span class="lang-en">Site update</span>
+          </h3>
+          <p class="mb-0">
+            <span class="lang-fr">Bienvenue sur la v2 du site, toujours en construction.</span>
+            <span class="lang-en">Welcome to the v2 of the site, still under construction.</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- CONTACT -->
+<!-- INFOS -->
+<section class="py-4" id="infos">
+  <div class="container">
+    <h2 class="section-title mb-3 text-center" id="infos_title">Infos</h2>
+    <div class="row g-3">
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="info-day">
+          <div class="info-head">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 2l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.9l1.1-6.5L2.6 8.8l6.5-.9L12 2z"/>
+            </svg>
+            <strong id="infos_quality">Qualité</strong>
+          </div>
+          <span id="infos_quality_text">Coton doux, encres durables, impression soignée.</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="info-day">
+          <div class="info-head">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M3 6h18v3H3V6zm0 9h18v3H3v-3zm2-6h2v2H5V9zm4 0h2v2H9V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/>
+            </svg>
+            <strong id="infos_sizes">Tailles</strong>
+          </div>
+          <span id="infos_sizes_text">Du kids au 3XL, coupe unisexe.</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="info-day">
+          <div class="info-head">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M3 7h11v6h5l2 3v3h-2a2 2 0 11-4 0H9a2 2 0 11-4 0H3V7zm13 6V9h3l2 4h-5z"/>
+            </svg>
+            <strong id="infos_ship">Livraison</strong>
+          </div>
+          <span id="infos_ship_text">Expédition rapide, suivi fourni.</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="info-day">
+          <div class="info-head">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 5V2L7 7l5 5V9a5 5 0 110 10h-1v2h1a7 7 0 100-14z"/>
+            </svg>
+            <strong id="infos_returns">Retours</strong>
+          </div>
+          <span id="infos_returns_text">Échanges/retours sous 14 jours.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UTILITAIRES (Newsletter + Cagnotte) -->
+<section class="py-4" id="utilitaires">
+  <div class="container">
+    <div class="utility">
+      <div class="row g-3">
+        <!-- Newsletter -->
+        <div class="col-12 col-md-6">
+          <div class="panel h-100">
+            <h3 id="newsletter_title">Newsletter</h3>
+            <p id="newsletter_text">Des nouveautés & offres privées. Désinscription en un clic.</p>
+            <form action="/.netlify/functions/newsletter-signup" class="d-flex flex-column gap-2" method="POST" novalidate target="_self">
+              <label class="visually-hidden" id="nl_label" for="nlEmail">Votre e-mail</label>
+              <input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required type="email"/>
+              <div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:6px auto 10px; display:block;"></div>
+              <button class="btn btn-accent newsletter-btn" id="newsletter_cta" type="submit">S’inscrire</button>
+              <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
+            </form>
+          </div>
+        </div>
+        <!-- Cagnotte -->
+        <div class="col-12 col-md-6">
+          <div class="panel h-100">
+            <h3 id="fund_title">Cagnotte</h3>
+            <div class="gfm-embed" data-url="https://www.gofundme.com/f/moogwai-attitude-des-tshirts-personnalisables/widget/medium?sharesheet=undefined&attribution_id=sl:51d39964-d61e-437e-b6e2-6e77d0bf5759"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (bas de page uniquement) -->
 <section class="py-5" id="contact">
-<div class="container">
-<img alt="Moogwai mail" decoding="async" height="72" src="images/New-logo-head.png?v=20250814" style="display:block;margin:0 auto 1rem;" width="auto"/><h2 class="section-title mb-3 text-center">Contact</h2>
-<div class="mx-auto text-center" style="max-width:720px">
-<p class="lead text-secondary">
-          Une question, une demande spéciale (série limitée personnalisée) ou un projet ? Écrivez-nous, on répond vite.
-        </p>
-<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
-<div class="row g-3">
-<div class="col-md-6"><input class="form-control" name="name" placeholder="Votre nom" required=""/></div>
-<div class="col-md-6"><input class="form-control" name="email" placeholder="Votre email" required="" type="email"/></div>
-<div class="col-12"><textarea class="form-control" name="message" placeholder="Votre message" required="" rows="5"></textarea></div>
-</div>
-<div class="d-flex justify-content-center gap-2 mt-3">
-<button class="btn btn-accent" type="submit">Envoyer</button>
-</div>
-<p class="text-center mt-3 text-secondary" hidden="" id="formMsg">Merci ! Votre message a été envoyé.</p>
-<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div></form>
-</div>
-</div>
+  <div class="container">
+    <h2 class="section-title mb-3 text-center" id="contact_page_title">Contact</h2>
+    <div class="mx-auto" style="max-width:720px">
+      <p class="lead" id="contact_lead" style="color:var(--muted)">Une question, une personnalisation ou un projet ? Écrivez‑nous.</p>
+      <form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
+        <div class="row g-3">
+          <div class="col-md-6"><input class="form-control" id="contact_name" name="name" placeholder="Votre nom" required/></div>
+          <div class="col-md-6"><input class="form-control" id="contact_email" name="email" placeholder="Votre email" required type="email"/></div>
+          <div class="col-12"><textarea class="form-control" id="contact_message" name="message" placeholder="Votre message" required rows="5"></textarea></div>
+        </div>
+        <div class="d-flex justify-content-center gap-2 mt-3">
+          <button class="btn btn-accent" id="contact_send" type="submit">Envoyer</button>
+        </div>
+        <div class="text-center mt-3 contact-badge-wrap">
+          <img src="images/logo_ban.jpg" alt="Moogwai Attitude — Rock, Metal & Custom premium wear" class="contact-badge"/>
+        </div>
+        <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
+      </form>
+    </div>
+  </div>
 </section>
-<footer class="py-4 text-center text-secondary">
-<div class="container small">© 2025 Moogwai Attitude • <a class="link-light" href="mentions-legales.html">Mentions Légales</a> • <a class="link-light" href="#">Retour en haut</a></div>
+
+<footer class="py-4 text-center" style="color:var(--muted)">
+  <div class="container small">© 2025 Moogwai Attitude • <a class="link-light" id="footer_legal" href="mentions-legales.html">Mentions Légales</a> • <a class="link-light" href="#top"><span id="footer_back">Retour en haut</span></a></div>
 </footer>
-<!-- /.page-root -->
-<!-- Lightbox Modal -->
+
+<!-- Lightbox Modal (optionnel) -->
 <div class="modal fade" id="lightbox" tabindex="-1">
-<div class="modal-dialog modal-dialog-centered modal-xl">
-<div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
-<div class="modal-body p-0">
-<img class="img-fluid w-100" id="lightboxImg"/></div>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
+      <div class="modal-body p-0"><img class="img-fluid w-100" id="lightboxImg"/></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script defer="" src="https://www.gofundme.com/static/js/embed.js"></script>
+
 <script>
-    const lightboxImg = document.getElementById('lightboxImg');
-    document.querySelectorAll('[data-bs-target="#lightbox"]').forEach(img => {
-      img.addEventListener('click', () => {
-        let url = img.getAttribute('data-src') || img.currentSrc || img.src;
-        const setSrc = (primary, fallback) => {
-          if (lightboxImg) {
-            lightboxImg.onerror = () => { 
-              if (fallback && lightboxImg.src !== fallback) lightboxImg.src = fallback;
-            };
-            lightboxImg.src = primary;
-          }
-        };
-        if (location.protocol === 'file:' && url && url.startsWith('/')) {
-          // Try without leading slash locally, else fallback to the thumbnail src
-          setSrc(url.slice(1), img.src);
-        } else {
-          setSrc(url, img.src);
-        }
-        if (lightboxImg) lightboxImg.alt = img.alt || 'Agrandissement';
-      });
-    });
-    // Clear image on modal hide (perf)
-    const lightboxEl = document.getElementById('lightbox');
-    if (lightboxEl) {
-      lightboxEl.addEventListener('hidden.bs.modal', () => {
-        if (lightboxImg) { lightboxImg.removeAttribute('src'); lightboxImg.removeAttribute('alt'); }
-      });
+// i18n FR/EN — nav, hero, sections, formulaires, placeholders, footer, alts + persistance
+(function(){
+  const dict={
+    fr:{
+      doc_title:'Moogwai Attitude — Vitrine',
+      nav_galerie:'Galerie', nav_actu:'Actu', nav_infos:'Infos', nav_newsletter:'Newsletter', nav_btn_shop:'Boutique Etsy', nav_btn_fund:'Cagnotte',
+      top_intro:'Personnalisation premium : choisis ton visuel, tes couleurs et ton texte. Chaque T‑shirt est préparé à la commande : prénom, date, clin d’œil, petites variantes possibles.',
+      hero_title:'Ton T‑shirt, ton style, ta signature',
+      hero_sub:'Personnalisation premium, à la demande – artwork, texte, options. Nom, date, clin d’œil : intégration propre et durable.',
+      hero_img_alt:'Processus de création — atelier',
+      btn_models:'Voir les modèles', btn_support:'Soutenir', btn_shop:'Boutique Etsy',
+      gallery_title:'Galerie de modèles',
+      news_title:'Actu', news_badge:'Du jour', news_item_title:'Titre de l’info du jour', news_item_body:'Écris ici ce qu’il se passe aujourd’hui : drop en préparation, salon, coulisses, etc. Remplace ce texte par ton actualité.',
+      infos_title:'Infos', infos_quality:'Qualité', infos_quality_text:'Coton doux, encres durables, impression soignée.', infos_sizes:'Tailles', infos_sizes_text:'Du kids au 3XL, coupe unisexe.', infos_ship:'Livraison', infos_ship_text:'Expédition rapide, suivi fourni.', infos_returns:'Retours', infos_returns_text:'Échanges/retours sous 14 jours.',
+      newsletter_title:'Newsletter', newsletter_text:'Des nouveautés & offres privées. Désinscription en un clic.', newsletter_cta:'S’inscrire', nl_label:'Votre e-mail', nl_email_ph:'votre@email.com',
+      contact_page_title:'Contact', contact_lead:'Une question, une personnalisation ou un projet ? Écrivez‑nous.', contact_send:'Envoyer', contact_name_ph:'Votre nom', contact_email_ph:'Votre email', contact_message_ph:'Votre message',
+      footer_back:'Retour en haut', footer_legal:'Mentions Légales',
+      alts:{ 'night.png':'Night — visuel T‑shirt','hallowed.png':'Hallowed — visuel T‑shirt','minutes.png':'Minutes — visuel T‑shirt','brothers.png':'Brothers — visuel T‑shirt','fail.png':'Fail — visuel T‑shirt','revelation.png':'Revelation — visuel T‑shirt','empire.png':'Empire — visuel T‑shirt' }
+    },
+    en:{
+      doc_title:'Moogwai Attitude — Showcase',
+      nav_galerie:'Gallery', nav_actu:'News', nav_infos:'Info', nav_newsletter:'Newsletter', nav_btn_shop:'Etsy Shop', nav_btn_fund:'Fundraiser',
+      top_intro:'Premium customization: choose your artwork, colors and text. Each tee is made-to-order: name, date, easter‑egg, small tweaks possible.',
+      hero_title:'Your tee, your style, your signature',
+      hero_sub:'Premium customization on demand – artwork, text, options. Name, date, easter‑egg: clean, durable integration.',
+      hero_img_alt:'Creation process — workshop',
+      btn_models:'View models', btn_support:'Support', btn_shop:'Etsy Shop',
+      gallery_title:'Gallery',
+      news_title:'News', news_badge:'Daily', news_item_title:'Today’s update', news_item_body:'Write today’s news here: upcoming drop, event, behind the scenes… Replace this text with your update.',
+      infos_title:'Info', infos_quality:'Quality', infos_quality_text:'Soft cotton, durable inks, neat print.', infos_sizes:'Sizes', infos_sizes_text:'Kids to 3XL, unisex fit.', infos_ship:'Shipping', infos_ship_text:'Fast dispatch, tracking included.', infos_returns:'Returns', infos_returns_text:'Exchanges/returns within 14 days.',
+      newsletter_title:'Newsletter', newsletter_text:'New drops & private offers. One‑click unsubscribe.', newsletter_cta:'Subscribe', nl_label:'Your email', nl_email_ph:'your@email.com',
+      contact_page_title:'Contact', contact_lead:'Questions, customization or a project? Write to us.', contact_send:'Send', contact_name_ph:'Your name', contact_email_ph:'Your email', contact_message_ph:'Your message',
+      footer_back:'Back to top', footer_legal:'Legal',
+      alts:{ 'night.png':'Night — tee graphic','hallowed.png':'Hallowed — tee graphic','minutes.png':'Minutes — tee graphic','brothers.png':'Brothers — tee graphic','fail.png':'Fail — tee graphic','revelation.png':'Revelation — tee graphic','empire.png':'Empire — tee graphic' }
     }
-</script>
-<script>
-(() => {
-  const modal = document.getElementById('lightbox');
-  const imgEl = document.getElementById('lightboxImg');
-  const thumbs = Array.from(document.querySelectorAll('[data-bs-target="#lightbox"]'));
-
-  let index = -1;
-  thumbs.forEach((thumb, i) => {
-    thumb.addEventListener('click', () => { index = i; });
-  });
-
-  function showAt(i){
-    if (!thumbs.length) return;
-    if(i < 0) i = thumbs.length - 1;
-    if(i >= thumbs.length) i = 0;
-    index = i;
-    const t = thumbs[index];
-    const url = t.getAttribute('data-src') || t.currentSrc || t.src;
-    if (imgEl) imgEl.src = url;
-    if (imgEl) imgEl.alt = t.alt || 'Agrandissement';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('show')) return;
-    if (e.key === 'ArrowRight') { e.preventDefault(); showAt(index + 1); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); showAt(index - 1); }
-    if (e.key === 'Escape') {
-      const bsModal = bootstrap.Modal.getInstance(modal);
-      if (bsModal) bsModal.hide();
-    }
-  }, { passive: true });
-
-  let startX = 0, startY = 0, swiping = false;
-  const SWIPE_X = 40;
-  const SWIPE_Y = 60;
-
-  modal.addEventListener('touchstart', (e) => {
-    const t = e.touches[0]; startX = t.clientX; startY = t.clientY; swiping = true;
-  }, { passive: true });
-
-  modal.addEventListener('touchend', (e) => {
-    if (!swiping) return; swiping = false;
-    const t = e.changedTouches[0];
-    const dx = t.clientX - startX;
-    const dy = t.clientY - startY;
-
-    if (dy > SWIPE_Y && Math.abs(dx) < 80) {
-      const bsModal = bootstrap.Modal.getInstance(modal);
-      if (bsModal) bsModal.hide();
-      return;
-    }
-    if (dx > SWIPE_X) { showAt(index - 1); return; }
-    if (dx < -SWIPE_X) { showAt(index + 1); return; }
-  }, { passive: true });
-
-  if (imgEl) imgEl.addEventListener('click', () => showAt(index + 1));
-
-  modal.addEventListener('shown.bs.modal', () => {
-    if (index < 0) index = Math.max(thumbs.findIndex(t => (t.getAttribute('data-src')||t.src) === imgEl.src), 0);
-  });
-})();
-</script>
-<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const video = document.querySelector(".mw-video-frame video");
-  if (video) {
-    video.addEventListener("ended", function() {
-      video.pause();           // ensure it's stopped
-      video.currentTime = 0;   // back to start
-      video.load();            // show poster again
-    });
-  }
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const loader = document.getElementById('site-loader');
-  if (!loader) return;
-
-  const video = loader.querySelector('.loader-video');
-  const MAX_MS = 2500; // sécurité si la vidéo ne déclenche pas 'ended'
-
-  // Crossfade: révèle la page puis masque le loader
-  const hide = () => {
-    document.body.classList.add('loaded');        // .page-root commence à apparaître
-    requestAnimationFrame(() => {                 // tick suivant pour laisser le CSS s'appliquer
-      setTimeout(() => {
-        loader.classList.add('hidden');           // le loader s'estompe
-        setTimeout(() => loader.remove(), 700);   // suppression après fondu
-      }, 50);
-    });
   };
 
-  if (video) {
-    // Quand la vidéo se termine (anim ~2s), on lance le hide()
-    video.addEventListener('ended', hide, { once: true });
-    // Si l’autoplay est bloqué, on fallback au timeout
-    video.play().catch(() => setTimeout(hide, MAX_MS));
+  // Lang resolve: URL > localStorage > default('fr')
+  const params=new URLSearchParams(location.search);
+  let lang=params.get('lang');
+  if(!lang){ lang=localStorage.getItem('lang')||'fr'; }
+  lang=String(lang).toLowerCase().startsWith('en')?'en':'fr';
+  localStorage.setItem('lang', lang);
+  const url=new URL(location.href); url.searchParams.set('lang', lang); history.replaceState(null,'',url.toString());
+
+  const t=dict[lang];
+  document.documentElement.setAttribute('data-lang', lang);
+  const setText=(id,key)=>{ const el=document.getElementById(id); if(el) el.textContent=t[key]; };
+  const setAttr=(id,attr,key)=>{ const el=document.getElementById(id); if(el) el.setAttribute(attr,t[key]); };
+
+  ['nav_galerie','nav_actu','nav_infos','nav_newsletter','nav_btn_shop','nav_btn_fund','top_intro','hero_title','hero_sub','gallery_title','news_title','infos_title','infos_quality','infos_quality_text','infos_sizes','infos_sizes_text','infos_ship','infos_ship_text','infos_returns','infos_returns_text','newsletter_title','newsletter_text','newsletter_cta','contact_page_title','contact_lead','contact_send','footer_back','footer_legal','btn_models','btn_support','btn_shop','nl_label']
+    .forEach(k=>setText(k,k));
+
+  // Placeholders
+  setAttr('nlEmail','placeholder','nl_email_ph');
+  setAttr('contact_name','placeholder','contact_name_ph');
+  setAttr('contact_email','placeholder','contact_email_ph');
+  setAttr('contact_message','placeholder','contact_message_ph');
+
+  // Document title
+  document.title=t.doc_title;
+
+  // Switch buttons active state + live switching
+  const frBtn=document.querySelector('a[href*="?lang=fr"]');
+  const enBtn=document.querySelector('a[href*="?lang=en"]');
+  if(frBtn&&enBtn){
+    frBtn.classList.toggle('active',lang==='fr');
+    enBtn.classList.toggle('active',lang==='en');
+    const apply=(target)=>{ const newLang=(target==='en')?'en':'fr'; localStorage.setItem('lang',newLang); const u=new URL(location.href); u.searchParams.set('lang',newLang); history.replaceState(null,'',u.toString()); location.reload(); };
+    frBtn.addEventListener('click',e=>{e.preventDefault();apply('fr');});
+    enBtn.addEventListener('click',e=>{e.preventDefault();apply('en');});
   }
 
-  // Filet de sécurité : au cas où
-  setTimeout(hide, MAX_MS);
-});
+  // Date i18n in news
+  const dateEl=document.getElementById('news_date');
+  if(dateEl){ try{ const dt=new Date(dateEl.getAttribute('datetime')); dateEl.textContent=new Intl.DateTimeFormat(lang==='en'?'en-GB':'fr-FR',{day:'numeric',month:'long',year:'numeric'}).format(dt); }catch(e){} }
+
+  // ALT translations — gallery
+  const altMap=t.alts;
+  document.querySelectorAll('#galerie img').forEach(img=>{
+    try{
+      const src=img.getAttribute('src')||''; const file=src.split('/').pop().toLowerCase();
+      const key=file.replace(/^.*?([^?#]+)$/,'$1');
+      if(altMap[key]) img.setAttribute('alt', altMap[key]);
+      else img.setAttribute('alt', lang==='en'?'Tee graphic':'Visuel T‑shirt');
+    }catch(e){}
+  });
+
+  // Hero image alt
+  const heroImg=document.querySelector('img.hero-feature');
+  if(heroImg){ heroImg.setAttribute('alt', t.hero_img_alt); }
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script async defer src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+// i18n nav + date patch
+(function(){
+  const params=new URLSearchParams(location.search);
+  const lang=(params.get('lang')||'fr').toLowerCase().startsWith('en')?'en':'fr';
+  const t = (lang==='en') ? {nav_galerie:'Gallery',nav_actu:'News',nav_infos:'Info',nav_newsletter:'Newsletter',news_title:'News'} : {nav_galerie:'Galerie',nav_actu:'Actu',nav_infos:'Infos',nav_newsletter:'Newsletter',news_title:'Actu'};
+  const set=(id,text)=>{const el=document.getElementById(id); if(el) el.textContent=text;};
+  set('nav_galerie', t.nav_galerie);
+  set('nav_actu', t.nav_actu);
+  set('nav_infos', t.nav_infos);
+  set('nav_newsletter', t.nav_newsletter);
+  set('news_title', t.news_title);
+  const dateEl=document.getElementById('news_date');
+  if(dateEl){ try{ const dt=new Date(dateEl.getAttribute('datetime')); dateEl.textContent= new Intl.DateTimeFormat(lang==='en'?'en-GB':'fr-FR', {day:'numeric', month:'long', year:'numeric'}).format(dt);}catch(e){} }
+})();
 </script>
 </body>
 </html>
