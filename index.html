@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta name="deploy-version" content="20250822">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title data-i18n="doc_title">Moogwai Attitude — Vitrine</title>
@@ -99,6 +100,11 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .lang-en{display:none}
   html[data-lang='en'] .lang-fr{display:none}
   html[data-lang='en'] .lang-en{display:inline}
+  /* Modal vidéo intro */
+  .video-modal .modal-dialog{ max-width: 960px; }
+  .video-modal .modal-content{ background:#0b0b0d; border:1px solid rgba(205,164,52,.22); border-radius:14px; }
+  .video-modal .modal-body{ padding:0; }
+  .video-modal video{ display:block; width:100%; height:auto; border-radius:12px; }
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 </head>
@@ -106,7 +112,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 <nav class="navbar-dark navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand brand d-flex align-items-center gap-2" href="#top">
-      <img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"/>
+      <img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"?v=1/>
     </a>
     <button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="nav">
@@ -121,7 +127,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
             <a class="btn btn-outline-light" href="?lang=en">EN</a>
           </div>
         </li>
-        <li class="nav-item"><a class="btn btn-accent ms-lg-2" id="nav_btn_shop" href="https://moogwai-attitude.tpopsite.com/" rel="noopener" target="_blank">Boutique Moogwai Attitude</a></li>
+        <li class="nav-item"><a class="btn btn-accent ms-lg-2" id="nav_btn_shop" href="https://www.etsy.com/" rel="noopener" target="_blank">Boutique Etsy</a></li>
         <li class="nav-item"><a class="btn btn-outline-light ms-lg-2" id="nav_btn_fund" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Cagnotte</a></li>
       </ul>
     </div>
@@ -136,17 +142,18 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 
 <header class="hero text-center">
   <div class="container">
-    <img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"/>
+    <img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"?v=1/>
     <h1 id="hero_title">Ton T‑shirt, ton style, <span class="mw-gold">ta signature</span></h1>
     <p class="lead" id="hero_sub"><strong>Personnalisation premium, à la demande</strong> – artwork, texte, options. Nom, date, clin d’œil : intégration propre et durable.</p>
     <div class="mt-3">
       <!-- Illustration du process de création (accessible & responsive) -->
-      <img class="hero-feature img-fluid" src="images/T2.jpg" alt="Processus de création — atelier" onerror="this.onerror=null;this.src='images/empire.png'"/>
+      <img class="hero-feature img-fluid" src="images/T2.jpg"?v=1 alt="Processus de création — atelier" onerror="this.onerror=null;this.src='images/empire.png'"/>
     </div>
     <div class="d-flex gap-2 justify-content-center mt-2" id="cta_row">
       <a class="btn btn-light" id="btn_models" href="#galerie">Voir les modèles</a>
       <a class="btn btn-accent" id="btn_support" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Soutenir</a>
-      <a class="btn btn-outline-light" id="btn_shop" href="https://moogwai-attitude.tpopsite.com/" rel="noopener" target="_blank">Boutique Moogwai Attitude</a>
+      <a class="btn btn-outline-light" id="btn_shop" href="https://www.etsy.com/" rel="noopener" target="_blank">Boutique Etsy</a>
+      <button class="btn btn-outline-light" id="btn_intro" data-bs-toggle="modal" data-bs-target="#introVideo">Regarder l’intro</button>
     </div>
   </div>
 </header>
@@ -155,14 +162,14 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   <div class="container">
     <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
     <div class="row g-3 gallery">
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Night" class="img-fluid" src="images/night.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/name.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Minutes" class="img-fluid" src="images/minutes.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Brothers" class="img-fluid" src="images/brothers.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids02.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids03.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids04.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids05.jpg"/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Night" class="img-fluid" src="images/night.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/hallowed.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Minutes" class="img-fluid" src="images/minutes.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Brothers" class="img-fluid" src="images/brothers.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Fail" class="img-fluid" src="images/fail.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Revelation" class="img-fluid" src="images/Revelation.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Empire" class="img-fluid" src="images/empire.png"?v=1/></div>
+      <div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/hallowed.png"?v=1/></div>
     </div>
   </div>
 </section>
@@ -295,7 +302,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
           <button class="btn btn-accent" id="contact_send" type="submit">Envoyer</button>
         </div>
         <div class="text-center mt-3 contact-badge-wrap">
-          <img src="images/logo_ban.jpg" alt="Moogwai Attitude — Rock, Metal & Custom premium wear" class="contact-badge"/>
+          <img src="images/logo_ban.jpg"?v=1 alt="Moogwai Attitude — Rock, Metal & Custom premium wear" class="contact-badge"/>
         </div>
         <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
       </form>
@@ -310,24 +317,26 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 <!-- Lightbox Modal (optionnel) -->
 <div class="modal fade" id="lightbox" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
-      <div class="modal-body p-0"><img class="img-fluid w-100" id="lightboxImg"/></div>
+    <div class="modal-content bg-dark border-0">
+      <button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
+      <div class="modal-body p-0 d-flex align-items-center justify-content-center" style="background:rgba(0,0,0,.85)">
+        <img class="img-fluid" id="lightboxImg" alt=""/>
+      </div>
     </div>
   </div>
+</div>
 </div>
 
 <script>
 // i18n FR/EN — nav, hero, sections, formulaires, placeholders, footer, alts + persistance
 (function(){
   const dict={
-    fr:{
-      doc_title:'Moogwai Attitude — Vitrine',
-      nav_galerie:'Galerie', nav_actu:'Actu', nav_infos:'Infos', nav_newsletter:'Newsletter', nav_btn_shop:'Boutique', nav_btn_fund:'Cagnotte',
+    fr:{$1btn_shop:'Boutique Etsy', btn_intro:'Regarder l’intro', nav_btn_fund:'Cagnotte',
       top_intro:'Personnalisation premium : choisis ton visuel, tes couleurs et ton texte. Chaque T‑shirt est préparé à la commande : prénom, date, clin d’œil, petites variantes possibles.',
       hero_title:'Ton T‑shirt, ton style, ta signature',
       hero_sub:'Personnalisation premium, à la demande – artwork, texte, options. Nom, date, clin d’œil : intégration propre et durable.',
       hero_img_alt:'Processus de création — atelier',
-      btn_models:'Voir les modèles', btn_support:'Soutenir', btn_shop:'Boutique',
+      btn_models:'Voir les modèles', btn_support:'Soutenir', btn_shop:'Boutique Etsy',
       gallery_title:'Galerie de modèles',
       news_title:'Actu', news_badge:'Du jour', news_item_title:'Titre de l’info du jour', news_item_body:'Écris ici ce qu’il se passe aujourd’hui : drop en préparation, salon, coulisses, etc. Remplace ce texte par ton actualité.',
       infos_title:'Infos', infos_quality:'Qualité', infos_quality_text:'Coton doux, encres durables, impression soignée.', infos_sizes:'Tailles', infos_sizes_text:'Du kids au 3XL, coupe unisexe.', infos_ship:'Livraison', infos_ship_text:'Expédition rapide, suivi fourni.', infos_returns:'Retours', infos_returns_text:'Échanges/retours sous 14 jours.',
@@ -336,14 +345,12 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       footer_back:'Retour en haut', footer_legal:'Mentions Légales',
       alts:{ 'night.png':'Night — visuel T‑shirt','hallowed.png':'Hallowed — visuel T‑shirt','minutes.png':'Minutes — visuel T‑shirt','brothers.png':'Brothers — visuel T‑shirt','fail.png':'Fail — visuel T‑shirt','revelation.png':'Revelation — visuel T‑shirt','empire.png':'Empire — visuel T‑shirt' }
     },
-    en:{
-      doc_title:'Moogwai Attitude — Showcase',
-      nav_galerie:'Gallery', nav_actu:'News', nav_infos:'Info', nav_newsletter:'Newsletter', nav_btn_shop:'Shop', nav_btn_fund:'Fundraiser',
+    en:{$1btn_shop:'Etsy Shop', btn_intro:'Watch intro', nav_btn_fund:'Fundraiser',
       top_intro:'Premium customization: choose your artwork, colors and text. Each tee is made-to-order: name, date, easter‑egg, small tweaks possible.',
       hero_title:'Your tee, your style, your signature',
       hero_sub:'Premium customization on demand – artwork, text, options. Name, date, easter‑egg: clean, durable integration.',
       hero_img_alt:'Creation process — workshop',
-      btn_models:'View models', btn_support:'Support', btn_shop:'Shop',
+      btn_models:'View models', btn_support:'Support', btn_shop:'Etsy Shop',
       gallery_title:'Gallery',
       news_title:'News', news_badge:'Daily', news_item_title:'Today’s update', news_item_body:'Write today’s news here: upcoming drop, event, behind the scenes… Replace this text with your update.',
       infos_title:'Info', infos_quality:'Quality', infos_quality_text:'Soft cotton, durable inks, neat print.', infos_sizes:'Sizes', infos_sizes_text:'Kids to 3XL, unisex fit.', infos_ship:'Shipping', infos_ship_text:'Fast dispatch, tracking included.', infos_returns:'Returns', infos_returns_text:'Exchanges/returns within 14 days.',
@@ -367,7 +374,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   const setText=(id,key)=>{ const el=document.getElementById(id); if(el) el.textContent=t[key]; };
   const setAttr=(id,attr,key)=>{ const el=document.getElementById(id); if(el) el.setAttribute(attr,t[key]); };
 
-  ['nav_galerie','nav_actu','nav_infos','nav_newsletter','nav_btn_shop','nav_btn_fund','top_intro','hero_title','hero_sub','gallery_title','news_title','infos_title','infos_quality','infos_quality_text','infos_sizes','infos_sizes_text','infos_ship','infos_ship_text','infos_returns','infos_returns_text','newsletter_title','newsletter_text','newsletter_cta','contact_page_title','contact_lead','contact_send','footer_back','footer_legal','btn_models','btn_support','btn_shop','nl_label']
+  ['nav_galerie','nav_actu','nav_infos','nav_newsletter','nav_btn_shop','nav_btn_fund','top_intro','hero_title','hero_sub','gallery_title','news_title','infos_title','infos_quality','infos_quality_text','infos_sizes','infos_sizes_text','infos_ship','infos_ship_text','infos_returns','infos_returns_text','newsletter_title','newsletter_text','newsletter_cta','contact_page_title','contact_lead','contact_send','footer_back','footer_legal','btn_models','btn_support','btn_shop','btn_intro','nl_label']
     .forEach(k=>setText(k,k));
 
   // Placeholders
@@ -412,20 +419,92 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+
+<!-- Intro Video Modal -->
+<div class="modal fade video-modal" id="introVideo" tabindex="-1" aria-labelledby="introVideoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
+      <div class="modal-body">
+        <!-- Version FR -->
+        <video class="lang-fr" controls preload="metadata" playsinline poster="images/intro-poster.jpg">
+          <source src="videos/intro-fr.mp4" type="video/mp4"/>
+          <track kind="subtitles" src="videos/intro-fr.vtt" srclang="fr" label="Français" default/>
+          Votre navigateur ne supporte pas la balise vidéo.
+        </video>
+        <!-- Version EN -->
+        <video class="lang-en" controls preload="metadata" playsinline poster="images/intro-poster.jpg">
+          <source src="videos/intro-en.mp4" type="video/mp4"/>
+          <track kind="subtitles" src="videos/intro-en.vtt" srclang="en" label="English" default/>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
-// i18n nav + date patch
+  // Pause vidéos quand le modal se ferme
+  document.addEventListener('DOMContentLoaded', function(){
+    var modal=document.getElementById('introVideo');
+    if(!modal) return;
+    modal.addEventListener('hide.bs.modal', function(){
+      modal.querySelectorAll('video').forEach(function(v){ try{ v.pause(); }catch(e){} });
+    });
+  });
+</script>
+<script>
+// Lightbox + robust loading for gallery + auto cache-busting
 (function(){
-  const params=new URLSearchParams(location.search);
-  const lang=(params.get('lang')||'fr').toLowerCase().startsWith('en')?'en':'fr';
-  const t = (lang==='en') ? {nav_galerie:'Gallery',nav_actu:'News',nav_infos:'Info',nav_newsletter:'Newsletter',news_title:'News'} : {nav_galerie:'Galerie',nav_actu:'Actu',nav_infos:'Infos',nav_newsletter:'Newsletter',news_title:'Actu'};
-  const set=(id,text)=>{const el=document.getElementById(id); if(el) el.textContent=text;};
-  set('nav_galerie', t.nav_galerie);
-  set('nav_actu', t.nav_actu);
-  set('nav_infos', t.nav_infos);
-  set('nav_newsletter', t.nav_newsletter);
-  set('news_title', t.news_title);
-  const dateEl=document.getElementById('news_date');
-  if(dateEl){ try{ const dt=new Date(dateEl.getAttribute('datetime')); dateEl.textContent= new Intl.DateTimeFormat(lang==='en'?'en-GB':'fr-FR', {day:'numeric', month:'long', year:'numeric'}).format(dt);}catch(e){} }
+  const imgs=[...document.querySelectorAll('#galerie img')];
+  if(!imgs.length) return;
+  const version='v='+Date.now();
+  imgs.forEach((img,i)=>{
+    img.setAttribute('loading','lazy');
+    img.setAttribute('decoding','async');
+    img.dataset.index=i;
+    // append version param for cache busting
+    let src=img.getAttribute('src');
+    if(src && !src.includes('v=')){
+      img.src=src+(src.includes('?')?'&':'?')+version;
+    }
+    img.addEventListener('error',function(){
+      if(this.dataset.fallback) return; // avoid loop
+      this.dataset.fallback='1';
+      this.src='images/empire.png?'+version;
+    });
+  });
+  // Lightbox
+  const modalEl=document.getElementById('lightbox');
+  const modalImg=document.getElementById('lightboxImg');
+  if(!modalEl||!modalImg) return;
+  const modal=new bootstrap.Modal(modalEl);
+  let idx=0;
+  function openAt(i){ idx=(i+imgs.length)%imgs.length; const src=imgs[idx].getAttribute('src'); const alt=imgs[idx].getAttribute('alt')||''; modalImg.src=src; modalImg.alt=alt; modal.show(); }
+  imgs.forEach(img=> img.addEventListener('click',()=> openAt(parseInt(img.dataset.index||'0'))));
+  // keyboard nav
+  modalEl.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){ e.preventDefault(); openAt(idx+1); }
+    if(e.key==='ArrowLeft'){ e.preventDefault(); openAt(idx-1); }
+  });
+  modalEl.addEventListener('shown.bs.modal',()=>{ modalEl.focus(); });
+})();
+</script>
+<script>
+// Cache-busting auto pour images (Netlify & navigateurs)
+(function(){
+  var baseVersion = (document.querySelector('meta[name="deploy-version"]')||{}).content || (document.lastModified||'').replace(/[^0-9]/g,'');
+  if(!baseVersion){ try{ baseVersion = new Date().toISOString().slice(0,10).replace(/-/g,''); }catch(e){ baseVersion='1'; } }
+  document.querySelectorAll('img[src]').forEach(function(img){
+    var src = img.getAttribute('src'); if(!src || src.startsWith('data:')) return;
+    try{
+      var u = new URL(src, location.href);
+      var ext = (u.pathname.split('.').pop()||'').toLowerCase();
+      if(['png','jpg','jpeg','webp','gif','svg'].indexOf(ext)===-1) return;
+      // remplace/ajoute ?v= pour être sûr d’invalider le cache à chaque déploiement
+      u.searchParams.set('v', baseVersion);
+      img.src = u.toString();
+    }catch(e){}
+  });
 })();
 </script>
 </body>
