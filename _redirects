@@ -1,2 +1,15 @@
-/sitemap.xml    /sitemap.xml    200!
-/robots.txt     /robots.txt     200!
+# Protect sitemap and robots
+/sitemap.xml       /sitemap.xml       200!
+/robots.txt        /robots.txt        200!
+
+# Strip language parameters to canonical FR versions
+/?lang=fr          /                   301!
+/?lang=en          /                   301!
+/mentions-legales?lang=fr   /mentions-legales.html   301!
+/mentions-legales?lang=en   /mentions-legales.html   301!
+
+# Generic rule: if "lang" query exists on any path, drop it and keep the same path
+/*                  /:splat             301!  lang=:lang
+
+# SPA catch-all (keep last if you use a SPA)
+/*                 /index.html         200

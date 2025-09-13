@@ -1,16 +1,3 @@
-# Kill-switch: disable Netlify post-processing entirely
-[build.processing.css]
-  bundle = false
-  minify = false
-
-[build.processing.js]
-  bundle = false
-  minify = false
-
-[build.processing.images]
-  compress = false
-
-[build.processing.html]
-  pretty_urls = false
-  # Some stacks expose "minify" here; if unsupported it's ignored.
-  minify = false
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
