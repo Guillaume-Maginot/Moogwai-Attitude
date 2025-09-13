@@ -1,14 +1,14 @@
-# Always serve sitemap and robots directly
-/sitemap.xml       /sitemap.xml       200!
-/sitemap-:splat    /sitemap-:splat    200!
-/robots.txt        /robots.txt        200!
+# Serve test sitemap directly (priority)
+/sitemap-test.xml   /sitemap-test.xml   200!
+/sitemap.xml        /sitemap-test.xml   200!
+/robots.txt         /robots.txt         200!
 
-# Language redirects
-/fr                /?lang=fr          302
-/en                /?lang=en          302
+# Language redirects (optional)
+/fr                 /?lang=fr           302
+/en                 /?lang=en           302
 
-# Redirect www -> apex
+# www -> apex
 https://www.moogwai-attitude.com/*   https://moogwai-attitude.com/:splat   301
 
-# Catch-all SPA (must be last)
-/*                 /index.html        200
+# Catch-all SPA last
+/*                  /index.html         200
