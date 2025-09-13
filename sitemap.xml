@@ -1,12 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://moogwai-attitude.com/</loc>
-    <lastmod>2025-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://moogwai-attitude.com/mentions-legales</loc>
     <lastmod>2025-08-19</lastmod>
@@ -14,12 +7,5 @@
     <priority>0.3</priority>
   </url>
 
-  <!-- Ajoute d’autres pages ici
-  <url>
-    <loc>https://moogwai-attitude.com/ton-slug-de-page</loc>
-    <lastmod>YYYY-MM-DD</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  -->
-</urlset>
+  
+<url><loc>https://moogwai-attitude.com/?lang=fr</loc><lastmod>2025-08-19</lastmod><changefreq>weekly</changefreq><priority>1.0</priority><xhtml:link rel="alternate" hreflang="fr" href="https://moogwai-attitude.com/?lang=fr" /><xhtml:link rel="alternate" hreflang="en" href="https://moogwai-attitude.com/?lang=en" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moogwai-attitude.com/" /></url><url><loc>https://moogwai-attitude.com/?lang=en</loc><lastmod>2025-08-19</lastmod><changefreq>weekly</changefreq><priority>1.0</priority><xhtml:link rel="alternate" hreflang="en" href="https://moogwai-attitude.com/?lang=en" /><xhtml:link rel="alternate" hreflang="fr" href="https://moogwai-attitude.com/?lang=fr" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moogwai-attitude.com/" /></url><url><loc>https://moogwai-attitude.com/mentions-legales?lang=fr</loc><lastmod>2025-08-19</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="fr" href="https://moogwai-attitude.com/mentions-legales?lang=fr" /><xhtml:link rel="alternate" hreflang="en" href="https://moogwai-attitude.com/mentions-legales?lang=en" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moogwai-attitude.com/mentions-legales" /></url><url><loc>https://moogwai-attitude.com/mentions-legales?lang=en</loc><lastmod>2025-08-19</lastmod><changefreq>yearly</changefreq><priority>0.3</priority><xhtml:link rel="alternate" hreflang="en" href="https://moogwai-attitude.com/mentions-legales?lang=en" /><xhtml:link rel="alternate" hreflang="fr" href="https://moogwai-attitude.com/mentions-legales?lang=fr" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moogwai-attitude.com/mentions-legales" /></url></urlset>

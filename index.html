@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta name="deploy-version" content="2025-08-22T11:00">
-<script>window.__DEPLOY_VERSION__="2025-08-22T11:00";</script>
 
-<meta charset="utf-8"/>
+<html lang="fr">
+<head><script>
+(function(){
+  try{
+    var url=new URL(location.href);
+    var langParam=(url.searchParams.get('lang')||'fr').toLowerCase();
+    var lang=(langParam.indexOf('en')===0)?'en':'fr';
+    // Set <html lang="..">
+    document.documentElement.setAttribute('lang', lang);
+    // Canonical: reflect current language param
+    var canonical=document.querySelector('link#canonical');
+    if(!canonical){
+      canonical=document.createElement('link');
+      canonical.setAttribute('rel','canonical');
+      canonical.id='canonical';
+      document.head.appendChild(canonical);
+    }
+    var href = (lang==='en') ? 'https://moogwai-attitude.com/?lang=en' : 'https://moogwai-attitude.com/?lang=fr';
+    canonical.setAttribute('href', href);
+  }catch(e){}
+})();
+</script>
+<meta content="2025-08-22T11:00" name="deploy-version"/>
+<script>window.__DEPLOY_VERSION__="2025-08-22T11:00";</script>
+<meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title data-i18n="doc_title">Moogwai Attitude — Vitrine</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -15,7 +35,6 @@
 <meta content="index,follow" name="robots"/>
 <link href="/site.webmanifest?v=20250814" rel="manifest"/>
 <!-- deploy-version: 2025-08-22T11:00 -->
-
 <style>
   :root { --bg:#0e0e0f; --fg:#f5f5f7; --muted:#d0d3da; --card:#17171a; --accent:#f0b90b; --gold:#ffd44d; --gold-deep:#cda434; }
   html,body{background:var(--bg); color:var(--fg);} 
@@ -106,221 +125,212 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   html[data-lang='en'] .lang-en{display:inline}
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/>
-</head>
+</meta><link href="https://moogwai-attitude.com/?lang=fr" hreflang="fr" rel="alternate"/><link href="https://moogwai-attitude.com/?lang=en" hreflang="en" rel="alternate"/><link href="https://moogwai-attitude.com/" hreflang="x-default" rel="alternate"/><link href="https://moogwai-attitude.com/?lang=fr" id="canonical" rel="canonical"/></head>
 <body id="top">
 <nav class="navbar-dark navbar navbar-expand-lg sticky-top">
-  <div class="container">
-    <a class="navbar-brand brand d-flex align-items-center gap-2" href="#top">
-      <img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"/>
-    </a>
-    <button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-        <li class="nav-item"><a class="nav-link" id="nav_galerie" href="#galerie">Galerie</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav_actu" href="#actu">Actu</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav_infos" href="#infos">Infos</a></li>
-        <li class="nav-item"><a class="nav-link" id="nav_newsletter" href="#utilitaires">Newsletter</a></li>
-        <li class="nav-item d-flex align-items-center ms-lg-2">
-          <div class="btn-group btn-group-sm" role="group" aria-label="Lang">
-            <a class="btn btn-outline-light active" href="?lang=fr">FR</a>
-            <a class="btn btn-outline-light" href="?lang=en">EN</a>
-          </div>
-        </li>
-        <li class="nav-item"><a class="btn btn-accent ms-lg-2" id="nav_btn_shop" href="https://moogwai-attitude.tpopsite.com/" rel="noopener" target="_blank">Boutique Moogwai Attitude</a></li>
-        <li class="nav-item"><a class="btn btn-outline-light ms-lg-2" id="nav_btn_fund" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Cagnotte</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div aria-label="Présentation Moogwai Attitude" class="mw-top-intro" role="banner">
-  <div class="container">
-    <p id="top_intro"><strong class="mw-gold">Personnalisation premium</strong> : choisis ton visuel, tes couleurs et ton texte. <span class="mw-hide-sm">Chaque T‑shirt est préparé à la commande : prénom, date, clin d’œil, petites variantes possibles.</span></p>
-  </div>
+<div class="container">
+<a class="navbar-brand brand d-flex align-items-center gap-2" href="#top">
+<img alt="Moogwai Attitude" class="logo" decoding="async" fetchpriority="high" src="images/New-logo-small.png?v=20250815"/>
+</a>
+<button class="navbar-toggler" data-bs-target="#nav" data-bs-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+<li class="nav-item"><a class="nav-link" href="#galerie" id="nav_galerie">Galerie</a></li>
+<li class="nav-item"><a class="nav-link" href="#actu" id="nav_actu">Actu</a></li>
+<li class="nav-item"><a class="nav-link" href="#infos" id="nav_infos">Infos</a></li>
+<li class="nav-item"><a class="nav-link" href="#utilitaires" id="nav_newsletter">Newsletter</a></li>
+<li class="nav-item d-flex align-items-center ms-lg-2">
+<div aria-label="Lang" class="btn-group btn-group-sm" role="group">
+<a class="btn btn-outline-light active" href="?lang=fr">FR</a>
+<a class="btn btn-outline-light" href="?lang=en">EN</a>
 </div>
-
+</li>
+<li class="nav-item"><a class="btn btn-accent ms-lg-2" href="https://moogwai-attitude.tpopsite.com/" id="nav_btn_shop" rel="noopener" target="_blank">Boutique Moogwai Attitude</a></li>
+<li class="nav-item"><a class="btn btn-outline-light ms-lg-2" href="https://gofund.me/e69255ee" id="nav_btn_fund" rel="noopener" target="_blank">Cagnotte</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div aria-label="Présentation Moogwai Attitude" class="mw-top-intro" role="banner">
+<div class="container">
+<p id="top_intro"><strong class="mw-gold">La personnalisation, c’est un service à part : création sur T-shirt vierge, de A à Z, avec vous..</strong>
+<span class="mw-hide-sm">Contactez nous et créons ensemble un modèle qui vous ressemble: spoofle@moogwai-attitude.com</span></p>
+</div>
+</div>
 <header class="hero text-center">
-  <div class="container">
-    <img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"/>
-    <h1 id="hero_title">Ton T‑shirt, ton style, <span class="mw-gold">ta signature</span></h1>
-    <p class="lead" id="hero_sub"><strong>Personnalisation premium, à la demande</strong> – artwork, texte, options. Nom, date, clin d’œil : intégration propre et durable.</p>
-    <div class="mt-3">
-      <!-- Illustration du process de création (accessible & responsive) -->
-      <img class="hero-feature img-fluid" src="images/T2.jpg" alt="Processus de création — atelier" onerror="this.onerror=null;this.src='images/empire.png'"/>
-    </div>
-    <div class="d-flex gap-2 justify-content-center mt-2" id="cta_row">
-      <a class="btn btn-light" id="btn_models" href="#galerie">Voir les modèles</a>
-      <a class="btn btn-accent" id="btn_support" href="https://gofund.me/e69255ee" rel="noopener" target="_blank">Soutenir</a>
-      <a class="btn btn-outline-light" id="btn_shop" href="https://moogwai-attitude.tpopsite.com/" rel="noopener" target="_blank">Boutique Moogwai Attitude</a>
-    </div>
-  </div>
+<div class="container">
+<img alt="Moogwai Attitude" class="hero-logo" decoding="async" fetchpriority="high" src="images/New-logo.png?v=20250815"/>
+<h1 id="hero_title">Ton T‑shirt, ton style, <span class="mw-gold">ta signature</span></h1>
+<p class="lead" id="hero_sub"><strong>Personnalisation premium, à la demande</strong> – artwork, texte, nom, date, clin d’œil : pour une intégration propre et durable.</p>
+<div class="mt-3">
+<!-- Illustration du process de création (accessible & responsive) -->
+<img alt="Processus de création — atelier" class="hero-feature img-fluid" onerror="this.onerror=null;this.src='images/empire.png'" src="images/T2.jpg"/>
+</div>
+<div class="d-flex gap-2 justify-content-center mt-2" id="cta_row">
+<a class="btn btn-light" href="#galerie" id="btn_models">Voir les modèles</a>
+<a class="btn btn-accent" href="https://gofund.me/e69255ee" id="btn_support" rel="noopener" target="_blank">Soutenir</a>
+<a class="btn btn-outline-light" href="https://moogwai-attitude.tpopsite.com/" id="btn_shop" rel="noopener" target="_blank">Boutique Moogwai Attitude</a>
+</div>
+</div>
 </header>
-
 <section class="py-5" id="galerie">
-  <div class="container">
-    <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
-    <div class="row g-3 gallery">
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Night" class="img-fluid" src="images/night.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/name.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Minutes" class="img-fluid" src="images/minutes.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="Brothers" class="img-fluid" src="images/brothers.png"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids02.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids03.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids04.jpg"/></div>
-      <div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids05.jpg"/></div>
-    </div>
-  </div>
+<div class="container">
+<h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
+<div class="row g-3 gallery">
+<div class="col-6 col-md-4 col-lg-3"><img alt="Night" class="img-fluid" src="images/night.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Hallowed" class="img-fluid" src="images/name.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Minutes" class="img-fluid" src="images/minutes.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="Brothers" class="img-fluid" src="images/brothers.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids02.jpg"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids03.jpg"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids04.jpg"/></div>
+<div class="col-6 col-md-4 col-lg-3"><img alt="kids" class="img-fluid" src="images/T-shirts-kids05.jpg"/></div>
+</div>
+</div>
 </section>
-
 <!-- ACTU / JOURNAL -->
 <section class="py-4" id="actu">
-  <div class="container">
-    <h2 class="section-title mb-3 text-center" id="news_title">Actu</h2>
-    <div class="row g-3">
-      <div class="col-12">
-        <article class="post">
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <time class="meta" id="news_date" datetime="2025-08-21">21 août 2025</time>
-            <span class="badge-gold">
-              <span class="lang-fr">Du jour</span>
-              <span class="lang-en">Daily</span>
-            </span>
-          </div>
-          <h3 class="mb-1">
-            <span class="lang-fr">Mise à jour du site</span>
-            <span class="lang-en">Site update</span>
-          </h3>
-          <p class="mb-0">
-            <span class="lang-fr">Bienvenue sur la v2 du site, toujours en construction.</span>
-            <span class="lang-en">Welcome to the v2 of the site, still under construction.</span>
-          </p>
-        </article>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<h2 class="section-title mb-3 text-center" id="news_title">Actu</h2>
+<div class="row g-3">
+<div class="col-12">
+<article class="post">
+<div class="d-flex justify-content-between align-items-center mb-2">
+<time class="meta" datetime="2025-08-21" id="news_date">21 août 2025</time>
+<span class="badge-gold">
+<span class="lang-fr">Du jour</span>
+<span class="lang-en">Daily</span>
+</span>
+</div>
+<h3 class="mb-1">
+<span class="lang-fr">Mise à jour du site</span>
+<span class="lang-en">Site update</span>
+</h3>
+<p class="mb-0">
+<span class="lang-fr">Bienvenue sur la v2 du site, toujours en construction.</span>
+<span class="lang-en">Welcome to the v2 of the site, still under construction.</span>
+</p>
+</article>
+</div>
+</div>
+</div>
 </section>
-
 <!-- INFOS -->
 <section class="py-4" id="infos">
-  <div class="container">
-    <h2 class="section-title mb-3 text-center" id="infos_title">Infos</h2>
-    <div class="row g-3">
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="info-day">
-          <div class="info-head">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M12 2l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.9l1.1-6.5L2.6 8.8l6.5-.9L12 2z"/>
-            </svg>
-            <strong id="infos_quality">Qualité</strong>
-          </div>
-          <span id="infos_quality_text">Coton doux, encres durables, impression soignée.</span>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="info-day">
-          <div class="info-head">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M3 6h18v3H3V6zm0 9h18v3H3v-3zm2-6h2v2H5V9zm4 0h2v2H9V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z"/>
-            </svg>
-            <strong id="infos_sizes">Tailles</strong>
-          </div>
-          <span id="infos_sizes_text">Du kids au 3XL, coupe unisexe.</span>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="info-day">
-          <div class="info-head">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M3 7h11v6h5l2 3v3h-2a2 2 0 11-4 0H9a2 2 0 11-4 0H3V7zm13 6V9h3l2 4h-5z"/>
-            </svg>
-            <strong id="infos_ship">Livraison</strong>
-          </div>
-          <span id="infos_ship_text">Expédition rapide, suivi fourni.</span>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-3">
-        <div class="info-day">
-          <div class="info-head">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M12 5V2L7 7l5 5V9a5 5 0 110 10h-1v2h1a7 7 0 100-14z"/>
-            </svg>
-            <strong id="infos_returns">Retours</strong>
-          </div>
-          <span id="infos_returns_text">Échanges/retours sous 14 jours.</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<h2 class="section-title mb-3 text-center" id="infos_title">Infos</h2>
+<div class="row g-3">
+<div class="col-12 col-md-6 col-lg-3">
+<div class="info-day">
+<div class="info-head">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24">
+<path d="M12 2l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.8 6.2 20.9l1.1-6.5L2.6 8.8l6.5-.9L12 2z" fill="currentColor"></path>
+</svg>
+<strong id="infos_quality">Qualité</strong>
+</div>
+<span id="infos_quality_text">Coton doux, encres durables, impression soignée.</span>
+</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3">
+<div class="info-day">
+<div class="info-head">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24">
+<path d="M3 6h18v3H3V6zm0 9h18v3H3v-3zm2-6h2v2H5V9zm4 0h2v2H9V9zm4 0h2v2h-2V9zm4 0h2v2h-2V9z" fill="currentColor"></path>
+</svg>
+<strong id="infos_sizes">Tailles</strong>
+</div>
+<span id="infos_sizes_text">Du kids au 3XL, coupe unisexe.</span>
+</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3">
+<div class="info-day">
+<div class="info-head">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24">
+<path d="M3 7h11v6h5l2 3v3h-2a2 2 0 11-4 0H9a2 2 0 11-4 0H3V7zm13 6V9h3l2 4h-5z" fill="currentColor"></path>
+</svg>
+<strong id="infos_ship">Livraison</strong>
+</div>
+<span id="infos_ship_text">Expédition rapide, suivi fourni.</span>
+</div>
+</div>
+<div class="col-12 col-md-6 col-lg-3">
+<div class="info-day">
+<div class="info-head">
+<svg aria-hidden="true" class="icon" viewbox="0 0 24 24">
+<path d="M12 5V2L7 7l5 5V9a5 5 0 110 10h-1v2h1a7 7 0 100-14z" fill="currentColor"></path>
+</svg>
+<strong id="infos_returns">Retours</strong>
+</div>
+<span id="infos_returns_text">Échanges/retours sous 14 jours.</span>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- UTILITAIRES (Newsletter + Cagnotte) -->
 <section class="py-4" id="utilitaires">
-  <div class="container">
-    <div class="utility">
-      <div class="row g-3">
-        <!-- Newsletter -->
-        <div class="col-12 col-md-6">
-          <div class="panel h-100">
-            <h3 id="newsletter_title">Newsletter</h3>
-            <p id="newsletter_text">Des nouveautés & offres privées. Désinscription en un clic.</p>
-            <form action="/.netlify/functions/newsletter-signup" class="d-flex flex-column gap-2" method="POST" novalidate target="_self">
-              <label class="visually-hidden" id="nl_label" for="nlEmail">Votre e-mail</label>
-              <input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required type="email"/>
-              <div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:6px auto 10px; display:block;"></div>
-              <button class="btn btn-accent newsletter-btn" id="newsletter_cta" type="submit">S’inscrire</button>
-              <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
-            </form>
-          </div>
-        </div>
-        <!-- Cagnotte -->
-        <div class="col-12 col-md-6">
-          <div class="panel h-100">
-            <h3 id="fund_title">Cagnotte</h3>
-            <div class="gfm-embed" data-url="https://www.gofundme.com/f/moogwai-attitude-des-tshirts-personnalisables/widget/medium?sharesheet=undefined&attribution_id=sl:51d39964-d61e-437e-b6e2-6e77d0bf5759"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="utility">
+<div class="row g-3">
+<!-- Newsletter -->
+<div class="col-12 col-md-6">
+<div class="panel h-100">
+<h3 id="newsletter_title">Newsletter</h3>
+<p id="newsletter_text">Des nouveautés &amp; offres privées. Désinscription en un clic.</p>
+<form action="/.netlify/functions/newsletter-signup" class="d-flex flex-column gap-2" method="POST" novalidate="" target="_self">
+<label class="visually-hidden" for="nlEmail" id="nl_label">Votre e-mail</label>
+<input class="form-control newsletter-input" id="nlEmail" name="email" placeholder="votre@email.com" required="" type="email"/>
+<div class="g-recaptcha" data-sitekey="6LfsjKQrAAAAAFYCAev7aoOvo1cUMOLmrIrRH2Wf" style="margin:6px auto 10px; display:block;"></div>
+<button class="btn btn-accent newsletter-btn" id="newsletter_cta" type="submit">S’inscrire</button>
+<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
+</form>
+</div>
+</div>
+<!-- Cagnotte -->
+<div class="col-12 col-md-6">
+<div class="panel h-100">
+<h3 id="fund_title">Cagnotte</h3>
+<div class="gfm-embed" data-url="https://www.gofundme.com/f/moogwai-attitude-des-tshirts-personnalisables/widget/medium?sharesheet=undefined&amp;attribution_id=sl:51d39964-d61e-437e-b6e2-6e77d0bf5759"></div><script defer="" src="https://www.gofundme.com/static/js/embed.js"></script>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- CONTACT (bas de page uniquement) -->
 <section class="py-5" id="contact">
-  <div class="container">
-    <h2 class="section-title mb-3 text-center" id="contact_page_title">Contact</h2>
-    <div class="mx-auto" style="max-width:720px">
-      <p class="lead" id="contact_lead" style="color:var(--muted)">Une question, une personnalisation ou un projet ? Écrivez‑nous.</p>
-      <form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
-        <div class="row g-3">
-          <div class="col-md-6"><input class="form-control" id="contact_name" name="name" placeholder="Votre nom" required/></div>
-          <div class="col-md-6"><input class="form-control" id="contact_email" name="email" placeholder="Votre email" required type="email"/></div>
-          <div class="col-12"><textarea class="form-control" id="contact_message" name="message" placeholder="Votre message" required rows="5"></textarea></div>
-        </div>
-        <div class="d-flex justify-content-center gap-2 mt-3">
-          <button class="btn btn-accent" id="contact_send" type="submit">Envoyer</button>
-        </div>
-        <div class="text-center mt-3 contact-badge-wrap">
-          <img src="images/logo_ban.jpg" alt="Moogwai Attitude — Rock, Metal & Custom premium wear" class="contact-badge"/>
-        </div>
-        <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
-      </form>
-    </div>
-  </div>
+<div class="container">
+<h2 class="section-title mb-3 text-center" id="contact_page_title">Contact</h2>
+<div class="mx-auto" style="max-width:720px">
+<p class="lead" id="contact_lead" style="color:var(--muted)">Une question, une personnalisation ou un projet ? Écrivez‑nous.</p>
+<form action="/merci.html" class="mb-4" data-netlify="true" id="contactForm" method="POST" name="contact" netlify-honeypot="website"><input name="form-name" type="hidden" value="contact"/>
+<div class="row g-3">
+<div class="col-md-6"><input class="form-control" id="contact_name" name="name" placeholder="Votre nom" required=""/></div>
+<div class="col-md-6"><input class="form-control" id="contact_email" name="email" placeholder="Votre email" required="" type="email"/></div>
+<div class="col-12"><textarea class="form-control" id="contact_message" name="message" placeholder="Votre message" required="" rows="5"></textarea></div>
+</div>
+<div class="d-flex justify-content-center gap-2 mt-3">
+<button class="btn btn-accent" id="contact_send" type="submit">Envoyer</button>
+</div>
+<div class="text-center mt-3 contact-badge-wrap">
+<img alt="Moogwai Attitude — Rock, Metal &amp; Custom premium wear" class="contact-badge" src="images/logo_ban.jpg"/>
+</div>
+<div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
+</form>
+</div>
+</div>
 </section>
-
 <footer class="py-4 text-center" style="color:var(--muted)">
-  <div class="container small">© 2025 Moogwai Attitude • <a class="link-light" id="footer_legal" href="mentions-legales.html">Mentions Légales</a> • <a class="link-light" href="#top"><span id="footer_back">Retour en haut</span></a></div>
+<div class="container small">© 2025 Moogwai Attitude • <a class="link-light" href="mentions-legales.html" id="footer_legal">Mentions Légales</a> • <a class="link-light" href="#top"><span id="footer_back">Retour en haut</span></a></div>
 </footer>
-
 <!-- Lightbox Modal (optionnel) -->
 <div class="modal fade" id="lightbox" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
-      <div class="modal-body p-0"><img class="img-fluid w-100" id="lightboxImg"/></div>
-    </div>
-  </div>
+<div class="modal-dialog modal-dialog-centered modal-xl">
+<div class="modal-content bg-dark border-0"><button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
+<div class="modal-body p-0"><img class="img-fluid w-100" id="lightboxImg"/></div>
 </div>
-
+</div>
+</div>
 <script>
 // i18n FR/EN — nav, hero, sections, formulaires, placeholders, footer, alts + persistance
 (function(){
@@ -416,7 +426,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script async defer src="https://www.google.com/recaptcha/api.js"></script>
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
 <script>
 // i18n nav + date patch
 (function(){
