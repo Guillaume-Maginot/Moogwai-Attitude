@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moogwai-attitude.com/sitemap-test.xml
+Sitemap: https://moogwai-attitude.com/sitemap.xml

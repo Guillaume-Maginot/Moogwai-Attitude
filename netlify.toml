@@ -1,99 +1,16 @@
-[functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-  external_node_modules = []
+# Kill-switch: disable Netlify post-processing entirely
+[build.processing.css]
+  bundle = false
+  minify = false
 
-[[redirects]]
-  from = "/fr"
-  to = "/?lang=fr"
-  status = 302
-  force = true
+[build.processing.js]
+  bundle = false
+  minify = false
 
+[build.processing.images]
+  compress = false
 
-[[redirects]]
-  from = "/en"
-  to = "/?lang=en"
-  status = 302
-  force = true
-
-
-[[redirects]]
-  from = "https://www.moogwai-attitude.com/*"
-  to = "https://moogwai-attitude.com/:splat"
-  status = 301
-  force = true
-
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-
-[[headers]]
-  for = "/*.(png|jpg|jpeg|gif|svg|webp)"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-
-
-# --- Hardening for XML/TXT files (must be BEFORE any catch-all rules) ---
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/sitemap.xml"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/sitemap-:any.xml"
-  to = "/sitemap-:any.xml"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/robots.txt"
-  to = "/robots.txt"
-  status = 200
-  force = true
-
-# (Optional) If your site is a SPA, place this catch-all AT THE VERY END of the file:
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
-
-# Headers to ensure correct content types
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/sitemap-:any.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
-    Cache-Control = "public, max-age=3600"
-
-[[headers]]
-  for = "/robots.txt"
-  [headers.values]
-    Content-Type = "text/plain; charset=utf-8"
-    Cache-Control = "public, max-age=3600"
-
-# Fallback for any other XMLs (feeds, etc.)
-[[headers]]
-  for = "/*.xml"
-  [headers.values]
-    Content-Type = "application/xml; charset=utf-8"
+[build.processing.html]
+  pretty_urls = false
+  # Some stacks expose "minify" here; if unsupported it's ignored.
+  minify = false
