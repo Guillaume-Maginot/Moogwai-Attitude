@@ -1,15 +1,14 @@
-# Toujours servir le sitemap et robots.txt en direct
+# Always serve sitemap and robots directly
 /sitemap.xml       /sitemap.xml       200!
 /sitemap-:splat    /sitemap-:splat    200!
 /robots.txt        /robots.txt        200!
 
-# Redirections linguistiques
+# Language redirects
 /fr                /?lang=fr          302
 /en                /?lang=en          302
 
-# Redirection www -> apex
+# Redirect www -> apex
 https://www.moogwai-attitude.com/*   https://moogwai-attitude.com/:splat   301
 
-# Catch-all SPA (laisser en dernier !)
+# Catch-all SPA (must be last)
 /*                 /index.html        200
-
