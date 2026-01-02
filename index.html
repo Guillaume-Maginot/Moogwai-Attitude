@@ -99,6 +99,157 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .hero-diagram text{ fill: var(--ink); font-weight:800; letter-spacing:.2px; }
   .hero-diagram .pipe{ stroke: rgba(255,212,77,.8); stroke-width:4; fill:none; stroke-linecap:round; filter: drop-shadow(0 2px 10px rgba(255,212,77,.25)); }
   .hero-diagram .node{ filter: drop-shadow(0 6px 22px rgba(255,212,77,.18)); }
+  /* Galerie – Hover produit */
+.gallery-link{
+  position:relative;
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.gallery-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(14,14,15,.55);
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  font-size:.95rem;
+  opacity:0;
+  transition:opacity .25s ease, backdrop-filter .25s ease;
+  backdrop-filter: blur(2px);
+}
+
+.gallery-link:hover .gallery-overlay{
+  opacity:1;
+}
+
+@media (hover:none){
+  .gallery-overlay{
+    display:none;
+  }
+}
+/* Galerie – Hover produit */
+.gallery-link{
+  position:relative;
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.gallery-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(14,14,15,.55);
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  font-size:.95rem;
+  opacity:0;
+  transition:opacity .25s ease, backdrop-filter .25s ease;
+  backdrop-filter: blur(2px);
+}
+
+.gallery-link:hover .gallery-overlay{
+  opacity:1;
+}
+
+@media (hover:none){
+  .gallery-overlay{
+    display:none;
+  }
+}
+/* Galerie – Hover produit (doré animé) */
+.gallery-link{
+  position:relative;
+  display:block;
+  border-radius:14px;
+  overflow:hidden;
+}
+
+/* voile + texte */
+.gallery-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(14,14,15,.55);
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:.4px;
+  text-transform:uppercase;
+  font-size:.95rem;
+  opacity:0;
+  transition:opacity .25s ease;
+  z-index:2;
+}
+
+/* reflet doré animé */
+.gallery-link::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,212,77,0) 35%,
+    rgba(255,212,77,.35) 50%,
+    rgba(255,212,77,0) 65%,
+    transparent 100%
+  );
+  transform:translateX(-60%) rotate(0deg);
+  opacity:0;
+  transition:transform .6s ease, opacity .25s ease;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* petit liseré doré doux */
+.gallery-link::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:14px;
+  border:1px solid rgba(255,212,77,.0);
+  box-shadow:0 0 0 1px rgba(255,212,77,.0) inset, 0 0 0 rgba(255,212,77,0);
+  transition:border-color .25s ease, box-shadow .25s ease;
+  z-index:3;
+  pointer-events:none;
+}
+
+/* hover : apparition + sweep */
+.gallery-link:hover .gallery-overlay{
+  opacity:1;
+}
+
+.gallery-link:hover::before{
+  opacity:1;
+  transform:translateX(60%) rotate(0deg);
+}
+
+.gallery-link:hover::after{
+  border-color:rgba(255,212,77,.28);
+  box-shadow:0 0 0 1px rgba(255,212,77,.14) inset, 0 14px 30px rgba(255,212,77,.10);
+}
+
+/* Sur mobile/tactile : pas d'hover (évite l'effet collant) */
+@media (hover:none){
+  .gallery-overlay{ display:none; }
+  .gallery-link::before,
+  .gallery-link::after{ display:none; }
+}
+
+
+
   /* Bilingue Actu : affichage FR/EN dans le même article */
   .lang-en{display:none}
   html[data-lang='en'] .lang-fr{display:none}
@@ -158,16 +309,20 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 <div class="container">
 <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
 <div class="row g-3 gallery">
-<div class="col-6 col-md-4 col-lg-3"><img alt="Limited01" class="img-fluid" src="images/Ph_Limited01.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Sorcerer" class="img-fluid" src="images/Ph_Sorcerer.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Silence" class="img-fluid" src="images/Ph_Silence.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Histoire" class="img-fluid" src="images/Ph_Alexander.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Marin" class="img-fluid" src="images/Ph_Marin.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="BeastOfLight" class="img-fluid" src="images/Ph_BeastOfLight.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Clairvoyant" class="img-fluid" src="images/Ph_clairvoyant.png"/></div>
-<div class="col-6 col-md-4 col-lg-3"><img alt="Nirmata" class="img-fluid" src="images/Ph_Nirmata.png"/></div>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432507216/sweat-a-capuche-unisexe-oversized" class="gallery-link"><img alt="Limited01" class="img-fluid" src="images/Ph_Limited01.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4379316143/moogwai-halloween-sorcerer" class="gallery-link"><img alt="Sorcerer" class="img-fluid" src="images/Ph_Sorcerer.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432500283/t-shirt-unisexe-epais-rock-qui-impose-le" class="gallery-link"><img alt="Silence" class="img-fluid" src="images/Ph_Silence.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432505616/t-shirt-unisexe-epais-rock-historique" class="gallery-link"><img alt="Histoire" class="img-fluid" src="images/Ph_Alexander.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432512848/t-shirt-unisexe-epais-marin-solitaire-au" class="gallery-link"><img alt="Marin" class="img-fluid" src="images/Ph_Marin.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501487/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="BeastOfLight" class="img-fluid" src="images/Ph_BeastOfLight.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432507024/t-shirt-unisexe-epais-inspire-de-the" class="gallery-link"><img alt="Clairvoyant" class="img-fluid" src="images/Ph_clairvoyant.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501871/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="Nirmata" class="img-fluid" src="images/Ph_Nirmata.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
 </div>
 </div>
+<p class="text-center mt-3" style="color:var(--muted); font-weight:600;"><a href="https://www.etsy.com/shop/MOOGWAIATTITUDE" class="mw-gold">
+  Et bien d'autres modèles sur la boutique !
+</p></a>
+
 </section>
 <!-- ACTU / JOURNAL -->
 <section class="py-4" id="actu">
