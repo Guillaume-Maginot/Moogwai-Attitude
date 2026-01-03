@@ -1,12 +1,15 @@
-# www -> sans www + force https
+# Force HTTPS + supprime www (1 seule redirection propre)
 https://www.moogwai-attitude.com/*  https://moogwai-attitude.com/:splat  301!
 http://www.moogwai-attitude.com/*   https://moogwai-attitude.com/:splat  301!
 http://moogwai-attitude.com/*       https://moogwai-attitude.com/:splat  301!
 
-# Laisse passer bots
-/robots.txt   /robots.txt   200
-/sitemap.xml  /sitemap.xml  200
+# Laisse passer les fichiers "bots" et pages statiques
+/robots.txt              /robots.txt              200
+/sitemap.xml             /sitemap.xml             200
+/og/*                    /og/:splat               200
+/mentions-legales.html   /mentions-legales.html   200
+/merci.html              /merci.html              200
 
 # SPA fallback (TOUJOURS en dernier)
- /*  /index.html  200
+/*  /index.html  200
 
