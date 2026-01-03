@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>404 — Moogwai Attitude</title>
+<meta content="noindex" name="robots"/>
+<style>
+    :root{
+      --bg:#0b0b0b;
+      --fg:#f5f5f5;
+      --gold:#d4af37;
+      --muted:#bfbfbf;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#111,#0b0b0b);
+      color:var(--fg);
+      font:16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display:grid; place-items:center;
+    }
+    .wrap{
+      text-align:center;
+      padding:clamp(1.25rem,3vw,2rem);
+      max-width:900px;
+      width:100%;
+    }
+    .circle{
+      width: clamp(160px, 28vw, 320px);
+      aspect-ratio:1/1;
+      border-radius:50%;
+      overflow:hidden;
+      margin-inline:auto;
+      border:2px solid var(--gold);
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+    }
+    .circle img{
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block;
+      filter:saturate(1.05) contrast(1.02);
+    }
+    .code{
+      font-size: clamp(3rem, 12vw, 8rem);
+      margin:.75rem 0 .25rem;
+      letter-spacing:.04em;
+      font-weight:900;
+      color:var(--gold);
+      text-shadow:0 0 18px rgba(212,175,55,.25);
+    }
+    h1{
+      margin:.1rem 0 .5rem;
+      font-size: clamp(1.15rem, 3.2vw, 1.6rem);
+      color:var(--fg);
+      font-weight:700;
+    }
+    p.muted{ color:var(--muted); margin:.25rem 0 .25rem; }
+    p.punch{ margin:.1rem 0 1rem; font-weight:700; }
+    .gold{ color:var(--gold); }
+    .actions{ display:flex; gap:.75rem; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-block;
+      padding:.75rem 1.05rem;
+      border-radius:12px;
+      border:1px solid rgba(212,175,55,.35);
+      color:#f7f0da; text-decoration:none; font-weight:700; letter-spacing:.2px;
+      background:linear-gradient(180deg,#2a2412,#1b1609);
+      box-shadow:0 6px 18px rgba(212,175,55,.22);
+    }
+    .btn:hover{ border-color:var(--gold); }
+    .link{ color:var(--gold); text-underline-offset:2px; }
+    @media (prefers-reduced-motion: no-preference){
+      .circle{ transform:translateY(0); animation: float 4.5s ease-in-out infinite; }
+      @keyframes float{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } }
+    }
+  </style>
+</head>
+<body>
+<main aria-labelledby="title404" class="wrap" role="main">
+<figure aria-label="Mascotte Moogwai triste sous la pluie" class="circle">
+<img alt="Mascotte Moogwai triste sous la pluie" src="/images/Cry-moog.jpg"/>
+</figure>
+<div class="code">404</div>
+<h1 id="title404">Oups… cette page s’est évaporée.</h1>
+<p class="muted">Pas grave : retour à l’atelier pour retrouver du sens et du style.</p>
+<p class="punch">On a perdu la piste… mais <span class="gold">jamais le style</span>.</p>
+<div class="actions">
+<a class="btn" href="/">Revenir à l’accueil</a>
+<a class="link" href="/#contact">Contacter Moogwai Attitude</a>
+</div>
+</main>
+</body>
+</html>
