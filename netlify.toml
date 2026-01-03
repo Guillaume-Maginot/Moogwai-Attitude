@@ -1,3 +1,17 @@
+[build]
+  publish = "."
+  command = ""
+
 [functions]
   directory = "netlify/functions"
-  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "https://www.moogwai-attitude.com/*"
+  to = "https://moogwai-attitude.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
