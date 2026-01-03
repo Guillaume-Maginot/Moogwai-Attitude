@@ -1,15 +1,12 @@
-# Protect sitemap and robots
-/sitemap.xml       /sitemap.xml       200!
-/robots.txt        /robots.txt        200!
+# www -> sans www + force https
+https://www.moogwai-attitude.com/*  https://moogwai-attitude.com/:splat  301!
+http://www.moogwai-attitude.com/*   https://moogwai-attitude.com/:splat  301!
+http://moogwai-attitude.com/*       https://moogwai-attitude.com/:splat  301!
 
-# Strip language parameters to canonical FR versions
-/?lang=fr          /                   301!
-/?lang=en          /                   301!
-/mentions-legales?lang=fr   /mentions-legales.html   301!
-/mentions-legales?lang=en   /mentions-legales.html   301!
+# Laisse passer bots
+/robots.txt   /robots.txt   200
+/sitemap.xml  /sitemap.xml  200
 
-# Generic rule: if "lang" query exists on any path, drop it and keep the same path
-/*                  /:splat             301!  lang=:lang
+# SPA fallback (TOUJOURS en dernier)
+ /*  /index.html  200
 
-# SPA catch-all (keep last if you use a SPA)
-/*                 /index.html         200
