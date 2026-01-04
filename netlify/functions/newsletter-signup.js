@@ -66,7 +66,7 @@ export async function handler(event) {
     return { statusCode: 500, body: `Erreur serveur : ${err.message}` };
   }
 }
-=======
+
 // /netlify/functions/newsletter-signup.js
 export async function handler(event) {
   console.log("Moogwai Function is running (single-endpoint) 🦉");
@@ -144,4 +144,4 @@ export async function handler(event) {
     return { statusCode: 500, body: `Erreur serveur: ${err.message}` };
   }
 }
->>>>>>> 2e754ee (Fonction newsletter + config Netlify)
+
