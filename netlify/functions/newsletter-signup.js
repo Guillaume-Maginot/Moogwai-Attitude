@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 export async function handler(event) {
   try {
     if (event.httpMethod !== "POST") {
