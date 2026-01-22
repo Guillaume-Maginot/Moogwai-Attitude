@@ -545,7 +545,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
     </div>
 
     <div class="text-center mt-3">
-      <a class="btn btn-outline-light" href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">
+      <a class="btn btn-outline-light" href="https://www.youtube.com/@spoofle77" target="_blank" rel="noopener">
         Voir la chaîne YouTube
       </a>
     </div>
@@ -712,7 +712,7 @@ T-shirt épais (170 - 180 g/m2) .</span>
     <div class="modal-content">
       <div class="modal-body position-relative">
         <button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
-        <iframe id="filmFrame" title="Moogwai Attitude — Film" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="filmFrame" title="Moogwai Attitude — Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -787,13 +787,59 @@ T-shirt épais (170 - 180 g/m2) .</span>
   const frame = document.getElementById('filmFrame');
   if(!modalEl || !frame) return;
 
-  // Au clic : on charge la vidéo demandée
+  function extractYouTubeId(input){
+    if(!input) return null;
+    const s = String(input).trim();
+
+    // Already an embed URL
+    let m = s.match(/youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{6,})/i);
+    if(m) return m[1];
+
+    // Shorts URL
+    m = s.match(/youtube\.com\/shorts\/([A-Za-z0-9_-]{6,})/i);
+    if(m) return m[1];
+
+    // youtu.be short link
+    m = s.match(/youtu\.be\/([A-Za-z0-9_-]{6,})/i);
+    if(m) return m[1];
+
+    // watch?v=
+    try{
+      const u = new URL(s);
+      const v = u.searchParams.get('v');
+      if(v) return v;
+    }catch(e){}
+
+    // Raw id
+    if(/^[A-Za-z0-9_-]{6,}$/.test(s)) return s;
+
+    return null;
+  }
+
+  function buildEmbedSrc(id){
+    const params = new URLSearchParams({
+      autoplay: '1',
+      rel: '0',
+      modestbranding: '1',
+      playsinline: '1'
+    });
+    return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
+  }
+
+  // Au clic : on charge la vidéo demandée (data-video peut être un lien Shorts / youtu.be / watch?v=)
   document.addEventListener('click', (e)=>{
     const a = e.target.closest('[data-bs-target="#filmModal"][data-video]');
     if(!a) return;
     e.preventDefault();
-    const url = a.getAttribute('data-video');
-    if(url) frame.src = url;
+
+    const raw = a.getAttribute('data-video');
+    const id = extractYouTubeId(raw);
+    if(!id){
+      console.warn('Impossible de lire cette vidéo (ID introuvable):', raw);
+      frame.src = '';
+      return;
+    }
+    frame.src = buildEmbedSrc(id);
   });
 
   // À la fermeture : on stoppe la lecture
