@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="canonical" href="https://moogwai-attitude.com/">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="canonical" href="https://moogwai-attitude.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Moogwai Attitude">
@@ -339,6 +340,43 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   /* Newsletter centrée */
   .mw-newsletter-wrap{ max-width: 560px; }
 
+
+  /* Films / Spots (YouTube) */
+  .mw-films-lead{ color:var(--muted); font-weight:600; max-width:72ch; margin:0 auto 1.25rem; text-wrap:pretty; }
+  .mw-film-card{
+    display:block;
+    text-decoration:none;
+    color:var(--fg);
+    background:linear-gradient(180deg,#121216,#0f0f14);
+    border:1px solid rgba(205,164,52,.22);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 0 0 1px rgba(205,164,52,.12) inset, 0 18px 42px rgba(205,164,52,.10);
+  }
+  .mw-film-thumb{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#0b0b0d center/cover no-repeat;
+  }
+  .mw-film-thumb::after{
+    content:"▶";
+    position:absolute;
+    inset:auto auto 12px 12px;
+    width:44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:999px;
+    background:rgba(15,15,18,.72);
+    border:1px solid rgba(205,164,52,.45);
+    color:var(--gold);
+    font-weight:900;
+    backdrop-filter: blur(6px);
+    box-shadow:0 10px 26px rgba(0,0,0,.25);
+  }
+  .mw-film-meta{ padding:.7rem .85rem .85rem; display:flex; justify-content:space-between; align-items:center; gap:.75rem; }
+  .mw-film-title{ font-weight:900; letter-spacing:.2px; margin:0; }
+  .mw-film-card:hover{ border-color:rgba(255,212,77,.32); box-shadow:0 0 0 1px rgba(255,212,77,.16) inset, 0 18px 52px rgba(255,212,77,.12); transform:translateY(-1px); transition:transform .18s ease; }
+
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 </head>
@@ -429,6 +467,43 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 </div>
 </div>
 </header>
+
+<section class="py-5" id="films">
+  <div class="container">
+    <h2 class="section-title mb-2 text-center">Moogwai Attitude — en images</h2>
+    <p class="mw-films-lead text-center">Trois spots ciné : branding fort, ambiance premium, et l’Attitude en mouvement.</p>
+    <div class="row g-3 justify-content-center">
+      <div class="col-12 col-md-4">
+        <a class="mw-film-card" href="#" data-yt="https://youtube.com/shorts/pLryqSVhylY?feature=share" aria-label="Voir le spot 1">
+          <div class="mw-film-thumb" data-yt-thumb></div>
+          <div class="mw-film-meta">
+            <span class="mw-film-title">Spot 1</span>
+            <span class="mw-pill">Play</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a class="mw-film-card" href="#" data-yt="https://youtu.be/saI7Sj8PJXM" aria-label="Voir le spot 2">
+          <div class="mw-film-thumb" data-yt-thumb></div>
+          <div class="mw-film-meta">
+            <span class="mw-film-title">Spot 2</span>
+            <span class="mw-pill">Play</span>
+          </div>
+        </a>
+      </div>
+      <div class="col-12 col-md-4">
+        <a class="mw-film-card" href="#" data-yt="https://youtu.be/B9MfD-DZR9w" aria-label="Voir le spot 3">
+          <div class="mw-film-thumb" data-yt-thumb></div>
+          <div class="mw-film-meta">
+            <span class="mw-film-title">Spot 3</span>
+            <span class="mw-pill">Play</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="py-5" id="galerie">
 <div class="container">
 <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
@@ -591,6 +666,27 @@ T-shirt épais (170 - 180 g/m2) .</span>
 </div>
 </div>
 
+
+<!-- Films Modal (YouTube) -->
+<div class="modal fade" id="filmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content" style="background:transparent !important; border:0 !important; box-shadow:none !important; position:relative;">
+      <button aria-label="Fermer" class="btn btn-close-mw" data-bs-dismiss="modal" type="button">✕</button>
+      <div class="modal-body p-0" style="display:flex; justify-content:center; align-items:center; background:rgba(0,0,0,.85); border-radius:12px;">
+        <div class="ratio ratio-16x9 w-100">
+          <iframe id="filmFrame"
+            src=""
+            title="Moogwai Attitude — Film"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
 <script>
@@ -640,6 +736,75 @@ T-shirt épais (170 - 180 g/m2) .</span>
   let auto = setInterval(()=>scrollByCard(1), 4500);
   const stop = ()=>{ if(auto){ clearInterval(auto); auto=null; } };
   ['pointerdown','touchstart','wheel','keydown'].forEach(ev=>track.addEventListener(ev, stop, {passive:true}));
+})();
+</script>
+
+
+<script>
+(function(){
+  // Extract YouTube ID from shorts / youtu.be / watch?v= / embed
+  function ytIdFrom(url){
+    if(!url) return null;
+    try{
+      const u = new URL(url, location.origin);
+      // youtu.be/<id>
+      if(u.hostname.includes('youtu.be')){
+        const id = u.pathname.split('/').filter(Boolean)[0];
+        return id || null;
+      }
+      // youtube.com/shorts/<id>
+      const parts = u.pathname.split('/').filter(Boolean);
+      const shortsIdx = parts.indexOf('shorts');
+      if(shortsIdx !== -1 && parts[shortsIdx+1]) return parts[shortsIdx+1];
+      // youtube.com/embed/<id>
+      const embedIdx = parts.indexOf('embed');
+      if(embedIdx !== -1 && parts[embedIdx+1]) return parts[embedIdx+1];
+      // youtube.com/watch?v=<id>
+      const v = u.searchParams.get('v');
+      if(v) return v;
+      // fallback regex
+      const m = String(url).match(/(?:youtu\.be\/|\/shorts\/|\/embed\/|v=)([A-Za-z0-9_-]{6,})/);
+      return m ? m[1] : null;
+    }catch(e){
+      const m = String(url).match(/(?:youtu\.be\/|\/shorts\/|\/embed\/|v=)([A-Za-z0-9_-]{6,})/);
+      return m ? m[1] : null;
+    }
+  }
+
+  // Set thumbnails automatically
+  document.querySelectorAll('[data-yt-thumb]').forEach(function(el){
+    const a = el.closest('[data-yt]');
+    const id = a ? ytIdFrom(a.getAttribute('data-yt')) : null;
+    if(id){
+      el.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + id + '/hqdefault.jpg)';
+    }
+  });
+
+  const modalEl = document.getElementById('filmModal');
+  const frame = document.getElementById('filmFrame');
+  if(!modalEl || !frame) return;
+
+  const modal = new bootstrap.Modal(modalEl, { backdrop:true, keyboard:true });
+
+  function openFilm(url){
+    const id = ytIdFrom(url);
+    if(!id) return;
+    // autoplay only after user click
+    const src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    frame.setAttribute('src', src);
+    modal.show();
+  }
+
+  document.querySelectorAll('[data-yt]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      openFilm(a.getAttribute('data-yt'));
+    });
+  });
+
+  modalEl.addEventListener('hidden.bs.modal', function(){
+    frame.setAttribute('src','');
+  });
 })();
 </script>
 
