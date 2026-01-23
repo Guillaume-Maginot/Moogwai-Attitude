@@ -377,6 +377,20 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .mw-film-title{ font-weight:900; letter-spacing:.2px; margin:0; }
   .mw-film-card:hover{ border-color:rgba(255,212,77,.32); box-shadow:0 0 0 1px rgba(255,212,77,.16) inset, 0 18px 52px rgba(255,212,77,.12); transform:translateY(-1px); transition:transform .18s ease; }
 
+
+  /* Film modal : assombrir davantage la page pendant la lecture */
+  body.mw-film-open .modal-backdrop.show{
+    opacity: .92 !important;
+  }
+  body.mw-film-open{
+    overflow: hidden;
+  }
+  body.mw-film-open .modal-backdrop.show{
+    backdrop-filter: blur(2px);
+  }
+  /* Assure que le modal vidéo reste au-dessus */
+  #filmModal{ z-index: 1060; }
+
 </style>
 <link crossorigin="True" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 </head>
@@ -422,28 +436,28 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
     <button class="mw-navbtn prev" type="button" aria-label="Précédent">‹</button>
     <div class="mw-track" id="mwNewTrack">
       <a class="mw-card" href="https://moogwaiattitude.etsy.com/fr/listing/4440574194/t-shirt-unisexe-epais-blues-sur-planete" target="_blank" rel="noopener">
-        <img src="images/Ph_Mars.png" alt="Blues sur Planète Rouge">
+        <img src="images/Ph_Mars.png" alt="Blues sur Planète Rouge" loading="lazy" decoding="async">
         <div class="mw-card-body">
           <p class="mw-card-title">Blues sur Planète Rouge</p>
           <span class="mw-pill">Voir</span>
         </div>
       </a>
       <a class="mw-card" href="https://moogwaiattitude.etsy.com/fr/listing/4441248899/t-shirt-unisexe-epais-design-elegant-de" target="_blank" rel="noopener">
-        <img src="images/Ph_Guitare_design.png" alt="Guitar Design">
+        <img src="images/Ph_Guitare_design.png" alt="Guitar Design" loading="lazy" decoding="async">
         <div class="mw-card-body">
           <p class="mw-card-title">Guitar Design</p>
           <span class="mw-pill">Voir</span>
         </div>
       </a>
       <a class="mw-card" href="https://moogwaiattitude.etsy.com/fr/listing/4445649710/t-shirt-unisexe-epais-immortels-du-death" target="_blank" rel="noopener">
-        <img src="images/Ph_Death_Metal.png" alt="Death Metal">
+        <img src="images/Ph_Death_Metal.png" alt="Death Metal" loading="lazy" decoding="async">
         <div class="mw-card-body">
           <p class="mw-card-title">Death Metal</p>
           <span class="mw-pill">Voir</span>
         </div>
       </a>
       <a class="mw-card" href="https://moogwaiattitude.etsy.com/fr/listing/4445636121/t-shirt-unisexe-epais-broken-dreams" target="_blank" rel="noopener">
-        <img src="images/Ph_Broken_Dream.png" alt="Broken Dream">
+        <img src="images/Ph_Broken_Dream.png" alt="Broken Dream" loading="lazy" decoding="async">
         <div class="mw-card-body">
           <p class="mw-card-title">Broken Dream</p>
           <span class="mw-pill">Voir</span>
@@ -457,7 +471,7 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 
 <div class="mt-3">
 <a href="https://moogwaiattitude.etsy.com/fr/listing/4439419912/t-shirt-unisexe-epais-celebrez-lamour" class="gallery-link gallery-hero">
-  <img alt="Célébrez l'amour" class="hero-feature img-fluid" src="images/Rose_04.png"/>
+  <img alt="Célébrez l'amour" class="hero-feature img-fluid" src="images/Rose_04.png" loading="lazy" decoding="async"/>
   <span class="gallery-overlay">Voir le modèle Saint Valentin</span>
 </a>
 </div>
@@ -508,14 +522,14 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 <div class="container">
 <h2 class="section-title mb-4 text-center" id="gallery_title">Galerie de modèles</h2>
 <div class="row g-3 gallery">
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432507216/sweat-a-capuche-unisexe-oversized" class="gallery-link"><img alt="Limited01" class="img-fluid" src="images/Ph_Limited01.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4379316143/moogwai-halloween-sorcerer" class="gallery-link"><img alt="Sorcerer" class="img-fluid" src="images/Ph_Sorcerer.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432500283/t-shirt-unisexe-epais-rock-qui-impose-le" class="gallery-link"><img alt="Silence" class="img-fluid" src="images/Ph_Silence.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432505616/t-shirt-unisexe-epais-rock-historique" class="gallery-link"><img alt="Histoire" class="img-fluid" src="images/Ph_Alexander.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432512848/t-shirt-unisexe-epais-marin-solitaire-au" class="gallery-link"><img alt="Marin" class="img-fluid" src="images/Ph_Marin.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501487/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="BeastOfLight" class="img-fluid" src="images/Ph_BeastOfLight.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4438335320/t-shirt-unisexe-epais-logo-moogwai" class="gallery-link"><img alt="Logo" class="img-fluid" src="images/Ph_Logo.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
-<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501871/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="Nirmata" class="img-fluid" src="images/Ph_Nirmata.png"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432507216/sweat-a-capuche-unisexe-oversized" class="gallery-link"><img alt="Limited01" class="img-fluid" src="images/Ph_Limited01.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4379316143/moogwai-halloween-sorcerer" class="gallery-link"><img alt="Sorcerer" class="img-fluid" src="images/Ph_Sorcerer.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432500283/t-shirt-unisexe-epais-rock-qui-impose-le" class="gallery-link"><img alt="Silence" class="img-fluid" src="images/Ph_Silence.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432505616/t-shirt-unisexe-epais-rock-historique" class="gallery-link"><img alt="Histoire" class="img-fluid" src="images/Ph_Alexander.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432512848/t-shirt-unisexe-epais-marin-solitaire-au" class="gallery-link"><img alt="Marin" class="img-fluid" src="images/Ph_Marin.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501487/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="BeastOfLight" class="img-fluid" src="images/Ph_BeastOfLight.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4438335320/t-shirt-unisexe-epais-logo-moogwai" class="gallery-link"><img alt="Logo" class="img-fluid" src="images/Ph_Logo.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
+<div class="col-6 col-md-4 col-lg-3"><a href="https://moogwaiattitude.etsy.com/fr/listing/4432501871/t-shirt-unisexe-epais-inspire-de-la" class="gallery-link"><img alt="Nirmata" class="img-fluid" src="images/Ph_Nirmata.png" loading="lazy" decoding="async"/><span class="gallery-overlay">Voir le produit</span></div></a>
 </div>
 </div>
 <p class="text-center mt-3" style="color:var(--muted); font-weight:600;"><a href="https://www.etsy.com/shop/MOOGWAIATTITUDE" class="mw-gold">
@@ -647,7 +661,7 @@ T-shirt épais (170 - 180 g/m2) .</span>
 <button class="btn btn-accent" id="contact_send" type="submit">Envoyer</button>
 </div>
 <div class="text-center mt-3 contact-badge-wrap">
-<a href="https://www.etsy.com/fr/shop/MOOGWAIATTITUDE" rel="noopener" target="_blank"><img alt="Moogwai Attitude — Rock, Metal &amp; Custom premium wear" class="contact-badge" src="images/New-logo.png" /></a>
+<a href="https://www.etsy.com/fr/shop/MOOGWAIATTITUDE" rel="noopener" target="_blank"><img alt="Moogwai Attitude — Rock, Metal &amp; Custom premium wear" class="contact-badge" src="images/New-logo.png"  loading="lazy" decoding="async"/></a>
 </div>
 <div aria-hidden="true" class="hp"><input autocomplete="off" name="website" tabindex="-1" type="text"/></div>
 </form>
@@ -802,8 +816,14 @@ T-shirt épais (170 - 180 g/m2) .</span>
     });
   });
 
+
+  modalEl.addEventListener('shown.bs.modal', function(){
+    document.body.classList.add('mw-film-open');
+  });
+
   modalEl.addEventListener('hidden.bs.modal', function(){
     frame.setAttribute('src','');
+    document.body.classList.remove('mw-film-open');
   });
 })();
 </script>
