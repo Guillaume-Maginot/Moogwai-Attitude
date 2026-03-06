@@ -78,7 +78,15 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .hp{ position:absolute; left:-5000px; }
 
   #galerie .gallery.row{ --bs-gutter-x:.5rem; --bs-gutter-y:.5rem; }
-  #galerie .gallery img{ width:100% !important; height:auto !important; object-fit:contain !important; display:block; }
+  #galerie .gallery img{
+    width:100% !important;
+    aspect-ratio:1/1 !important;
+    height:auto !important;
+    object-fit:contain !important;
+    display:block;
+    background:#0e0e0f;
+    padding:10px;
+  }
 
   #lightbox .modal-dialog{ max-width:96vw; }
   #lightbox .modal-content{ background:transparent !important; border:0 !important; box-shadow:none !important; position:relative; }
@@ -307,9 +315,20 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
     text-decoration:none;
     color:var(--fg);
   }
-  .mw-card img{ width:100%; height:auto; display:block; }
-  .mw-card-img{ width:100%; height:auto; display:block; }
-  .mw-card-img--bison{ transform:scale(.88); transform-origin:center center; }
+  .mw-card-media{
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px;
+    background:linear-gradient(180deg,#111115,#0d0d11);
+  }
+  .mw-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
   .mw-card .mw-card-body{ padding:.65rem .8rem .75rem; display:flex; justify-content:space-between; gap:.75rem; align-items:center; }
   .mw-card .mw-card-title{ font-weight:900; letter-spacing:.2px; margin:0; font-size:1rem; }
   .mw-card .mw-pill{ font-weight:900; font-size:.82rem; color:#1a1400; background:linear-gradient(90deg,var(--gold),var(--gold-deep)); border:1px solid rgba(205,164,52,.45); border-radius:999px; padding:.15rem .5rem; white-space:nowrap; }
@@ -444,16 +463,30 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
     <button class="mw-navbtn prev" type="button" aria-label="Précédent">‹</button>
 
     <div class="mw-track" id="mwNewTrack">
-      <div class="mw-card mw-card--disabled" aria-label="Bison">
-        <img src="images/Ph_Bison.png" alt="Bison" class="mw-card-img mw-card-img--bison" loading="lazy" decoding="async">
+      <div class="mw-card mw-card--disabled" aria-label="Chevalier">
+        <div class="mw-card-media">
+          <img src="images/Ph_Chevalier.png" alt="Chevalier" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">bison</p>
+          <p class="mw-card-title">Chevalier</p>
+          <span class="mw-pill">Drop</span>
+        </div>
+      </div>
+
+      <div class="mw-card mw-card--disabled" aria-label="Bison">
+        <div class="mw-card-media">
+          <img src="images/Ph_Bison.png" alt="Bison" loading="lazy" decoding="async">
+        </div>
+        <div class="mw-card-body">
+          <p class="mw-card-title">Bison</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="Piano">
-        <img src="images/Ph_Piano.png" alt="Piano" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_Piano.png" alt="Piano" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">Piano</p>
           <span class="mw-pill">Drop</span>
@@ -461,7 +494,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="Saxophone">
-        <img src="images/Ph_Saxo.png" alt="Saxophone" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_Saxo.png" alt="Saxophone" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">Saxophone</p>
           <span class="mw-pill">Drop</span>
@@ -469,7 +504,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="Drummer">
-        <img src="images/Ph_Drummer.png" alt="Drummer" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_Drummer.png" alt="Drummer" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">Drummer</p>
           <span class="mw-pill">Drop</span>
@@ -477,7 +514,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="Bluesman">
-        <img src="images/Ph_Bluesman.png" alt="Bluesman" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_Bluesman.png" alt="Bluesman" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">Bluesman</p>
           <span class="mw-pill">Drop</span>
@@ -485,7 +524,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="G_H">
-        <img src="images/Ph_G_H.png" alt="G_H" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_G_H.png" alt="G_H" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">G_H</p>
           <span class="mw-pill">Drop</span>
@@ -493,7 +534,9 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
       </div>
 
       <div class="mw-card mw-card--disabled" aria-label="DayOrNight">
-        <img src="images/Ph_DayOrNight.png" alt="Day or Night" class="mw-card-img" loading="lazy" decoding="async">
+        <div class="mw-card-media">
+          <img src="images/Ph_DayOrNight.png" alt="Day or Night" loading="lazy" decoding="async">
+        </div>
         <div class="mw-card-body">
           <p class="mw-card-title">Day or Night</p>
           <span class="mw-pill">Drop</span>
