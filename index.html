@@ -361,6 +361,86 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
   .mw-navbtn.next{ right:-10px; }
   @media (min-width: 992px){ .mw-navbtn{ display:flex; } }
 
+
+  /* Gaming Edition – habillage nouveautés */
+  .mw-newdrops--gaming{
+    position:relative;
+    padding:1rem;
+    margin-top:1.2rem;
+    border-radius:20px;
+    background:
+      radial-gradient(900px 260px at 10% 0%, rgba(145,71,255,.14), transparent 55%),
+      radial-gradient(900px 260px at 90% 0%, rgba(255,212,77,.10), transparent 55%),
+      linear-gradient(180deg,#121218 0%, #0d0d12 100%);
+    border:1px solid rgba(205,164,52,.22);
+    box-shadow:0 0 0 1px rgba(205,164,52,.10) inset, 0 22px 48px rgba(0,0,0,.24);
+  }
+  .mw-drop-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    color:var(--gold);
+    padding:.3rem .65rem;
+    border-radius:999px;
+    border:1px solid rgba(255,212,77,.26);
+    background:rgba(255,212,77,.06);
+    box-shadow:0 0 18px rgba(255,212,77,.08);
+    margin-bottom:.65rem;
+  }
+  .mw-drop-title{
+    font-weight:900;
+    font-size:clamp(22px,1.6vw + 14px,34px);
+    line-height:1.05;
+    margin:0 0 .45rem;
+    letter-spacing:.2px;
+  }
+  .mw-drop-title .accent{
+    color:#b78cff;
+    text-shadow:0 0 20px rgba(145,71,255,.22);
+  }
+  .mw-drop-text{
+    color:var(--muted);
+    max-width:64ch;
+    margin:0 auto 1rem;
+    font-weight:600;
+  }
+  .mw-card{
+    position:relative;
+  }
+  .mw-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    pointer-events:none;
+    box-shadow:0 0 0 1px rgba(145,71,255,.0) inset, 0 0 0 rgba(145,71,255,0);
+    transition:box-shadow .25s ease, border-color .25s ease;
+  }
+  .mw-card:hover::after{
+    box-shadow:0 0 0 1px rgba(145,71,255,.22) inset, 0 16px 34px rgba(145,71,255,.14), 0 8px 24px rgba(255,212,77,.10);
+  }
+  .mw-badge-new{
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:3;
+    font-weight:900;
+    font-size:.74rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#140d1f;
+    background:linear-gradient(90deg,#ffd44d 0%, #b78cff 100%);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:.24rem .52rem;
+    box-shadow:0 10px 20px rgba(145,71,255,.18), 0 6px 18px rgba(255,212,77,.12);
+  }
+
+
   /* Newsletter centrée */
   .mw-newsletter-wrap{ max-width: 560px; }
 
@@ -454,91 +534,99 @@ footer::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;back
 <h1 id="hero_title">Ton T‑shirt, ton style, <span class="mw-gold">ta signature</span></h1>
 <p class="lead" id="hero_sub"><strong>Personnalisation premium, à la demande</strong> – artwork, texte, nom, date, clin d’œil : pour une intégration propre et durable.</p>
 
-<div class="mw-newdrops" aria-label="Featured drops">
-  <p class="mw-films-lead text-center" style="margin-top:.55rem; margin-bottom:.85rem;">
-    Derniers modèles ajoutés à la collection. Restez à l’affût pour ne pas les manquer !
-  </p>
+<div class="mw-newdrops mw-newdrops--gaming text-center" aria-label="Featured drops">
+  <div class="mw-drop-kicker mx-auto">Nouveautés</div>
+  <h2 class="mw-drop-title">Gaming <span class="accent">Edition</span></h2>
+  <p class="mw-drop-text">Version Moogwai Attitude avec un léger parfum de loot rare, plus de modèles dans la bootique.</p>
 
   <div class="mw-track-wrap">
     <button class="mw-navbtn prev" type="button" aria-label="Précédent">‹</button>
 
     <div class="mw-track" id="mwNewTrack">
-      <div class="mw-card mw-card--disabled" aria-label="Chevalier">
+      <div class="mw-card mw-card--disabled" aria-label="Elfe">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Chevalier.png" alt="Chevalier" loading="lazy" decoding="async">
+          <img src="images/Ph_Elfe.png" alt="Elfe" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Chevalier</p>
+          <p class="mw-card-title">Elfe</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="Bison">
+      <div class="mw-card mw-card--disabled" aria-label="Nain">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Bison.png" alt="Bison" loading="lazy" decoding="async">
+          <img src="images/Ph_Nain.png" alt="Nain" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Bison</p>
+          <p class="mw-card-title">Nain</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="Piano">
+      <div class="mw-card mw-card--disabled" aria-label="Magicien">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Piano.png" alt="Piano" loading="lazy" decoding="async">
+          <img src="images/Ph_Magicien.png" alt="Magicien" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Piano</p>
+          <p class="mw-card-title">Magicien</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="Saxophone">
+      <div class="mw-card mw-card--disabled" aria-label="Assassin">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Saxo.png" alt="Saxophone" loading="lazy" decoding="async">
+          <img src="images/Ph_Assassin.png" alt="Assassin" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Saxophone</p>
+          <p class="mw-card-title">Assassin</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="Drummer">
+      <div class="mw-card mw-card--disabled" aria-label="Heros">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Drummer.png" alt="Drummer" loading="lazy" decoding="async">
+          <img src="images/Ph_heros.png" alt="Heros" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Drummer</p>
+          <p class="mw-card-title">Heros</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="Bluesman">
+      <div class="mw-card mw-card--disabled" aria-label="Game Over">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_Bluesman.png" alt="Bluesman" loading="lazy" decoding="async">
+          <img src="images/Ph_GameOver.png" alt="Game Over" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Bluesman</p>
+          <p class="mw-card-title">Game Over</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="G_H">
+      <div class="mw-card mw-card--disabled" aria-label="CasseBriques">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_G_H.png" alt="G_H" loading="lazy" decoding="async">
+          <img src="images/Ph_CasseBriques.png" alt="CasseBriques" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">G_H</p>
+          <p class="mw-card-title">CasseBriques</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
 
-      <div class="mw-card mw-card--disabled" aria-label="DayOrNight">
+      <div class="mw-card mw-card--disabled" aria-label="Boss">
+        <span class="mw-badge-new">New</span>
         <div class="mw-card-media">
-          <img src="images/Ph_DayOrNight.png" alt="Day or Night" loading="lazy" decoding="async">
+          <img src="images/Ph_Boss.png" alt="Boss" loading="lazy" decoding="async">
         </div>
         <div class="mw-card-body">
-          <p class="mw-card-title">Day or Night</p>
+          <p class="mw-card-title">Boss</p>
           <span class="mw-pill">Drop</span>
         </div>
       </div>
