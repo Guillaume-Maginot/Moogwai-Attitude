@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/New-logo-small.png">
+  <title>Moogwai Attitude — Journal</title>
+  <style>
+    :root{
+      --bg:#0d0d10;
+      --bg-soft:#121218;
+      --panel:#15151c;
+      --panel-2:#1a1a22;
+      --text:#f5f5f7;
+      --muted:#c4c8d0;
+      --line:rgba(255,255,255,.08);
+      --gold:#f0b90b;
+      --gold-soft:#ffd44d;
+      --gold-deep:#cda434;
+      --purple:#7f5cff;
+      --shadow:0 24px 60px rgba(0,0,0,.30);
+      --radius-xl:28px;
+      --radius-lg:22px;
+      --radius-md:18px;
+      --content-max:860px;
+      --shell-max:1480px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(900px 380px at 15% -10%, rgba(240,185,11,.09), transparent 60%),
+        radial-gradient(900px 420px at 90% -15%, rgba(127,92,255,.10), transparent 60%),
+        linear-gradient(180deg, #0b0b0d 0%, #0d0d10 35%, #09090b 100%);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    .container{
+      width:min(var(--shell-max), calc(100vw - 32px));
+      margin-inline:auto;
+    }
+
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:saturate(160%) blur(14px);
+      background:rgba(7,7,9,.76);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .nav-inner{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:.02em;
+      font-size:1.05rem;
+      white-space:nowrap;
+      transition:transform .22s ease, filter .22s ease, opacity .22s ease;
+    }
+
+    .brand img{height:34px; width:auto; transition:transform .22s ease, filter .22s ease;}
+    .brand:hover,
+    .brand:focus{transform:translateY(-1px); filter:drop-shadow(0 0 10px rgba(255,212,77,.18));}
+    .brand:hover img,
+    .brand:focus img{transform:scale(1.04); filter:drop-shadow(0 0 12px rgba(255,212,77,.28));}
+
+    .brand span{color:var(--gold-soft)}
+
+    body.is-ready .hero-wrap,
+    body.is-ready .article-shell,
+    body.is-ready .sidebar > *{opacity:1; transform:none;}
+    .hero-wrap,
+    .article-shell,
+    .sidebar > *{opacity:0; transform:translateY(10px); transition:opacity .45s ease, transform .45s ease;}
+    .article-shell{transition-delay:.06s;}
+    .sidebar > :nth-child(1){transition-delay:.12s;}
+    .sidebar > :nth-child(2){transition-delay:.18s;}
+    .sidebar > :nth-child(3){transition-delay:.24s;}
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav-link{
+      color:rgba(245,245,247,.86);
+      font-weight:700;
+      padding:.72rem .95rem;
+      border-radius:999px;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .nav-link:hover{
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      transform:translateY(-1px);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.55rem;
+      min-height:50px;
+      padding:.9rem 1.2rem;
+      border-radius:999px;
+      font-weight:800;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .btn-primary{
+      color:#16120a;
+      background:linear-gradient(90deg,var(--gold),var(--gold-soft));
+      border:1px solid rgba(255,212,77,.55);
+      box-shadow:0 12px 30px rgba(240,185,11,.2);
+    }
+
+    .btn-primary:hover{transform:translateY(-1px)}
+
+    .btn-outline{
+      color:var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+    }
+
+    .hero{
+      padding:46px 0 22px;
+    }
+
+    .hero-wrap{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)),
+        linear-gradient(135deg, rgba(240,185,11,.08), transparent 40%, rgba(127,92,255,.08));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      min-height:540px;
+      display:grid;
+      align-items:end;
+      isolation:isolate;
+    }
+
+    .hero-wrap::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.30) 38%, rgba(0,0,0,.72) 100%),
+        url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1600&q=80') center/cover;
+      z-index:-2;
+      transform:scale(1.02);
+    }
+
+    .hero-wrap::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:200px;
+      background:linear-gradient(180deg, rgba(13,13,16,0), rgba(13,13,16,.96));
+      z-index:-1;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap:28px;
+      padding:clamp(28px, 4vw, 42px);
+      align-items:end;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.42rem .85rem;
+      border-radius:999px;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      font-weight:900;
+      color:var(--gold-soft);
+      border:1px solid rgba(255,212,77,.20);
+      background:rgba(255,212,77,.08);
+      margin-bottom:1rem;
+    }
+
+    .hero h1{
+      margin:0 0 1rem;
+      font-size:clamp(2.4rem, 5vw, 5rem);
+      line-height:.95;
+      letter-spacing:-.04em;
+      max-width:12ch;
+    }
+
+    .hero p{
+      margin:0;
+      font-size:1.08rem;
+      color:rgba(245,245,247,.84);
+      max-width:58ch;
+      line-height:1.75;
+    }
+
+    .meta-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:20px;
+      backdrop-filter:blur(8px);
+      box-shadow:0 18px 42px rgba(0,0,0,.24);
+    }
+
+    .meta-list{
+      display:grid;
+      gap:14px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .meta-list li{
+      padding-bottom:14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .meta-list li:last-child{padding-bottom:0;border-bottom:0}
+
+    .meta-label{
+      display:block;
+      color:var(--gold-soft);
+      font-size:.78rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:.28rem;
+    }
+
+    .meta-value{
+      color:#fff;
+      font-weight:700;
+    }
+
+    .page-shell{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 320px;
+      gap:30px;
+      align-items:start;
+      padding:34px 0 96px;
+    }
+
+    .article-shell{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .article-inner{
+      padding:clamp(24px, 4vw, 40px);
+    }
+
+    .lede{
+      font-size:1.18rem;
+      line-height:1.9;
+      color:#eef0f5;
+      max-width:70ch;
+      margin:0 0 2rem;
+    }
+
+    .content{
+      max-width:var(--content-max);
+    }
+
+    .content h2{
+      font-size:clamp(1.55rem, 3vw, 2.25rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+      margin:2.4rem 0 .9rem;
+    }
+
+    .content p{
+      margin:0 0 1.15rem;
+      color:var(--muted);
+      font-size:1.02rem;
+      line-height:1.9;
+    }
+
+    .content strong{color:#fff}
+
+    .quote-box{
+      margin:2rem 0;
+      padding:1.35rem 1.4rem;
+      border-radius:22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        radial-gradient(500px 180px at 0% 0%, rgba(240,185,11,.10), transparent 60%);
+      border:1px solid rgba(255,212,77,.16);
+      box-shadow:0 18px 40px rgba(240,185,11,.08);
+    }
+
+    .quote-box p{
+      margin:0;
+      color:#fff;
+      font-size:1.15rem;
+      line-height:1.7;
+      font-weight:700;
+    }
+
+    .media-slab{
+      margin:2.1rem 0;
+      overflow:hidden;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      background:#0f0f13;
+    }
+
+    .media-slab img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+    }
+
+    .media-caption{
+      padding:1rem 1.1rem;
+      color:var(--muted);
+      font-size:.95rem;
+      border-top:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.02);
+    }
+
+
+    .custom-shot{
+      margin:2.1rem 0;
+      border-radius:24px;
+      border:1px dashed rgba(255,212,77,.30);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.018)),
+        radial-gradient(700px 240px at 0% 0%, rgba(255,212,77,.06), transparent 60%);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .custom-shot-frame{
+      aspect-ratio:16/10;
+      display:grid;
+      place-items:center;
+      padding:1.4rem;
+      text-align:center;
+      color:var(--muted);
+      position:relative;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+    }
+
+    .custom-shot-frame::before{
+      content:"EMPLACEMENT IMAGE PERSONNALISÉE";
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.55rem .9rem;
+      border-radius:999px;
+      border:1px solid rgba(255,212,77,.24);
+      background:rgba(255,212,77,.08);
+      color:var(--gold-soft);
+      font-size:.74rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:1rem;
+    }
+
+    .custom-shot-inner{
+      max-width:34rem;
+      display:grid;
+      gap:.65rem;
+      justify-items:center;
+    }
+
+    .custom-shot-title{
+      color:#fff;
+      font-size:1.08rem;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+
+    .custom-shot-text{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.8;
+      color:var(--muted);
+    }
+
+    .custom-shot-note{
+      display:inline-block;
+      margin-top:.15rem;
+      font-size:.82rem;
+      color:rgba(255,255,255,.62);
+    }
+
+    .dual-cards{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:18px;
+      margin:2rem 0;
+    }
+
+    .mini-card{
+      padding:1.15rem;
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .mini-card h3{
+      margin:0 0 .5rem;
+      font-size:1.04rem;
+    }
+
+    .mini-card p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.75;
+    }
+
+    .signature-banner{
+      margin-top:2.5rem;
+      padding:1.35rem 1.4rem;
+      border-radius:22px;
+      background:
+        radial-gradient(560px 220px at 0% 0%, rgba(127,92,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .signature-banner strong{
+      display:block;
+      margin-bottom:.4rem;
+      font-size:1.05rem;
+    }
+
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:1.2rem;
+    }
+
+    .sidebar{
+      position:sticky;
+      top:96px;
+      display:grid;
+      gap:18px;
+    }
+
+    .side-card{
+      padding:18px;
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .side-card h3{
+      margin:0 0 .9rem;
+      font-size:1rem;
+      letter-spacing:-.02em;
+    }
+
+    .chip-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:34px;
+      padding:.2rem .7rem;
+      border-radius:999px;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+      color:var(--gold-soft);
+      background:rgba(255,212,77,.08);
+      border:1px solid rgba(255,212,77,.20);
+    }
+
+    .side-list{
+      display:grid;
+      gap:12px;
+    }
+
+    .side-link{
+      display:block;
+      padding:12px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      transition:transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .side-link:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,212,77,.20);
+      background:rgba(255,255,255,.05);
+    }
+
+    .side-link strong{
+      display:block;
+      font-size:.96rem;
+      margin-bottom:.2rem;
+    }
+
+    .side-link span{
+      color:var(--muted);
+      font-size:.88rem;
+      line-height:1.6;
+    }
+
+    .journal-footer{
+      padding:34px 0 70px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      text-align:center;
+    }
+
+    @media (max-width: 1100px){
+      .page-shell{
+        grid-template-columns:1fr;
+      }
+      .sidebar{
+        position:static;
+      }
+    }
+
+    @media (max-width: 900px){
+      .hero-grid{
+        grid-template-columns:1fr;
+      }
+      .hero h1{max-width:none}
+      .dual-cards{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 740px){
+      .nav-inner{
+        min-height:72px;
+        flex-direction:column;
+        justify-content:center;
+        padding:12px 0;
+      }
+      .nav-links{
+        justify-content:center;
+      }
+      .hero{
+        padding-top:28px;
+      }
+      .hero-wrap{
+        min-height:auto;
+      }
+    }
+
+    .split-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin: 60px 0;
+}
+
+.split-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.split-text h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.split-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.8);
+}
+
+  
+    .entry-veil{
+      position:fixed;
+      inset:0;
+      z-index:4000;
+      pointer-events:none;
+      opacity:0;
+      background:
+        radial-gradient(900px 360px at 15% -5%, rgba(240,185,11,.14), transparent 60%),
+        radial-gradient(900px 420px at 85% -10%, rgba(127,92,255,.14), transparent 60%),
+        linear-gradient(180deg, rgba(5,5,7,.98) 0%, rgba(5,5,7,.94) 100%);
+      transition:opacity .75s ease, transform .75s ease, visibility .75s ease;
+      visibility:hidden;
+    }
+    body.is-entering .entry-veil{
+      opacity:1;
+      visibility:visible;
+    }
+    body.is-entering.is-ready .entry-veil{
+      opacity:0;
+      visibility:hidden;
+    }
+    .entry-title-float{
+      position:fixed;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      z-index:4001;
+      pointer-events:none;
+      opacity:0;
+      color:#fff;
+      text-align:center;
+      padding:1rem 1.25rem;
+      border-radius:999px;
+      border:1px solid rgba(255,212,77,.18);
+      background:rgba(255,255,255,.04);
+      backdrop-filter:blur(12px);
+      box-shadow:0 18px 42px rgba(0,0,0,.24);
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      transition:opacity .65s ease, transform .65s ease, visibility .65s ease;
+      visibility:hidden;
+    }
+    body.is-entering .entry-title-float{
+      opacity:1;
+      visibility:visible;
+      transform:translate(-50%,-52%);
+    }
+    body.is-entering.is-ready .entry-title-float{
+      opacity:0;
+      visibility:hidden;
+      transform:translate(-50%,-58%);
+    }
+    .progress-bar{
+      position:fixed;
+      top:0;
+      left:0;
+      width:0;
+      height:3px;
+      z-index:5000;
+      background:linear-gradient(90deg,var(--gold-soft),var(--gold-deep));
+      box-shadow:0 0 18px rgba(255,212,77,.24);
+      transform-origin:left center;
+    }
+    .hero-wrap::before{transition:transform 1.4s ease, filter 1.4s ease;}
+    body.is-ready .hero-wrap::before{transform:scale(1.05);}
+    .media-slab img,
+    .split-image img{
+      transition:transform .45s ease, filter .45s ease;
+    }
+    .media-slab:hover img,
+    .split-media:hover .split-image img{
+      transform:scale(1.015);
+      filter:saturate(1.03);
+    }
+    .split-media{
+      position:relative;
+      padding:1rem;
+      border-radius:26px;
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.018));
+      border:1px solid rgba(255,255,255,.06);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .split-media::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:radial-gradient(500px 180px at 0% 0%, rgba(255,212,77,.05), transparent 60%);
+    }
+    .split-text{
+      position:relative;
+      z-index:1;
+    }
+    .split-text h2{
+      font-size:clamp(2rem, 3vw, 2.7rem);
+      line-height:1.02;
+      letter-spacing:-.03em;
+      margin-bottom:1rem;
+    }
+    .split-text p{
+      font-size:1.08rem;
+      line-height:1.85;
+      color:rgba(255,255,255,.8);
+    }
+    .floating-back{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      z-index:1200;
+      opacity:0;
+      transform:translateY(10px);
+      transition:opacity .28s ease, transform .28s ease;
+    }
+    .floating-back.is-visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+    @media (max-width: 900px){
+      .split-media{
+        grid-template-columns:1fr;
+        gap:22px;
+      }
+      .split-text h2{font-size:2rem;}
+    }
+
+</style>
+</head>
+<body>
+<div class="entry-veil" aria-hidden="true"></div>
+<div class="entry-title-float" aria-hidden="true">Ombre &amp; Lumière</div>
+<div class="progress-bar" aria-hidden="true"></div>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+  <img src="images/New-logo-small.png" alt="Moogwai Attitude">
+  <span>Moogwai <span style="color:var(--gold-soft)">Attitude</span></span>
+</a>
+     <nav class="nav-links">
+  <a class="nav-link" href="index.html">Accueil</a>
+  <a class="nav-link" href="index.html#collections">Collections</a>
+  <a class="nav-link" href="index.html#films">Spots</a>
+  <a class="nav-link" href="index.html#journal">Journal</a>
+  <a class="btn btn-primary" href="https://moogwai-attitude.myshopify.com">Boutique</a>
+</nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Journal Moogwai • Éditorial</div>
+            <h1>Ombre &amp; Lumière, ou l’art de marquer sans surjouer</h1>
+            <p>
+              Une pièce n’a pas besoin de crier pour exister. Parfois, le vrai caractère vient du dosage, du contraste,
+              et de cette étrange élégance qui te regarde de loin en disant “je suis déjà très bien comme ça”.
+            </p>
+          </div>
+
+          <aside class="meta-card">
+            <ul class="meta-list">
+              <li>
+                <span class="meta-label">Publié le</span>
+                <span class="meta-value">2 avril 2026</span>
+              </li>
+              <li>
+                <span class="meta-label">Catégorie</span>
+                <span class="meta-value">Collection / Signature</span>
+              </li>
+              <li>
+                <span class="meta-label">Lecture</span>
+                <span class="meta-value">4 min</span>
+              </li>
+              <li>
+                <span class="meta-label">Lien naturel</span>
+                <span class="meta-value">Vers la collection associée</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container page-shell">
+    <article class="article-shell">
+      <div class="article-inner content">
+        <p class="lede">
+          Tout commence par une question assez simple, presque insolente dans sa sobriété : comment créer une pièce qui capte le regard sans tomber dans le grand cirque textile ? Chez Moogwai Attitude, la réponse passe souvent par le contraste, la retenue et une tension visuelle bien placée.
+        </p>
+
+        <div class="quote-box">
+          <p>Le style n’est pas une surcharge. C’est une précision.</p>
+        </div>
+
+        <h2>Une collection pensée comme un clair-obscur</h2>
+        <p>
+          Ombre &amp; Lumière repose sur une idée presque cinématographique. Il ne s’agit pas seulement de juxtaposer du sombre et du lumineux. Il s’agit de faire dialoguer deux présences. L’une structure, l’autre révèle. L’une pose la profondeur, l’autre signe l’impact.
+        </p>
+        <p>
+          Ce type de design fonctionne justement parce qu’il laisse de l’air. Il n’essaie pas de tout dire en même temps. Il choisit ses angles, ses silences, ses éclats. En somme, il évite le destin tragique du visuel qui hurle si fort qu’on ne voit plus rien.
+        </p>
+
+        <div class="media-slab">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1400&q=80" alt="Mood editorial Moogwai Attitude" />
+          <div class="media-caption">Un traitement visuel plus éditorial que promotionnel, pour donner au blog une présence de magazine premium.</div>
+        </div>
+
+
+         <div class="split-media">
+  <div class="split-image">
+    <img src="images/illus_blog02.png" alt="Moogwai Attitude">
+  </div>
+
+  <div class="split-text">
+    <h2>Ombre & Lumière</h2>
+    <p>
+      Chaque pièce Moogwai Attitude joue avec la lumière
+      mais laisse l'ombre dire sa propre histoire.
+    </p>
+    <p>
+      A contre-jour, un motif prend un nouveau relief et capte l'oeil d'une manière subtle mais puissante. C'est dans ce jeu de contraste que résite l'essence de la collection.
+    </p>
+  </div>
+</div>
+
+        <h2>Quand le design devient une attitude</h2>
+        <p>
+          Une bonne pièce ne se contente pas d’être jolie. Elle doit produire un effet. Pas forcément spectaculaire, mais net. Elle installe quelque chose. Une allure. Une intention. Une façon de prendre place sans demander la permission à la déco de la pièce.
+        </p>
+
+        <div class="dual-cards">
+          <div class="mini-card">
+            <h3>Ce qu’on cherche</h3>
+            <p>Une présence marquée, lisible, durable, avec une tension graphique qui reste élégante même portée au quotidien.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Ce qu’on évite</h3>
+            <p>Le design qui surjoue, les effets qui bavardent trop, et l’illustration qui finit par ressembler à une dispute entre quinze idées.</p>
+          </div>
+        </div>
+
+        <p>
+          C’est aussi là que le blog prend tout son sens. Il ne sert pas seulement à “remplir une page”. Il donne du relief à la marque. Il raconte les choix, les intentions, les références, les obsessions visuelles. Bref, il montre qu’il y a bien une tête derrière les textiles, et pas seulement un bouton “Ajouter au panier” qui transpire la solitude.
+        </p>
+
+        <h2>Un journal qui doit respirer comme la marque</h2>
+        <p>
+          Le design d’un article ne doit pas casser l’identité du site. Il doit la prolonger. Même palette, même exigence, même impression de netteté premium. Mais avec plus d’espace, plus de respiration, plus de confort de lecture. On quitte un instant la logique boutique pour entrer dans une logique éditoriale.
+        </p>
+        <p>
+          L’idée n’est donc pas de fabriquer un “blog” au sens fade du mot. L’idée est de créer un journal de marque. Un endroit où les collections gagnent en profondeur, où les inspirations prennent forme, et où chaque publication peut naturellement mener vers une collection ou une pièce liée.
+        </p>
+
+        <div class="split-media">
+  <div class="split-image">
+    <img src="images/illus_blog01.png" alt="Moogwai Attitude">
+  </div>
+
+  <div class="split-text">
+    <h2>Ombre & Lumière</h2>
+    <p>
+      Là où la lumière frappe, le regard s’arrête.  
+      Là où l’ombre persiste, l’histoire commence.
+    </p>
+    <p>
+      Une pièce ne se contente pas d’exister.  
+      Elle capte un instant, une tension, une présence.
+    </p>
+  </div>
+</div>
+
+
+        <div class="signature-banner">
+          <strong>Signature Moogwai</strong>
+          <p>
+            Une pièce peut être sobre sans être timide. Une marque peut être élégante sans devenir lisse. Et un article peut donner envie sans agiter une pancarte fluorescente à chaque paragraphe.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="index.html#collections">Voir la collection</a>
+            <a class="btn btn-outline" href="index.html#journal">Retour au journal</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <h3>Catégories</h3>
+        <div class="chip-list">
+          <span class="chip">Collections</span>
+          <span class="chip">Inspiration</span>
+          <span class="chip">Making of</span>
+          <span class="chip">Lifestyle</span>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3>À lire ensuite</h3>
+        <div class="side-list">
+          <a href="index.html#journal" class="side-link">
+            <strong>Moogwai du Monde, inspirations et horizons</strong>
+            <span>Quand le voyage devient motif, et le motif devient signature.</span>
+          </a>
+          <a href="index.html#journal" class="side-link">
+            <strong>Gaming Edition, le loot rare version textile</strong>
+            <span>Des clins d’œil propres, pensés pour durer plus qu’une partie classée.</span>
+          </a>
+          <a href="index.html#contact" class="side-link">
+            <strong>Pourquoi la personnalisation change tout</strong>
+            <span>Du concept flou à 2h du matin jusqu’à la pièce que personne d’autre n’a.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3>Passerelle douce vers la boutique</h3>
+        <p style="margin:0 0 1rem;color:var(--muted);line-height:1.8">
+          Le journal raconte l’intention. La boutique montre la pièce. Le duo fait le travail sans forcer le trait.
+        </p>
+        <a class="btn btn-primary" style="width:100%" href="https://moogwai-attitude.myshopify.com">Explorer la boutique</a>
+      </div>
+    </aside>
+  </main>
+
+  <a href="index.html#journal" class="btn btn-primary floating-back" id="floatingBack">Retour au journal</a>
+
+  <footer class="journal-footer">
+    Pour ceux qui ne cherchent pas à ressembler aux autres. Même quand ce serait plus simple.
+  </footer>
+  <script>
+    (function(){
+      const progressBar = document.querySelector('.progress-bar');
+      const floatingBack = document.getElementById('floatingBack');
+
+      function updateProgress(){
+        const doc = document.documentElement;
+        const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+        const ratio = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+        progressBar.style.width = (ratio * 100) + '%';
+        if(window.scrollY > 420){
+          floatingBack.classList.add('is-visible');
+        } else {
+          floatingBack.classList.remove('is-visible');
+        }
+      }
+
+      window.addEventListener('scroll', updateProgress, {passive:true});
+      window.addEventListener('resize', updateProgress);
+
+      try{
+        const raw = sessionStorage.getItem('mw_blog_transition');
+        if(raw){
+          const data = JSON.parse(raw);
+          if(data && data.from === 'index' && Date.now() - data.ts < 5000){
+            document.body.classList.add('is-entering');
+          }
+          sessionStorage.removeItem('mw_blog_transition');
+        }
+      }catch(e){}
+
+      window.addEventListener("DOMContentLoaded", function(){
+        updateProgress();
+        window.requestAnimationFrame(function(){
+          document.body.classList.add("is-ready");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

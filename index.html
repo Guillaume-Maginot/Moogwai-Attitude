@@ -663,9 +663,40 @@
 @media (min-width: 1400px){
   .hero-visual{max-width:920px;}
 }
+
+    .page-transition-overlay{
+      position:fixed;
+      inset:0;
+      z-index:3000;
+      pointer-events:none;
+      opacity:0;
+      background:
+        radial-gradient(900px 360px at 15% -5%, rgba(240,185,11,.12), transparent 60%),
+        radial-gradient(900px 420px at 85% -10%, rgba(127,92,255,.12), transparent 60%),
+        linear-gradient(180deg, rgba(5,5,7,.18) 0%, rgba(5,5,7,.82) 55%, rgba(5,5,7,.96) 100%);
+      backdrop-filter:blur(0px);
+      transition:opacity .42s ease, backdrop-filter .42s ease;
+    }
+    body.is-leaving .page-transition-overlay{
+      opacity:1;
+      backdrop-filter:blur(10px);
+      pointer-events:auto;
+    }
+    body.is-leaving .navbar,
+    body.is-leaving .top-banner,
+    body.is-leaving .hero,
+    body.is-leaving .section,
+    body.is-leaving footer{
+      transition:transform .42s ease, opacity .42s ease, filter .42s ease;
+      transform:translateY(10px) scale(.995);
+      opacity:.18;
+      filter:blur(2px);
+    }
+
 </style>
 </head>
 <body id="top">
+<div class="page-transition-overlay" aria-hidden="true"></div>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 <div class="container container-narrow">
 <a aria-label="Moogwai Attitude" class="navbar-brand" href="#top">
@@ -931,7 +962,7 @@ et parfois une très bonne nuit blanche.</p>
 </div>
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 journal-grid">
 <div class="col d-flex">
-<article class="journal-card w-100">
+<a href="blog_ombre.html" class="journal-card w-100 d-block" data-blog-link="ombre" data-transition-label="Ombre &amp; Lumière">
 <div class="journal-media"><img alt="Article Ombre &amp; Lumière à remplacer" decoding="async" loading="lazy" src="images/illus_blog_ol.png"/></div>
 <div class="card-body-mw">
 <time class="muted" datetime="2026-04-01">1 avril 2026</time>
@@ -939,9 +970,9 @@ et parfois une très bonne nuit blanche.</p>
 <p class="card-text-mw">Tout commence par un contraste.
 Une tension entre ce qu’on montre et ce qu’on suggère.
 Une collection pensée comme un clair-obscur textile.</p>
-<div class="mw-meta"><span class="mw-pill mw-pill-outline">À venir</span></div>
+<div class="mw-meta"><span class="mw-pill">Lire</span></div>
 </div>
-</article>
+</a>
 </div>
 <div class="col d-flex">
 <article class="journal-card w-100">
@@ -1128,5 +1159,33 @@ Même quand ce serait plus simple.<br>
       });
     })();
   </script>
+
+<script>
+  (function(){
+    const blogLinks = document.querySelectorAll('[data-blog-link]');
+    const leave = function(url, label){
+      if(document.body.classList.contains('is-leaving')) return;
+      try{
+        sessionStorage.setItem('mw_blog_transition', JSON.stringify({
+          from:'index',
+          label: label || '',
+          ts: Date.now()
+        }));
+      }catch(e){}
+      document.body.classList.add('is-leaving');
+      window.setTimeout(function(){
+        window.location.href = url;
+      }, 360);
+    };
+
+    blogLinks.forEach(function(link){
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        leave(link.href, link.getAttribute('data-transition-label'));
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>
