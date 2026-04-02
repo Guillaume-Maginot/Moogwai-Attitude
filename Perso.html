@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e0e0f" />
+  <link rel="icon" type="image/png" href="images/New-logo-small.png">
+  <title>Moogwai Attitude — Personnalisation</title>
+  <style>
+    :root{
+      --bg:#0e0e0f;
+      --bg-soft:#121216;
+      --bg-card:#15151a;
+      --fg:#f5f5f7;
+      --muted:#c8ccd3;
+      --line:rgba(255,255,255,.08);
+      --gold:#f0b90b;
+      --gold-soft:#ffd44d;
+      --gold-deep:#cda434;
+      --purple:#7f5cff;
+      --shadow:0 18px 48px rgba(0,0,0,.28);
+      --shadow-gold:0 18px 42px rgba(240,185,11,.10);
+      --radius:22px;
+      --section-space:clamp(72px, 7vw, 108px);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(900px 360px at 15% -5%, rgba(240,185,11,.10), transparent 60%),
+        radial-gradient(900px 420px at 85% -10%, rgba(127,92,255,.10), transparent 60%),
+        linear-gradient(180deg, #0c0c0d 0%, #0e0e0f 30%, #0a0a0b 100%);
+      color:var(--fg);
+      font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .container{width:min(1480px, calc(100vw - 48px));margin-inline:auto}
+
+    .navbar{
+      position:sticky; top:0; z-index:50;
+      background:rgba(5,5,7,.76);
+      backdrop-filter:saturate(160%) blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.02em;font-size:1.05rem;white-space:nowrap}
+    .brand img{height:34px;width:auto;transition:transform .22s ease, filter .22s ease}
+    .brand span{color:var(--gold-soft)}
+    .brand:hover img{transform:scale(1.04);filter:drop-shadow(0 0 12px rgba(255,212,77,.28))}
+    .nav-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-link{color:rgba(245,245,247,.86);font-weight:700;padding:.72rem .95rem;border-radius:999px;transition:background .2s ease,color .2s ease,transform .2s ease}
+    .nav-link:hover{background:rgba(255,255,255,.05);color:#fff;transform:translateY(-1px)}
+
+    .btn,.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:.92rem 1.2rem;border-radius:999px;font-weight:800;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+    .btn{
+      background:linear-gradient(90deg,var(--gold),var(--gold-soft));
+      color:#16120a;
+      border:1px solid rgba(255,212,77,.55);
+      box-shadow:0 10px 28px rgba(240,185,11,.22);
+    }
+    .btn:hover,.btn-outline:hover{transform:translateY(-1px)}
+    .btn-outline{color:var(--fg);border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03)}
+    .btn-outline:hover{border-color:rgba(255,212,77,.35);color:#fff}
+
+    .top-banner{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+      border-bottom:1px solid rgba(255,212,77,.12);
+      color:var(--muted);
+      padding:.8rem 0;
+      font-size:.98rem;
+      text-align:center;
+    }
+    .top-banner strong{color:var(--gold-soft)}
+
+    .section{padding:var(--section-space) 0; position:relative}
+    .section-header{max-width:820px;margin:0 auto 2.6rem;text-align:center}
+    .section-kicker{display:inline-block;color:var(--gold-soft);font-size:.8rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem}
+    .section-title{font-size:clamp(1.9rem, 2.4vw, 3rem);line-height:1.06;font-weight:900;letter-spacing:-.03em;margin:0 0 .85rem}
+    .section-subtitle{color:var(--muted);font-size:1.05rem;line-height:1.75;margin:0 auto;max-width:72ch}
+
+    .hero{position:relative;padding:clamp(56px, 8vw, 110px) 0 clamp(42px, 6vw, 72px);overflow:hidden}
+    .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(340px,.98fr);gap:32px;align-items:center}
+    .hero-copy .eyebrow{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;color:var(--gold-soft);border:1px solid rgba(255,212,77,.18);border-radius:999px;background:rgba(255,212,77,.06);padding:.4rem .8rem;font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .hero-copy h1{font-size:clamp(2.5rem, 4vw, 5rem);line-height:.96;letter-spacing:-.04em;margin:0 0 1rem;max-width:11ch}
+    .hero-copy p{font-size:clamp(1rem, 1vw + .7rem, 1.18rem);line-height:1.75;color:var(--muted);max-width:58ch;margin:0 0 1.2rem}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.4rem}
+    .hero-visual{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:28px;padding:14px;box-shadow:var(--shadow);position:relative}
+    .hero-visual::before{content:"";position:absolute;inset:-1px;border-radius:28px;padding:1px;background:linear-gradient(135deg, rgba(255,212,77,.35), rgba(127,92,255,.20), rgba(255,255,255,.08));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .hero-visual img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:20px;background:#0b0b0d}
+
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-gold)}
+
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .card{padding:1.35rem;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-gold);position:relative;overflow:hidden}
+    .card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(460px 140px at 0% 0%, rgba(255,212,77,.05), transparent 60%)}
+    .card h3{margin:0 0 .55rem;font-size:1.08rem;letter-spacing:-.02em}
+    .card p{margin:0;color:var(--muted);line-height:1.8}
+
+   .decor{
+  padding:0 0 var(--section-space);
+}
+
+.decor-shell{
+  position:relative;
+  overflow:hidden;
+  border-radius:34px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.34),
+    0 18px 42px rgba(240,185,11,.10);
+  background:#0f0f13;
+  height:clamp(460px, 62vh, 860px);
+  isolation:isolate;
+}
+
+.decor-shell::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:34px;
+  padding:1px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,212,77,.32),
+    rgba(127,92,255,.18),
+    rgba(255,255,255,.08)
+  );
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  z-index:3;
+}
+
+.decor-shell::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+  background:
+    radial-gradient(900px 320px at 50% 100%, rgba(255,212,77,.14), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.18) 42%, rgba(0,0,0,.62) 100%);
+}
+
+.decor img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.03);
+  transition:transform .7s ease, filter .7s ease;
+  filter:saturate(1.02) contrast(1.02);
+}
+
+.decor-shell:hover img{
+  transform:scale(1.07);
+  filter:saturate(1.06) contrast(1.04);
+}
+
+.decor-content{
+  position:absolute;
+  left:clamp(20px, 3vw, 42px);
+  right:clamp(20px, 3vw, 42px);
+  bottom:clamp(22px, 3vw, 38px);
+  z-index:2;
+  max-width:min(760px, 92%);
+}
+
+.decor-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  margin:0 0 .85rem;
+  padding:.45rem .85rem;
+  border-radius:999px;
+  color:var(--gold-soft);
+  font-size:.76rem;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  background:rgba(255,212,77,.08);
+  border:1px solid rgba(255,212,77,.20);
+  backdrop-filter:blur(10px);
+}
+
+.decor-title{
+  margin:0 0 .7rem;
+  font-size:clamp(1.9rem, 3.2vw, 3.8rem);
+  line-height:1.02;
+  letter-spacing:-.04em;
+  color:#fff;
+  text-shadow:0 10px 28px rgba(0,0,0,.34);
+}
+
+.decor-text{
+  margin:0;
+  max-width:58ch;
+  color:rgba(245,245,247,.84);
+  font-size:clamp(.98rem, 1vw + .55rem, 1.1rem);
+  line-height:1.8;
+  text-shadow:0 8px 20px rgba(0,0,0,.28);
+}
+
+@media (max-width: 740px){
+  .decor-shell{
+    height:clamp(380px, 52vh, 620px);
+    border-radius:26px;
+  }
+
+  .decor-shell::before{
+    border-radius:26px;
+  }
+
+  .decor-content{
+    max-width:100%;
+  }
+
+  .decor-title{
+    font-size:clamp(1.6rem, 7vw, 2.4rem);
+  }
+}
+
+    .examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .example-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow-gold);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+    .example-card:hover{transform:translateY(-2px);border-color:rgba(255,212,77,.24);box-shadow:0 22px 50px rgba(240,185,11,.12)}
+    .example-card img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#0b0b0d}
+    .example-body{padding:1.15rem 1.15rem 1.25rem}
+    .example-body h3{margin:0 0 .45rem;font-size:1.08rem}
+    .example-body p{margin:0;color:var(--muted);line-height:1.75}
+    .mw-pill{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:.2rem .62rem;border-radius:999px;font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#17120b;background:linear-gradient(90deg,var(--gold-soft),var(--gold-deep));border:1px solid rgba(255,212,77,.45);white-space:nowrap;margin-bottom:.8rem}
+
+    .editorial-block{max-width:900px;margin:0 auto;padding:clamp(24px,4vw,38px);border-radius:28px;background:radial-gradient(760px 240px at 0% 0%, rgba(127,92,255,.10), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .editorial-block h2{margin:0 0 .8rem;font-size:clamp(1.8rem,2.2vw,2.8rem);letter-spacing:-.03em}
+    .editorial-block p{margin:0 0 1rem;color:var(--muted);font-size:1.04rem;line-height:1.9}
+
+    .cta-shell{max-width:900px;margin:0 auto;text-align:center;padding:clamp(26px,4vw,40px);border-radius:28px;background:radial-gradient(800px 280px at 50% 0%, rgba(255,212,77,.08), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .cta-shell h2{margin:0 0 .8rem;font-size:clamp(1.9rem,2.4vw,3rem);letter-spacing:-.03em}
+    .cta-shell p{margin:0 auto 1.25rem;max-width:58ch;color:var(--muted);line-height:1.8}
+
+    footer{padding:28px 0 40px;color:var(--muted);border-top:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg, rgba(255,255,255,.01), rgba(255,255,255,0))}
+    footer a{color:#fff}
+
+    @media (max-width: 1100px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-copy{text-align:center}
+      .hero-copy h1,.hero-copy p{margin-inline:auto;max-width:none}
+      .hero-actions{justify-content:center}
+      .steps,.examples{grid-template-columns:1fr}
+    }
+    @media (max-width: 740px){
+      .nav-inner{min-height:72px;flex-direction:column;justify-content:center;padding:12px 0}
+      .nav-links{justify-content:center}
+      .section{padding:64px 0}
+      .hero{padding-top:42px}
+      .decor{padding-bottom:64px}
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand">
+        <img src="images/New-logo-small.png" alt="Moogwai Attitude">
+        <span>Moogwai <span style="color:var(--gold-soft)">Attitude</span></span>
+      </a>
+      <nav class="nav-links">
+        <a class="nav-link" href="index.html">Accueil</a>
+        <a class="nav-link" href="index.html#collections">Collections</a>
+        <a class="nav-link" href="index.html#journal">Journal</a>
+        <a class="btn" href="https://moogwai-attitude.myshopify.com">Boutique</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="top-banner">
+    <div class="container">
+      <strong>Personnalisation Moogwai.</strong> Une idée, une direction, une pièce qui finit par n’appartenir qu’à toi.
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Moogwai Attitude • Personnalisation</div>
+        <h1>Créer une pièce qui n’existe pas encore.</h1>
+        <p>
+          Une envie précise, un concept encore flou, une image qu’il faut transformer pour qu’elle tombe juste. Ici, on ne choisit pas seulement un motif. On construit une présence.
+        </p>
+        <p>
+          L’idée arrive comme elle veut. À moitié formée, trop ambitieuse, ou parfaitement nette. À nous de lui donner une forme portable sans la vider de son âme.
+        </p>
+        <div class="hero-actions">
+          <a href="#process" class="btn">Voir comment ça marche</a>
+          <a href="#examples" class="btn-outline">Voir des inspirations</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="images/perso_illus01.png" alt="Image intro personnalisation">
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Process</div>
+        <h2 class="section-title">Une idée, trois étapes, zéro bricolage triste</h2>
+        <p class="section-subtitle">
+          Le but n’est pas de coller un visuel sur un t-shirt et d’espérer que la magie fasse le reste. Le but, c’est d’arriver à une pièce cohérente, portable, propre, et vraiment à toi.
+        </p>
+      </div>
+      <div class="steps">
+        <div class="card">
+          <h3>01 — L’idée</h3>
+          <p>Tu viens avec un point de départ. Une référence, un univers, un symbole, ou juste cette phrase étrange qui tourne dans ta tête depuis trois jours.</p>
+        </div>
+        <div class="card">
+          <h3>02 — La construction</h3>
+          <p>On affine, on trie, on teste. Ce qui doit être fort le reste. Ce qui gêne disparaît. L’objectif n’est pas de charger. L’objectif est d’ajuster.</p>
+        </div>
+        <div class="card">
+          <h3>03 — La pièce</h3>
+          <p>Le résultat ne ressemble ni à un mockup paresseux, ni à une improvisation de fin de nuit. Il ressemble à une pièce pensée pour durer et être portée avec évidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="decor">
+  <div class="container">
+    <div class="decor-shell">
+      <img src="images/perso_illus02.png" alt="Image décorative personnalisation">
+
+      <div class="decor-content">
+        <div class="decor-kicker">De l’idée à la pièce</div>
+        <h2 class="decor-title">Quand la vision commence à prendre corps.</h2>
+        <p class="decor-text">
+          Ici, l’inspiration n’est plus une intention vague. Elle devient structure, tension, matière… jusqu’à ressembler à quelque chose qu’on a envie de porter.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="section" id="examples">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">Exemples & inspirations</div>
+        <h2 class="section-title">Quelques pistes avant d’entrer dans l’atelier</h2>
+        <p class="section-subtitle">
+          Inspirations, variations, pistes déjà explorées ou travaux passés. Pas pour t’enfermer dans un style, mais pour montrer jusqu’où une idée peut aller quand on la traite sérieusement.
+        </p>
+      </div>
+      <div class="examples">
+        <article class="example-card">
+          <img src="images/perso_illus03.png" alt="Exemple 1">
+          <div class="example-body">
+            <span class="mw-pill">Inspiration</span>
+            <h3>Une idée encore brute</h3>
+            <p>Le point de départ. Une ambiance, une silhouette, un détail fort. Tout n’est pas défini, mais l’énergie est déjà là.</p>
+          </div>
+        </article>
+        <article class="example-card">
+          <img src="images/perso_illus04.png" alt="Exemple 2">
+          <div class="example-body">
+            <span class="mw-pill">Variation</span>
+            <h3>Une direction qui se précise</h3>
+            <p>Les formes se clarifient, les volumes trouvent leur place, le style commence à s’installer sans forcer l’effet.</p>
+          </div>
+        </article>
+        <article class="example-card">
+          <img src="images/perso_illus05.png" alt="Exemple 3">
+          <div class="example-body">
+            <span class="mw-pill">Résultat</span>
+            <h3>Une pièce qui tient debout</h3>
+            <p>Plus qu’un visuel. Une pièce complète, cohérente, imprimable, et surtout assez solide pour quitter l’écran sans perdre sa présence.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="editorial-block">
+        <h2>Personnaliser, ce n’est pas ajouter. C’est révéler.</h2>
+        <p>
+          Une bonne personnalisation n’a pas besoin d’en faire trop. Elle doit tomber juste. Elle doit ressembler à quelque chose qui n’existait pas avant, mais qui paraît soudain évident une fois là.
+        </p>
+        <p>
+          Chaque pièce personnalisée est ajustée, retravaillée, et regardée de près. Pas parce qu’il faut cocher des cases. Parce qu’on ne sait pas faire autrement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-shell">
+        <h2>Lancer une création</h2>
+        <p>
+          Si l’idée est déjà précise, parfait. Si elle est encore floue, ce n’est pas un problème. C’est souvent là que commencent les meilleures pièces.
+        </p>
+        <a href="index.html#contact" class="btn">Démarrer un projet</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      Pour ceux qui ne cherchent pas à ressembler aux autres. Même quand ce serait plus simple.<br>
+      <b>© 2025-2026 Moogwai Attitude • </b><a href="mentions-legales.html">Mentions légales</a> • <a href="index.html">Retour à l’accueil</a>
+    </div>
+  </footer>
+</body>
+</html>
